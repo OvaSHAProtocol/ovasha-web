@@ -44,105 +44,187 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
 @media(max-width:1000px){.navlinks{display:none}.menu-btn{display:block}.quickdock{display:none}.hero,.token-wrap,.arch-grid,.team{grid-template-columns:1fr}.cards3{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}.flow:before{display:none}.roadmap{grid-template-columns:1fr 1fr;gap:14px}.phase,.phase:first-child,.phase:last-child{border-radius:22px}.phase:after{display:none}.portal-grid{grid-template-columns:1fr}.founder-top{grid-template-columns:160px 1fr}.avatar{width:160px;height:160px}}
 @media(max-width:680px){.shell{width:min(100% - 24px,1200px)}section{padding:70px 0}.hero{padding-top:70px}.cards3,.roadmap,.flow{grid-template-columns:1fr}.legend{grid-template-columns:1fr}.faq{column-count:1}.founder-top{grid-template-columns:1fr}.avatar{width:150px;height:150px}.contact,footer{flex-direction:column;align-items:flex-start}.hero-banner,.banner-inner{min-height:430px}.chartbox{min-height:500px}.callout-label{min-width:135px;max-width:160px;font-size:11px}.brand img{height:40px;max-width:180px}}
 
-    :root {
-      --theme-bg: var(--bg, #edf6ea);
-      --theme-surface: rgba(255,255,255,.52);
-      --theme-ink: var(--ink, #123925);
-      --theme-muted: var(--muted, #5c7567);
-      --coin-glow: rgba(107,183,119,.26);
-      --coin-border: rgba(79,158,97,.28);
+    /* ===== OvaSHA theme toggle & floating coins v2 ===== */
+    html {
+      transition: background-color .28s ease, color .28s ease;
     }
 
     html[data-theme="dark"] {
       --bg:#07120e;
-      --bg-soft:#0c1c16;
-      --surface:rgba(16,38,29,.62);
-      --surface-strong:rgba(18,44,33,.82);
-      --ink:#e8f6e9;
-      --muted:#9fb9aa;
-      --line:rgba(168,216,143,.16);
+      --bg-soft:#0b1a14;
+      --surface:rgba(13,31,23,.74);
+      --surface-strong:rgba(16,38,29,.88);
+      --ink:#eef8ef;
+      --muted:#abc0b1;
+      --line:rgba(163,213,174,.18);
       --accent:#8fd39a;
-      --accent-dark:#b8e3bf;
-      --white:#f6fff7;
-      --shadow:0 26px 90px rgba(0,0,0,.26);
-      --theme-bg:#07120e;
-      --theme-surface:rgba(16,38,29,.62);
-      --theme-ink:#e8f6e9;
-      --theme-muted:#9fb9aa;
-      --coin-glow:rgba(143,211,154,.30);
-      --coin-border:rgba(168,216,143,.34);
+      --accent-dark:#b7e4bf;
+      --white:#f7fff8;
+      --shadow:0 28px 90px rgba(0,0,0,.32);
       color-scheme:dark;
     }
 
     html[data-theme="dark"] body {
       background:
-        radial-gradient(circle at 82% 7%,rgba(75,156,101,.18),transparent 28%),
-        radial-gradient(circle at 8% 88%,rgba(79,126,99,.12),transparent 25%),
-        linear-gradient(145deg,#07120e,#0c1c16);
+        radial-gradient(circle at 82% 7%,rgba(79,155,101,.20),transparent 30%),
+        radial-gradient(circle at 8% 88%,rgba(66,112,86,.13),transparent 26%),
+        linear-gradient(145deg,#07120e,#0b1a14) !important;
+      color:var(--ink);
     }
 
     html[data-theme="dark"] header {
-      background:rgba(7,18,14,.78);
+      background:rgba(7,18,14,.86) !important;
+      border-bottom-color:rgba(163,213,174,.15) !important;
     }
 
-    html[data-theme="dark"] .brand img {
-      filter:brightness(1.18) saturate(1.08);
+    /* Our Vision and other light content surfaces */
+    html[data-theme="dark"] #vision,
+    html[data-theme="dark"] #vision .section-head,
+    html[data-theme="dark"] #vision .card,
+    html[data-theme="dark"] #vision .vision-card,
+    html[data-theme="dark"] #vision [class*="card"],
+    html[data-theme="dark"] #vision [class*="panel"] {
+      color:var(--ink) !important;
+    }
+
+    html[data-theme="dark"] #vision .card,
+    html[data-theme="dark"] #vision .vision-card,
+    html[data-theme="dark"] #vision [class*="card"],
+    html[data-theme="dark"] #vision [class*="panel"] {
+      background:linear-gradient(145deg,rgba(13,31,23,.92),rgba(18,43,32,.82)) !important;
+      border-color:rgba(163,213,174,.16) !important;
+      box-shadow:0 22px 60px rgba(0,0,0,.22) !important;
+    }
+
+    html[data-theme="dark"] #vision p,
+    html[data-theme="dark"] #vision .lead,
+    html[data-theme="dark"] #vision .section-head p {
+      color:#b6c9bb !important;
+    }
+
+    /* Flow / protocol flow dark treatment */
+    html[data-theme="dark"] #flow,
+    html[data-theme="dark"] #flow .flow-wrap,
+    html[data-theme="dark"] #flow .flow-node,
+    html[data-theme="dark"] [id*="flow"] .flow-wrap,
+    html[data-theme="dark"] [id*="flow"] .flow-node {
+      color:var(--ink) !important;
+    }
+
+    html[data-theme="dark"] #flow .flow-wrap,
+    html[data-theme="dark"] [id*="flow"] .flow-wrap {
+      background:linear-gradient(145deg,rgba(8,24,17,.94),rgba(14,38,27,.86)) !important;
+      border-color:rgba(163,213,174,.16) !important;
+      box-shadow:0 28px 78px rgba(0,0,0,.25) !important;
+    }
+
+    html[data-theme="dark"] #flow .flow-node,
+    html[data-theme="dark"] [id*="flow"] .flow-node {
+      background:linear-gradient(145deg,rgba(16,40,29,.96),rgba(10,29,21,.94)) !important;
+      border-color:rgba(163,213,174,.18) !important;
+      color:#eef8ef !important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.025) !important;
+    }
+
+    html[data-theme="dark"] #flow .flow-node span,
+    html[data-theme="dark"] #flow .flow-node p,
+    html[data-theme="dark"] [id*="flow"] .flow-node span,
+    html[data-theme="dark"] [id*="flow"] .flow-node p {
+      color:#a9bcae !important;
+    }
+
+    html[data-theme="dark"] #flow .flow-node.active,
+    html[data-theme="dark"] [id*="flow"] .flow-node.active {
+      border-color:rgba(143,211,154,.42) !important;
+      box-shadow:0 18px 42px rgba(0,0,0,.22),0 0 24px rgba(143,211,154,.08) !important;
+    }
+
+    /* Generic white boxes in dark theme */
+    html[data-theme="dark"] .card,
+    html[data-theme="dark"] .phase,
+    html[data-theme="dark"] details,
+    html[data-theme="dark"] .contact-box,
+    html[data-theme="dark"] .team-principles,
+    html[data-theme="dark"] .founder-card,
+    html[data-theme="dark"] .token-detail {
+      background:linear-gradient(145deg,rgba(14,34,25,.90),rgba(10,28,20,.84)) !important;
+      color:var(--ink) !important;
+      border-color:rgba(163,213,174,.16) !important;
+    }
+
+    html[data-theme="dark"] .card p,
+    html[data-theme="dark"] .phase li,
+    html[data-theme="dark"] details p,
+    html[data-theme="dark"] details ul,
+    html[data-theme="dark"] .contact-box p {
+      color:#aebfb2 !important;
     }
 
     .theme-toggle {
-      width:54px;
-      height:30px;
-      border:1px solid var(--line);
+      width:58px;
+      height:32px;
+      border:1px solid rgba(18,57,37,.18);
       border-radius:999px;
-      background:rgba(255,255,255,.28);
+      background:rgba(255,255,255,.62);
       padding:3px;
       display:flex;
       align-items:center;
       cursor:pointer;
       transition:.28s ease;
+      box-shadow:0 8px 24px rgba(18,57,37,.10);
       backdrop-filter:blur(12px);
-      box-shadow:0 8px 24px rgba(18,57,37,.08);
       flex:none;
+      position:fixed;
+      right:20px;
+      top:20px;
+      margin:0;
+      z-index:100;
     }
 
     .theme-toggle:hover {
       transform:translateY(-1px);
-      box-shadow:0 12px 28px rgba(18,57,37,.12);
+      box-shadow:0 12px 28px rgba(18,57,37,.14);
     }
 
     .theme-toggle-track {
       width:100%;
+      height:100%;
+      position:relative;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      position:relative;
-      color:var(--muted);
+      padding:0 5px;
       font-size:12px;
       line-height:1;
-      padding:0 4px;
+      color:#496555;
     }
 
     .theme-toggle-thumb {
       position:absolute;
       top:50%;
-      left:-1px;
-      width:22px;
-      height:22px;
+      left:1px;
+      width:24px;
+      height:24px;
       border-radius:50%;
-      background:var(--ink);
+      background:#173d2b;
       transform:translateY(-50%);
       transition:.28s cubic-bezier(.2,.8,.2,1);
-      box-shadow:0 3px 10px rgba(0,0,0,.18);
+      box-shadow:0 3px 10px rgba(0,0,0,.20);
     }
 
     html[data-theme="dark"] .theme-toggle {
-      background:rgba(255,255,255,.06);
+      background:rgba(255,255,255,.055);
+      border-color:rgba(163,213,174,.22);
+    }
+
+    html[data-theme="dark"] .theme-toggle-track {
+      color:#bad0bf;
     }
 
     html[data-theme="dark"] .theme-toggle-thumb {
-      transform:translate(24px,-50%);
-      background:#a8d88f;
-      box-shadow:0 0 18px rgba(168,216,143,.32);
+      transform:translate(26px,-50%);
+      background:#9ed9a8;
+      box-shadow:0 0 18px rgba(158,217,168,.34);
     }
 
     .ovasha-coins {
@@ -161,41 +243,47 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
       display:grid;
       place-items:center;
       opacity:var(--opacity);
-      border:1px solid var(--coin-border);
+      border:1px solid rgba(79,158,97,.28);
       background:
-        radial-gradient(circle at 35% 30%,rgba(255,255,255,.30),rgba(255,255,255,.03) 55%,transparent 72%);
+        radial-gradient(circle at 34% 28%,rgba(255,255,255,.34),rgba(255,255,255,.045) 52%,transparent 74%);
       box-shadow:
-        inset 0 0 22px rgba(255,255,255,.07),
-        0 0 18px var(--coin-glow);
+        inset 0 0 24px rgba(255,255,255,.08),
+        0 0 18px rgba(107,183,119,.20);
       backdrop-filter:blur(1px);
       transform:translate3d(0,var(--shift,0),0) rotate(var(--rot));
-      transition:filter .3s ease,opacity .3s ease;
-      animation:coinFloat var(--dur) ease-in-out infinite alternate;
+      animation:ovashaCoinFloat var(--dur) ease-in-out infinite alternate;
+      will-change:transform;
     }
 
     .ovasha-coin::before {
       content:"";
-      width:68%;
-      height:68%;
-      background:url('/assets/ovasha-coin-symbol-v1.png') center/contain no-repeat;
-      filter:drop-shadow(0 0 7px var(--coin-glow));
+      width:66%;
+      height:66%;
+      background:url('/assets/ovasha-floating-coin-v2.png') center/contain no-repeat;
+      filter:drop-shadow(0 0 7px rgba(107,183,119,.24));
     }
 
     html[data-theme="dark"] .ovasha-coin {
-      opacity:calc(var(--opacity) + .05);
+      border-color:rgba(143,211,154,.32);
+      box-shadow:
+        inset 0 0 24px rgba(255,255,255,.04),
+        0 0 22px rgba(143,211,154,.24);
       filter:saturate(1.15) brightness(1.08);
     }
 
-    @keyframes coinFloat {
+    @keyframes ovashaCoinFloat {
       from { transform:translate3d(0,calc(var(--shift) - 8px),0) rotate(var(--rot)); }
-      to { transform:translate3d(10px,calc(var(--shift) + 10px),0) rotate(calc(var(--rot) + 8deg)); }
+      to { transform:translate3d(9px,calc(var(--shift) + 10px),0) rotate(calc(var(--rot) + 7deg)); }
     }
 
-    @media(max-width:800px) {
+    @media(max-width:900px) {
+      .theme-toggle {
+        position:fixed;
+        right:16px;
+        top:16px;
+        margin:0;
+      }
       .ovasha-coin:nth-child(n+8){display:none}
-      .theme-toggle{width:50px;height:28px}
-      .theme-toggle-thumb{width:20px;height:20px}
-      html[data-theme="dark"] .theme-toggle-thumb{transform:translate(22px,-50%)}
     }
 
     @media(prefers-reduced-motion:reduce) {
@@ -208,17 +296,26 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
 <body>
 
   <div class="ovasha-coins" aria-hidden="true">
-    <span class="ovasha-coin" style="left:4%;top:12%;--size:92px;--opacity:.10;--rot:-12deg;--dur:8s"></span>
-    <span class="ovasha-coin" style="left:18%;top:46%;--size:58px;--opacity:.08;--rot:18deg;--dur:10s"></span>
-    <span class="ovasha-coin" style="left:34%;top:18%;--size:72px;--opacity:.09;--rot:-6deg;--dur:9s"></span>
-    <span class="ovasha-coin" style="left:52%;top:68%;--size:104px;--opacity:.07;--rot:10deg;--dur:12s"></span>
-    <span class="ovasha-coin" style="right:8%;top:20%;--size:78px;--opacity:.10;--rot:24deg;--dur:11s"></span>
-    <span class="ovasha-coin" style="right:18%;top:52%;--size:54px;--opacity:.08;--rot:-18deg;--dur:8.5s"></span>
-    <span class="ovasha-coin" style="right:3%;top:80%;--size:112px;--opacity:.07;--rot:8deg;--dur:13s"></span>
+    <span class="ovasha-coin" style="left:3%;top:10%;--size:88px;--opacity:.10;--rot:-12deg;--dur:8s"></span>
+    <span class="ovasha-coin" style="left:16%;top:43%;--size:58px;--opacity:.08;--rot:18deg;--dur:10s"></span>
+    <span class="ovasha-coin" style="left:31%;top:16%;--size:72px;--opacity:.09;--rot:-6deg;--dur:9s"></span>
+    <span class="ovasha-coin" style="left:48%;top:70%;--size:100px;--opacity:.07;--rot:10deg;--dur:12s"></span>
+    <span class="ovasha-coin" style="right:7%;top:18%;--size:82px;--opacity:.10;--rot:24deg;--dur:11s"></span>
+    <span class="ovasha-coin" style="right:18%;top:50%;--size:54px;--opacity:.08;--rot:-18deg;--dur:8.5s"></span>
+    <span class="ovasha-coin" style="right:2%;top:80%;--size:108px;--opacity:.07;--rot:8deg;--dur:13s"></span>
     <span class="ovasha-coin" style="left:8%;top:82%;--size:68px;--opacity:.08;--rot:-20deg;--dur:9.5s"></span>
-    <span class="ovasha-coin" style="left:70%;top:8%;--size:48px;--opacity:.07;--rot:14deg;--dur:7.5s"></span>
-    <span class="ovasha-coin" style="left:42%;top:38%;--size:44px;--opacity:.06;--rot:-8deg;--dur:10.5s"></span>
+    <span class="ovasha-coin" style="left:69%;top:7%;--size:46px;--opacity:.07;--rot:14deg;--dur:7.5s"></span>
+    <span class="ovasha-coin" style="left:42%;top:37%;--size:44px;--opacity:.06;--rot:-8deg;--dur:10.5s"></span>
   </div>
+
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Light / Dark mode">
+        <span class="theme-toggle-track">
+          <span aria-hidden="true">☀</span>
+          <span aria-hidden="true">☾</span>
+          <span class="theme-toggle-thumb"></span>
+        </span>
+      </button>
 
 <div class="scrollbar" id="progress"></div>
 <header><div class="shell nav"><a class="brand" href="#home"><img src="/assets/ovasha-wordmark.png" alt="OvaSHA Protocol"></a><nav class="navlinks"><a href="#vision">Vision</a><a href="#architecture">Architecture</a><a href="#tokenomics">Tokenomics</a><a href="#roadmap">Roadmap</a><a href="#team">Team</a><a href="#faq">FAQ</a><a href="#portals">Launch</a></nav><button class="menu-btn" onclick="document.getElementById('mobileNav').toggleAttribute('hidden')">Menu</button></div><div id="mobileNav" hidden class="shell" style="padding:0 0 16px"><div style="display:flex;gap:13px;flex-wrap:wrap;font-size:12px"><a href="#vision">Vision</a><a href="#tokenomics">Tokenomics</a><a href="#roadmap">Roadmap</a><a href="#team">Team</a><a href="#faq">FAQ</a></div></div></header>
@@ -263,37 +360,34 @@ const mmsgs=[['','Trust',' should never depend on promises.'],['It should be ','
 const flow=document.getElementById('flow'),nodes=[...flow.children];function update(){let max=document.documentElement.scrollHeight-innerHeight,p=max?scrollY/max:0;document.getElementById('progress').style.width=p*100+'%';let r=flow.getBoundingClientRect(),f=Math.min(1,Math.max(0,(innerHeight*.8-r.top)/(r.height+innerHeight*.4)));flow.style.setProperty('--flow',f);nodes.forEach((n,i)=>n.classList.toggle('active',f>(i+1)/nodes.length-.09))}addEventListener('scroll',update,{passive:true});update();
 const drawers={whitepaper:'<div class="eyebrow" style="color:#acd09d">DOCUMENT</div><h3>Whitepaper</h3><p>The complete OvaSHA whitepaper is being prepared during Phase 02. It will include protocol architecture, tokenomics, governance, security controls and risk disclosures.</p><div class="devbadge">PUBLISHING SOON</div>',audit:'<div class="eyebrow" style="color:#acd09d">SECURITY</div><h3>Audit</h3><p>Independent review and public test documentation are planned before major launch milestones. No completed-audit claim is made at this time.</p><div class="devbadge">AUDIT PREPARATION</div>',presale:'<div class="eyebrow" style="color:#acd09d">LAUNCH</div><h3>Presale</h3><p>The verified PinkSale pool will be embedded only after mainnet deployment, source verification and final configuration.</p><div class="devbadge">DEVELOPMENT</div>',staking:'<div class="eyebrow" style="color:#acd09d">APPLICATION</div><h3>Staking</h3><p>The staking application panel is under development. Wallet connection remains disabled until contract testing and verification are complete.</p><div class="devbadge">DEVELOPMENT</div>'};let drawer=document.getElementById('drawer');document.querySelectorAll('[data-drawer]').forEach(b=>b.onclick=()=>{document.getElementById('drawerContent').innerHTML=drawers[b.dataset.drawer];drawer.classList.add('open')});drawer.querySelector('.close').onclick=()=>drawer.classList.remove('open');
 document.querySelectorAll('.faq details').forEach(d=>d.ontoggle=()=>{if(d.open)document.querySelectorAll('.faq details').forEach(o=>o!==d&&o.removeAttribute('open'))});
-
+</script>
+<script>
     (() => {
-      const root = document.documentElement;
-      const toggle = document.getElementById("themeToggle");
-      const saved = localStorage.getItem("ovasha-theme");
-      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const initial = saved || (prefersDark ? "dark" : "light");
+      const root=document.documentElement;
+      const toggle=document.getElementById("themeToggle");
+      const saved=localStorage.getItem("ovasha-theme");
+      const initial=saved || "light";
 
-      root.setAttribute("data-theme", initial);
+      root.setAttribute("data-theme",initial);
 
-      if (toggle) {
-        toggle.addEventListener("click", () => {
-          const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-          root.setAttribute("data-theme", next);
-          localStorage.setItem("ovasha-theme", next);
+      if(toggle){
+        toggle.addEventListener("click",()=>{
+          const next=root.getAttribute("data-theme")==="dark" ? "light" : "dark";
+          root.setAttribute("data-theme",next);
+          localStorage.setItem("ovasha-theme",next);
         });
       }
 
-      const coins = [...document.querySelectorAll(".ovasha-coin")];
-
-      function updateCoins() {
-        const y = window.scrollY;
-        coins.forEach((coin, index) => {
-          const speed = 0.025 + (index % 5) * 0.012;
-          coin.style.setProperty("--shift", `${y * speed}px`);
+      const coins=[...document.querySelectorAll(".ovasha-coin")];
+      function updateFloatingCoins(){
+        const y=window.scrollY;
+        coins.forEach((coin,index)=>{
+          const speed=.022+(index%5)*.011;
+          coin.style.setProperty("--shift",`${y*speed}px`);
         });
       }
-
-      window.addEventListener("scroll", updateCoins, { passive: true });
-      updateCoins();
+      window.addEventListener("scroll",updateFloatingCoins,{passive:true});
+      updateFloatingCoins();
     })();
-
-  </script>
+</script>
 </body></html>

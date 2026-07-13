@@ -1,12 +1,10 @@
-# OvaSHA Website — Dark Mode & Floating Coins
+# OvaSHA Website — Dark Mode & Floating Coins V2
 
-Bu sürümde yalnızca:
-- sağ üstte light/dark mode anahtarı
-- localStorage ile tema hatırlama
-- kurumsal koyu yeşil dark mode paleti
-- yazısız OvaSHA sembollü, şeffaf ve hafif neon coin arka planı
-- scroll parallax ve yavaş organik hareket
-
-eklendi.
-
-Mevcut içerikler, bölümler ve yerleşim değiştirilmedi.
+Bu sürümde:
+- açık tema görsel olarak değiştirilmedi
+- yalnızca floating coin arka planı eklendi
+- sağ üstte görünür light/dark mode anahtarı eklendi
+- tema tercihi localStorage ile saklanır
+- koyu temada Our Vision ve Flow kutuları koyu tonlara geçirildi
+- beyaz kutu / açık yazı çakışmaları düzeltildi
+- mevcut site içerikleri ve yerleşimi korunmuştur
