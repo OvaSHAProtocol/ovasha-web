@@ -1,11 +1,12 @@
-# OvaSHA Website — Logo Cache Fix
+# OvaSHA Website — HQ Logo & Favicon V4
 
-Yalnızca iki logo kaynağı değiştirildi:
+Yalnızca marka görselleri güncellendi:
 
-- Header: /assets/ovasha-wordmark-full-v3.png
-- Hero: /assets/ovasha-wordmark-light-full-v3.png
+- Header: orijinal vektörel SVG logo
+- Hero: orijinal açık yeşil vektörel SVG logo
+- Favicon: yalnızca yazısız OvaSHA sembolü
+- Favicon etrafında dairesel kırpmaya karşı güvenli boşluk
+- 16, 32, 48, 64, 128 ve 256 px ICO sürümleri
+- 512 px PNG ve 180 px Apple Touch Icon
 
-Neden yeni dosya adı?
-Vercel ve tarayıcı önbelleğinin eski PNG'yi göstermesini kesin olarak önlemek için.
-
-Diğer HTML, CSS, JavaScript, içerik ve tasarım değiştirilmedi.
+Site tasarımı, içerikleri, animasyonları ve bölümleri değiştirilmedi.
