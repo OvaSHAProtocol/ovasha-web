@@ -1,11 +1,10 @@
-# OvaSHA Website — Floating Coins & Burn Simulation
+# OvaSHA Burn Challenge V2
 
 Bu sürümde:
-- açık temadaki floating coinler daha belirgin hale getirildi
-- boş alanlara hafif geometrik dekorlar eklendi
-- etkileşimli Burn Simulation bölümü eklendi
-- demo arz 10'dan başlar
-- fareyle coin üzerine gelince coin görsel olarak yakılır
-- reset butonu eklenmiştir
-- hiçbir gerçek blockchain/token işlemi yapılmaz
-- koyu tema ve mevcut site düzeni korunmuştur
+- Burn Simulation içinde 15 coin bulunur.
+- Kullanıcıdan 9 coin yakması istenir.
+- Her yakımda Coins Remaining sayacı azalır.
+- 9. yakımdan sonra ortada Burn Complete paneli görünür.
+- Panelde Replay Challenge butonu bulunur.
+- Alt bölümdeki Replay butonu da simülasyonu sıfırlar.
+- Bu yalnızca görsel simülasyondur; gerçek zincir işlemi yapmaz.

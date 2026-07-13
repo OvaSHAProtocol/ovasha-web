@@ -621,6 +621,96 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
       }
     }
 
+
+    .burn-complete{
+      position:absolute;
+      left:50%;
+      top:50%;
+      z-index:8;
+      width:min(360px,calc(100% - 36px));
+      padding:28px 26px;
+      border:1px solid rgba(89,164,105,.28);
+      border-radius:24px;
+      background:rgba(245,252,245,.90);
+      backdrop-filter:blur(18px);
+      box-shadow:
+        0 28px 70px rgba(23,74,39,.16),
+        0 0 34px rgba(101,190,118,.12);
+      text-align:center;
+      opacity:0;
+      pointer-events:none;
+      transform:translate(-50%,-46%) scale(.92);
+      transition:
+        opacity .35s ease,
+        transform .35s cubic-bezier(.2,.8,.2,1);
+    }
+
+    html[data-theme="dark"] .burn-complete{
+      background:rgba(9,28,19,.92);
+      border-color:rgba(143,211,154,.30);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.34),
+        0 0 36px rgba(143,211,154,.12);
+    }
+
+    .burn-complete.visible{
+      opacity:1;
+      pointer-events:auto;
+      transform:translate(-50%,-50%) scale(1);
+    }
+
+    .burn-complete-mark{
+      width:52px;
+      height:52px;
+      margin:0 auto 14px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:#f7fff8;
+      background:linear-gradient(145deg,#5ebd73,#3d8f53);
+      box-shadow:0 0 24px rgba(94,189,115,.28);
+      font-size:24px;
+      font-weight:700;
+    }
+
+    .burn-complete strong{
+      display:block;
+      font-size:28px;
+      letter-spacing:-.04em;
+    }
+
+    .burn-complete span{
+      display:block;
+      margin-top:8px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    .burn-complete-replay{
+      min-height:42px;
+      margin-top:18px;
+      padding:0 18px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--ink);
+      color:var(--white);
+      font:600 12px "Sora",sans-serif;
+      cursor:pointer;
+      transition:.22s ease;
+    }
+
+    .burn-complete-replay:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 24px rgba(18,57,37,.14);
+    }
+
+    .burn-field.challenge-complete .burn-coin{
+      pointer-events:none;
+      filter:saturate(.78) brightness(.96);
+      opacity:.55;
+    }
+
 </style>
 </head>
 <body>
@@ -678,23 +768,29 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
             <div class="eyebrow">Interactive Supply Demo</div>
             <h2 class="burn-sim-title">Burn Simulation</h2>
             <p class="burn-sim-subtitle">
-              Hover over the floating OVA coins to simulate a token burn.
+              Burn exactly 9 of the 15 floating OVA coins to complete the challenge.
               This is a visual demonstration only and does not execute an on-chain transaction.
             </p>
           </div>
           <div class="burn-supply-card">
-            <span>Demo supply</span>
-            <strong id="burnSupply">10</strong>
+            <span>Coins remaining</span>
+            <strong id="burnSupply">15</strong>
           </div>
         </div>
 
         <div class="burn-field" id="burnField">
           <div class="burn-zone"></div>
+          <div class="burn-complete" id="burnComplete" aria-live="polite">
+            <div class="burn-complete-mark">✓</div>
+            <strong>Burn Complete</strong>
+            <span>9 of 15 demo coins burned successfully.</span>
+            <button class="burn-complete-replay" id="burnReplay" type="button">Replay challenge</button>
+          </div>
         </div>
 
         <div class="burn-sim-foot">
-          <span>Move your pointer across a coin to burn it.</span>
-          <button class="burn-reset" id="burnReset" type="button">Reset simulation</button>
+          <span>Target: burn 9 coins. Move your pointer across a coin to burn it.</span>
+          <button class="burn-reset" id="burnReset" type="button">Replay</button>
         </div>
       </div>
     </section>
@@ -760,56 +856,90 @@ document.querySelectorAll('.faq details').forEach(d=>d.ontoggle=()=>{if(d.open)d
       const field=document.getElementById("burnField");
       const counter=document.getElementById("burnSupply");
       const reset=document.getElementById("burnReset");
-      if(!field || !counter || !reset) return;
+      const complete=document.getElementById("burnComplete");
+      const replay=document.getElementById("burnReplay");
+
+      if(!field || !counter || !reset || !complete || !replay) return;
 
       const layouts=[
-        {x:8,y:16,s:58,d:7.4,r:11},
-        {x:24,y:58,s:72,d:9.3,r:14},
-        {x:40,y:20,s:54,d:8.1,r:9},
-        {x:58,y:62,s:80,d:10.2,r:16},
-        {x:75,y:16,s:64,d:7.8,r:12},
-        {x:84,y:55,s:54,d:9.8,r:10},
-        {x:13,y:72,s:48,d:8.7,r:15},
-        {x:34,y:76,s:60,d:10.6,r:13},
-        {x:68,y:77,s:50,d:9.1,r:11},
-        {x:49,y:43,s:68,d:11.2,r:17}
+        {x:6,y:14,s:54,d:7.2,r:11},
+        {x:17,y:38,s:66,d:8.8,r:13},
+        {x:28,y:15,s:48,d:7.9,r:9},
+        {x:39,y:63,s:72,d:10.4,r:16},
+        {x:52,y:18,s:58,d:8.1,r:12},
+        {x:63,y:55,s:78,d:10.8,r:17},
+        {x:76,y:13,s:62,d:8.4,r:14},
+        {x:87,y:44,s:50,d:9.6,r:10},
+        {x:10,y:72,s:44,d:8.5,r:15},
+        {x:24,y:77,s:56,d:10.2,r:13},
+        {x:46,y:42,s:64,d:9.4,r:12},
+        {x:58,y:78,s:46,d:8.9,r:11},
+        {x:72,y:73,s:54,d:9.7,r:14},
+        {x:84,y:76,s:68,d:10.9,r:16},
+        {x:36,y:32,s:50,d:8.6,r:10}
       ];
 
-      let supply=10;
+      const totalCoins=15;
+      const targetBurns=9;
+      let remaining=totalCoins;
+      let burned=0;
+      let completed=false;
 
       function createSparks(x,y){
-        for(let i=0;i<8;i++){
+        for(let i=0;i<9;i++){
           const spark=document.createElement("span");
           spark.className="burn-spark";
           spark.style.left=`${x}px`;
           spark.style.top=`${y}px`;
-          const angle=(Math.PI*2*i)/8;
-          const distance=22+Math.random()*24;
+          const angle=(Math.PI*2*i)/9;
+          const distance=22+Math.random()*28;
           spark.style.setProperty("--sx",`${Math.cos(angle)*distance}px`);
           spark.style.setProperty("--sy",`${Math.sin(angle)*distance}px`);
           field.appendChild(spark);
-          setTimeout(()=>spark.remove(),700);
+          setTimeout(()=>spark.remove(),720);
         }
       }
 
+      function showComplete(){
+        completed=true;
+        field.classList.add("challenge-complete");
+        complete.classList.add("visible");
+      }
+
       function burnCoin(coin){
-        if(coin.classList.contains("burning")) return;
+        if(completed || coin.classList.contains("burning")) return;
+
         coin.classList.add("burning");
-        const cr=coin.getBoundingClientRect();
-        const fr=field.getBoundingClientRect();
+
+        const coinRect=coin.getBoundingClientRect();
+        const fieldRect=field.getBoundingClientRect();
+
         createSparks(
-          cr.left-fr.left+cr.width/2,
-          cr.top-fr.top+cr.height/2
+          coinRect.left-fieldRect.left+coinRect.width/2,
+          coinRect.top-fieldRect.top+coinRect.height/2
         );
-        supply=Math.max(0,supply-1);
-        counter.textContent=String(supply);
+
+        burned++;
+        remaining=Math.max(0,totalCoins-burned);
+        counter.textContent=String(remaining);
+
         setTimeout(()=>coin.remove(),380);
+
+        if(burned===targetBurns){
+          setTimeout(showComplete,430);
+        }
       }
 
       function populate(){
         field.querySelectorAll(".burn-coin,.burn-spark").forEach(el=>el.remove());
-        supply=10;
-        counter.textContent="10";
+
+        remaining=totalCoins;
+        burned=0;
+        completed=false;
+
+        counter.textContent=String(totalCoins);
+        complete.classList.remove("visible");
+        field.classList.remove("challenge-complete");
 
         layouts.forEach((item,index)=>{
           const coin=document.createElement("button");
@@ -821,13 +951,26 @@ document.querySelectorAll('.faq details').forEach(d=>d.ontoggle=()=>{if(d.open)d
           coin.style.setProperty("--coin-size",`${item.s}px`);
           coin.style.setProperty("--drift-time",`${item.d}s`);
           coin.style.setProperty("--spin-time",`${item.r}s`);
-          coin.addEventListener("pointerenter",()=>burnCoin(coin),{once:true});
-          coin.addEventListener("focus",()=>burnCoin(coin),{once:true});
+
+          coin.addEventListener(
+            "pointerenter",
+            ()=>burnCoin(coin),
+            {once:true}
+          );
+
+          coin.addEventListener(
+            "focus",
+            ()=>burnCoin(coin),
+            {once:true}
+          );
+
           field.appendChild(coin);
         });
       }
 
       reset.addEventListener("click",populate);
+      replay.addEventListener("click",populate);
+
       populate();
     })();
 </script>
