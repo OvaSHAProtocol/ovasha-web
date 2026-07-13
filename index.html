@@ -1,147 +1,502 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="OvaSHA is a sustainable blockchain protocol focused on trust, transparency, security and long-term value.">
-<meta name="theme-color" content="#e7f2e3">
-<meta property="og:title" content="OvaSHA Protocol">
-<meta property="og:description" content="Building sustainable blockchain infrastructure.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ovasha.com">
-<title>OvaSHA Protocol — Building for the Long Term</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#e8f3e4;--bg2:#d8e9d2;--ink:#173d2b;--muted:#5d7467;--line:rgba(23,61,43,.15);--card:rgba(255,255,255,.45);--white:#f9fcf7}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:"Sora",system-ui,sans-serif;background:radial-gradient(circle at 88% 5%,rgba(95,175,99,.18),transparent 28%),radial-gradient(circle at 8% 88%,rgba(95,175,99,.12),transparent 24%),linear-gradient(145deg,var(--bg),var(--bg2))}
-.shell{width:min(1160px,calc(100% - 40px));margin:auto}
-header{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:rgba(232,243,228,.82);border-bottom:1px solid var(--line)}
-.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none} .mark{width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px}
-.brand strong{display:block;font-size:17px} .brand small{display:block;font-size:8px;letter-spacing:.32em;margin-top:3px}
-nav{display:flex;gap:22px} nav a{color:var(--muted);text-decoration:none;font-size:12px} nav a:hover{color:var(--ink)}
-section{padding:94px 0} .hero{padding-top:118px}
-.badge{width:max-content;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:rgba(255,255,255,.3)}
-h1{max-width:920px;margin:28px 0 24px;font-size:clamp(52px,8vw,106px);line-height:.95;letter-spacing:-.065em;font-weight:600}
-.lead{max-width:720px;color:var(--muted);font-size:clamp(17px,2vw,22px);line-height:1.7}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
-.btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:0 20px;border-radius:999px;border:1px solid var(--ink);text-decoration:none;font-size:13px;font-weight:600;transition:.2s}
-.primary{background:var(--ink);color:var(--white)} .secondary{color:var(--ink)} .btn:hover{transform:translateY(-2px)}
-.section-head{max-width:760px;margin-bottom:38px} .eyebrow{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
-h2{font-size:clamp(34px,5vw,60px);line-height:1.05;letter-spacing:-.05em;margin:14px 0} .section-head p{color:var(--muted);line-height:1.75}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--card);backdrop-filter:blur(10px)}
-.card .num{font-size:11px;letter-spacing:.16em;color:var(--muted)} .card h3{font-size:21px;margin:34px 0 10px;letter-spacing:-.03em} .card p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}
-.tokenomics-wrap{display:grid;grid-template-columns:minmax(320px,1fr) minmax(280px,.82fr);gap:46px;align-items:center}
-.chart-area{position:relative;display:grid;place-items:center;min-height:520px}
-#tokenChart{width:min(100%,520px);height:auto;overflow:visible}
-.slice{cursor:pointer;transform-origin:250px 250px;transition:transform .22s ease,filter .22s ease,opacity .22s ease;stroke:#eef6eb;stroke-width:2}
-.slice:hover,.slice.active{transform:scale(1.035);filter:drop-shadow(0 10px 10px rgba(23,61,43,.16))}
-.chart-center{position:absolute;text-align:center;pointer-events:none} .chart-center strong{display:block;font-size:38px;letter-spacing:-.05em} .chart-center span{color:var(--muted);font-size:11px;letter-spacing:.16em}
-.token-detail{min-height:260px;padding:30px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.52)}
-.token-detail .dot{width:14px;height:14px;border-radius:50%;display:inline-block;margin-right:9px;vertical-align:-2px} .token-detail h3{font-size:28px;margin:18px 0 8px;letter-spacing:-.04em}
-.token-detail .amount{font-size:18px;font-weight:600} .token-detail .percent{font-size:48px;font-weight:600;letter-spacing:-.06em;margin:14px 0} .token-detail p{color:var(--muted);line-height:1.7}
-.legend{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px} .legend button{display:flex;align-items:center;gap:9px;border:1px solid var(--line);background:rgba(255,255,255,.28);padding:12px;border-radius:13px;color:var(--ink);font-family:inherit;text-align:left;cursor:pointer}
-.legend i{width:11px;height:11px;border-radius:50%;flex:none}
-.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px} .phase{padding:26px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.36)} .phase span{font-size:11px;letter-spacing:.15em;color:var(--muted)} .phase h3{margin:18px 0 14px} .phase ul{padding-left:18px;margin:0;color:var(--muted);line-height:1.8;font-size:13px}
-.security-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px} .security-item{padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.32)}
-details{border-bottom:1px solid var(--line);padding:20px 0} summary{cursor:pointer;font-weight:600} details p{color:var(--muted);line-height:1.7}
-.contact-box{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:34px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.42)}
-footer{padding:30px 0 38px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;color:var(--muted);font-size:12px} .socials{display:flex;gap:18px;flex-wrap:wrap} .socials a{color:var(--muted);text-decoration:none}
-@media(max-width:940px){nav{display:none} .grid-3,.roadmap{grid-template-columns:1fr 1fr} .tokenomics-wrap{grid-template-columns:1fr}}
-@media(max-width:680px){section{padding:70px 0} .hero{padding-top:82px} .grid-3,.roadmap,.security-list,.legend{grid-template-columns:1fr} .contact-box,footer{flex-direction:column;align-items:flex-start} .chart-area{min-height:400px} .chart-center strong{font-size:30px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="OvaSHA is a sustainable blockchain protocol focused on trust, transparency, security and long-term value.">
+  <meta name="theme-color" content="#eaf4e7">
+  <meta property="og:title" content="OvaSHA Protocol">
+  <meta property="og:description" content="Trust, built to last.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ovasha.com">
+  <meta property="og:image" content="/assets/ovasha-logo.png">
+  <title>OvaSHA Protocol — Trust, built to last.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#edf6ea;
+      --bg-soft:#e3f0df;
+      --surface:rgba(255,255,255,.50);
+      --surface-strong:rgba(255,255,255,.70);
+      --ink:#123925;
+      --muted:#5c7567;
+      --line:rgba(18,57,37,.14);
+      --accent:#6bb777;
+      --accent-dark:#2f6b43;
+      --white:#fbfdf9;
+      --shadow:0 24px 80px rgba(25,70,42,.10);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Sora",system-ui,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 82% 7%,rgba(107,183,119,.18),transparent 28%),
+        radial-gradient(circle at 8% 88%,rgba(107,183,119,.10),transparent 25%),
+        linear-gradient(145deg,var(--bg),var(--bg-soft));
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(18,57,37,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(18,57,37,.035) 1px,transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom,black,transparent 82%);
+      z-index:-4;
+    }
+
+    .orb,.shape{
+      position:fixed;
+      pointer-events:none;
+      z-index:-3;
+      opacity:.45;
+      filter:blur(2px);
+    }
+    .orb.one{width:420px;height:420px;border-radius:50%;right:-140px;top:110px;background:radial-gradient(circle,rgba(107,183,119,.22),transparent 68%)}
+    .orb.two{width:340px;height:340px;border-radius:50%;left:-130px;bottom:80px;background:radial-gradient(circle,rgba(159,201,169,.18),transparent 70%)}
+    .shape.triangle{width:0;height:0;border-left:80px solid transparent;border-right:80px solid transparent;border-bottom:140px solid rgba(107,183,119,.08);right:8%;top:42%;transform:rotate(18deg)}
+    .shape.ring{width:180px;height:180px;border:1px solid rgba(18,57,37,.10);border-radius:50%;left:5%;top:22%}
+
+    .code-rain{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+      overflow:hidden;
+    }
+    .code-line{
+      position:absolute;
+      font-family:"Space Mono",monospace;
+      font-size:12px;
+      color:rgba(18,57,37,.08);
+      white-space:nowrap;
+      transform:translateY(var(--move,0));
+      transition:transform .1s linear;
+    }
+
+    .shell{width:min(1180px,calc(100% - 40px));margin:auto}
+
+    header{
+      position:sticky;top:0;z-index:30;
+      backdrop-filter:blur(18px);
+      background:rgba(237,246,234,.78);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+    .brand img{width:44px;height:44px;border-radius:12px;object-fit:cover;box-shadow:0 8px 24px rgba(18,57,37,.08)}
+    .brand strong{display:block;font-size:17px}
+    .brand small{display:block;font-size:8px;letter-spacing:.30em;margin-top:3px}
+    nav{display:flex;gap:22px}
+    nav a{font-size:12px;color:var(--muted);text-decoration:none}
+    nav a:hover{color:var(--ink)}
+
+    section{padding:104px 0;position:relative}
+    .hero{padding-top:120px;min-height:88vh;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+    .badge{
+      width:max-content;
+      padding:9px 14px;border:1px solid var(--line);border-radius:999px;
+      background:rgba(255,255,255,.35);
+      font:400 11px "Space Mono",monospace;
+      letter-spacing:.12em;text-transform:uppercase;
+    }
+    h1{
+      margin:28px 0 22px;
+      font-size:clamp(56px,8vw,106px);
+      line-height:.94;letter-spacing:-.068em;font-weight:600;
+    }
+    .lead{max-width:720px;color:var(--muted);font-size:clamp(17px,2vw,22px);line-height:1.75}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+    .btn{
+      min-height:50px;display:inline-flex;align-items:center;justify-content:center;
+      padding:0 22px;border:1px solid var(--ink);border-radius:999px;
+      text-decoration:none;font-weight:600;font-size:13px;transition:.25s ease;
+    }
+    .btn.primary{background:var(--ink);color:var(--white)}
+    .btn.secondary{color:var(--ink);background:rgba(255,255,255,.24)}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(18,57,37,.10)}
+
+    .hero-visual{
+      position:relative;
+      min-height:540px;
+      display:grid;place-items:center;
+    }
+    .hero-visual::before,.hero-visual::after{
+      content:"";
+      position:absolute;border:1px solid rgba(18,57,37,.10);border-radius:50%;
+    }
+    .hero-visual::before{width:460px;height:460px}
+    .hero-visual::after{width:360px;height:360px}
+    .hero-card{
+      width:min(92%,460px);
+      padding:34px;
+      border:1px solid var(--line);
+      border-radius:32px;
+      background:rgba(255,255,255,.42);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+      transform:rotate(-2deg);
+    }
+    .hero-card img{width:100%;display:block;border-radius:22px}
+    .mono{
+      font-family:"Space Mono",monospace;
+      font-size:12px;line-height:1.8;color:rgba(18,57,37,.52)
+    }
+
+    .section-head{max-width:780px;margin-bottom:44px}
+    .eyebrow{font:400 11px "Space Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+    h2{font-size:clamp(36px,5vw,64px);line-height:1.05;letter-spacing:-.055em;margin:16px 0}
+    .section-head p{color:var(--muted);line-height:1.8}
+
+    .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      padding:30px;border:1px solid var(--line);border-radius:24px;
+      background:var(--surface);backdrop-filter:blur(14px);
+      transition:.25s ease;
+    }
+    .card:hover{transform:translateY(-6px);background:var(--surface-strong);box-shadow:var(--shadow)}
+    .card .num{font:400 11px "Space Mono",monospace;color:var(--muted);letter-spacing:.13em}
+    .card h3{font-size:22px;margin:36px 0 12px;letter-spacing:-.03em}
+    .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.75}
+
+    .tokenomics-wrap{display:grid;grid-template-columns:minmax(340px,1fr) minmax(300px,.86fr);gap:54px;align-items:center}
+    .chart-area{position:relative;display:grid;place-items:center;min-height:540px}
+    #tokenChart{width:min(100%,540px);height:auto;overflow:visible}
+    .slice{cursor:pointer;transform-origin:250px 250px;transition:transform .24s ease,filter .24s ease;stroke:#eef6eb;stroke-width:2}
+    .slice:hover,.slice.active{transform:scale(1.045);filter:drop-shadow(0 14px 14px rgba(18,57,37,.16))}
+    .chart-center{position:absolute;text-align:center;pointer-events:none}
+    .chart-center strong{display:block;font-size:42px;letter-spacing:-.055em}
+    .chart-center span{font:400 11px "Space Mono",monospace;letter-spacing:.16em;color:var(--muted)}
+    .token-detail{min-height:286px;padding:34px;border:1px solid var(--line);border-radius:26px;background:var(--surface-strong);backdrop-filter:blur(18px);box-shadow:var(--shadow)}
+    .token-detail .dot{width:14px;height:14px;border-radius:50%;display:inline-block;margin-right:9px;vertical-align:-2px}
+    .token-detail h3{font-size:30px;margin:18px 0 8px;letter-spacing:-.04em}
+    .token-detail .amount{font-size:18px;font-weight:600}
+    .token-detail .percent{font-size:54px;font-weight:600;letter-spacing:-.06em;margin:14px 0}
+    .token-detail p{color:var(--muted);line-height:1.75}
+    .legend{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+    .legend button{
+      display:flex;align-items:center;gap:9px;padding:12px;border:1px solid var(--line);border-radius:13px;
+      background:rgba(255,255,255,.26);color:var(--ink);font-family:inherit;text-align:left;cursor:pointer
+    }
+    .legend i{width:11px;height:11px;border-radius:50%;flex:none}
+
+    .roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .phase{
+      position:relative;padding:28px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.36)
+    }
+    .phase::after{
+      content:"";position:absolute;top:22px;right:22px;width:10px;height:10px;border:1px solid var(--accent-dark);transform:rotate(45deg)
+    }
+    .phase span{font:400 11px "Space Mono",monospace;color:var(--muted);letter-spacing:.13em}
+    .phase h3{margin:20px 0 14px}
+    .phase ul{padding-left:18px;margin:0;color:var(--muted);font-size:13px;line-height:1.85}
+
+    .security-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .security-item{padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.32)}
+
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    details{padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.34)}
+    summary{cursor:pointer;font-weight:600}
+    details p,details ul{color:var(--muted);line-height:1.75}
+    details ul{padding-left:18px}
+
+    .contact-box{
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+      padding:38px;border:1px solid var(--line);border-radius:28px;background:var(--surface-strong);
+      backdrop-filter:blur(18px);box-shadow:var(--shadow)
+    }
+
+    footer{
+      padding:30px 0 38px;border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;gap:24px;color:var(--muted);font-size:12px
+    }
+    .socials{display:flex;gap:18px;flex-wrap:wrap}
+    .socials a{color:var(--muted);text-decoration:none}
+
+    @media(max-width:980px){
+      nav{display:none}
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .hero-visual{min-height:460px}
+      .grid-3,.roadmap{grid-template-columns:1fr 1fr}
+      .tokenomics-wrap{grid-template-columns:1fr}
+    }
+    @media(max-width:700px){
+      section{padding:76px 0}
+      .hero{padding-top:84px}
+      .grid-3,.roadmap,.security-list,.faq-grid,.legend{grid-template-columns:1fr}
+      .contact-box,footer{flex-direction:column;align-items:flex-start}
+      .hero-visual::before{width:330px;height:330px}
+      .hero-visual::after{width:260px;height:260px}
+      .hero-card{padding:20px}
+      .chart-area{min-height:410px}
+    }
+  </style>
 </head>
 <body>
-<header><div class="shell nav"><a class="brand" href="#home"><span class="mark">OVA</span><span><strong>OvaSHA</strong><small>PROTOCOL</small></span></a>
-<nav><a href="#vision">Vision</a><a href="#why">Why OvaSHA</a><a href="#tokenomics">Tokenomics</a><a href="#roadmap">Roadmap</a><a href="#security">Security</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav></div></header>
-<main>
-<section class="hero shell" id="home"><div class="badge">Website under development</div><h1>Trust, built to last.</h1><p class="lead">OvaSHA is building a sustainable blockchain protocol centered on security, transparency, community and long-term value.</p><div class="actions"><a class="btn primary" href="https://x.com/OvaSHA_Protocol" target="_blank" rel="noreferrer">Follow on X</a><a class="btn secondary" href="https://t.me/OvaSHAAnnouncements" target="_blank" rel="noreferrer">Telegram</a><a class="btn secondary" href="#vision">Explore OvaSHA</a></div></section>
-<section class="shell" id="vision"><div class="section-head"><div class="eyebrow">Our Vision</div><h2>Built for years, not moments.</h2><p>Our goal is to build a trusted and sustainable blockchain ecosystem that prioritizes transparency, security and long-term community value over short-term speculation.</p></div></section>
-<section class="shell" id="why"><div class="section-head"><div class="eyebrow">Why OvaSHA</div><h2>A protocol with a long-term mindset.</h2></div><div class="grid-3"><article class="card"><div class="num">01 / SECURITY</div><h3>Security first</h3><p>Built around controlled governance, transparent operations and long-term protocol resilience.</p></article><article class="card"><div class="num">02 / ECONOMY</div><h3>Sustainable design</h3><p>Balanced tokenomics designed to support ecosystem development without relying on unlimited inflation.</p></article><article class="card"><div class="num">03 / COMMUNITY</div><h3>Community centered</h3><p>Growth through consistency, accountability, clear communication and long-term participation.</p></article></div></section>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="shape triangle"></div>
+  <div class="shape ring"></div>
 
-<section class="shell" id="tokenomics">
-<div class="section-head"><div class="eyebrow">Tokenomics</div><h2>45 million OVA. Fixed from the beginning.</h2><p>Hover over or tap a segment to inspect its allocation. The complete allocation totals exactly 45,000,000 OVA.</p></div>
-<div class="tokenomics-wrap">
-<div>
-<div class="chart-area">
-<svg id="tokenChart" viewBox="0 0 500 500" role="img" aria-label="OvaSHA token allocation chart"></svg>
-<div class="chart-center"><strong>45M</strong><span>TOTAL OVA</span></div>
-</div>
-<div class="legend" id="legend"></div>
-</div>
-<aside class="token-detail" id="tokenDetail"></aside>
-</div>
-</section>
+  <div class="code-rain" aria-hidden="true">
+    <div class="code-line" data-speed=".06" style="left:4%;top:18%;">function secureFuture() { return trust + transparency; }</div>
+    <div class="code-line" data-speed=".10" style="right:3%;top:34%;">uint256 constant TOTAL_SUPPLY = 45_000_000 OVA;</div>
+    <div class="code-line" data-speed=".08" style="left:14%;top:62%;">timelock.delay = 48 hours;</div>
+    <div class="code-line" data-speed=".05" style="right:10%;top:78%;">community.first = true;</div>
+    <div class="code-line" data-speed=".12" style="left:34%;top:90%;">while (supply > 0) { buildLongTermValue(); }</div>
+  </div>
 
-<section class="shell" id="roadmap"><div class="section-head"><div class="eyebrow">Roadmap</div><h2>Building step by step.</h2><p>Dates and milestones will be published transparently as development progresses.</p></div><div class="roadmap"><article class="phase"><span>PHASE 01</span><h3>Foundation</h3><ul><li>Brand identity</li><li>Website</li><li>Social channels</li><li>Technical preparation</li></ul></article><article class="phase"><span>PHASE 02</span><h3>Community</h3><ul><li>Whitepaper</li><li>Audit preparation</li><li>Community growth</li><li>Presale preparation</li></ul></article><article class="phase"><span>PHASE 03</span><h3>Launch</h3><ul><li>Presale</li><li>DEX launch</li><li>Liquidity lock</li><li>Staking access</li></ul></article><article class="phase"><span>PHASE 04</span><h3>Expansion</h3><ul><li>CEX listings</li><li>Partnerships</li><li>Governance</li><li>Future chain research</li></ul></article></div></section>
-<section class="shell" id="security"><div class="section-head"><div class="eyebrow">Security</div><h2>Trust requires structure.</h2><p>Security documentation, test results and audit information will be published before major launch milestones.</p></div><div class="security-list"><div class="security-item">✓ Multisig governance preparation</div><div class="security-item">✓ Timelocked critical operations</div><div class="security-item">✓ Liquidity lock architecture</div><div class="security-item">✓ Transparent reserve accounting</div><div class="security-item">✓ Fixed supply design</div><div class="security-item">✓ Public source verification planned</div></div></section>
-<section class="shell" id="faq"><div class="section-head"><div class="eyebrow">FAQ</div><h2>Questions, answered clearly.</h2></div><details><summary>What is OvaSHA?</summary><p>OvaSHA is a sustainable blockchain protocol focused on security, transparency, community and long-term value.</p></details><details><summary>Which network will OVA launch on?</summary><p>The initial deployment is planned for BNB Smart Chain, subject to final testing and deployment verification.</p></details><details><summary>When is the presale?</summary><p>The presale date has not been announced yet. Official information will only be shared through OvaSHA's verified channels.</p></details><details><summary>Is OvaSHA audited?</summary><p>Independent audit and public testing are planned before major launch milestones. No audit claim will be made before completion.</p></details></section>
-<section class="shell" id="contact"><div class="contact-box"><div><div class="eyebrow">Contact</div><h2 style="font-size:38px;margin-bottom:8px">Stay close to the journey.</h2><p style="color:var(--muted);margin:0">Official announcements and documentation are coming soon.</p></div><div class="actions" style="margin-top:0"><a class="btn primary" href="mailto:contact@ovasha.com">Email</a><a class="btn secondary" href="https://t.me/OvaSHAAnnouncements" target="_blank" rel="noreferrer">Telegram</a></div></div></section>
-</main>
-<footer class="shell"><div>© 2026 OvaSHA. All rights reserved.</div><div class="socials"><a href="https://x.com/OvaSHA_Protocol" target="_blank" rel="noreferrer">X</a><a href="https://t.me/OvaSHAAnnouncements" target="_blank" rel="noreferrer">Telegram</a><a href="https://github.com/OvaSHAProtocol" target="_blank" rel="noreferrer">GitHub</a><a href="mailto:contact@ovasha.com">Email</a></div></footer>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="#home">
+        <img src="/assets/ovasha-logo.png" alt="OvaSHA">
+        <span><strong>OvaSHA</strong><small>PROTOCOL</small></span>
+      </a>
+      <nav>
+        <a href="#vision">Vision</a>
+        <a href="#why">Why OvaSHA</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#security">Security</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<script>
-const allocations = [
-{name:"DEX Liquidity",amount:21150000,percent:47.0,color:"#8CCF9A",description:"Primary decentralized exchange liquidity allocation."},
-{name:"CEX Strategic Reserve",amount:11250000,percent:25.0,color:"#A8C7E8",description:"Reserve for centralized exchange listings and strategic liquidity needs."},
-{name:"Mining Rewards",amount:2700000,percent:6.0,color:"#D6B5E8",description:"Fixed reward reserve allocated to the mining and staking system."},
-{name:"Presale",amount:2250000,percent:5.0,color:"#F3C98B",description:"Allocation reserved for the public presale process."},
-{name:"Emergency Reserve",amount:2250000,percent:5.0,color:"#E9A6A6",description:"Protected reserve intended for exceptional protocol needs."},
-{name:"Marketing",amount:1350000,percent:3.0,color:"#F0B7D3",description:"Allocation for transparent ecosystem growth and marketing activities."},
-{name:"Burn — 10 Jan 2028",amount:1125000,percent:2.5,color:"#B8D8C0",description:"Scheduled permanent supply reduction on 10 January 2028."},
-{name:"Burn — 1 Jan 2030",amount:1125000,percent:2.5,color:"#C5B8E8",description:"Scheduled permanent supply reduction on 1 January 2030."},
-{name:"Founder",amount:900000,percent:2.0,color:"#BFD8A6",description:"Founder allocation designed to be released only through the approved vesting structure."},
-{name:"Airdrop",amount:900000,percent:2.0,color:"#F1D7A8",description:"Allocation reserved for community distribution and future airdrop campaigns."}
-];
+  <main>
+    <section class="hero shell" id="home">
+      <div class="reveal">
+        <div class="badge">Website under development</div>
+        <h1>Trust, built to last.</h1>
+        <p class="lead">OvaSHA is building a sustainable blockchain protocol centered on security, transparency, community and long-term value.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://x.com/OvaSHA_Protocol" target="_blank" rel="noreferrer">Follow on X</a>
+          <a class="btn secondary" href="https://t.me/OvaSHAAnnouncements" target="_blank" rel="noreferrer">Telegram</a>
+          <a class="btn secondary" href="#vision">Explore OvaSHA</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="hero-card">
+          <img src="/assets/ovasha-logo.png" alt="OvaSHA Protocol logo">
+          <div class="mono" style="margin-top:18px;">
+            status: building<br>
+            network: BNB Smart Chain<br>
+            supply: 45,000,000 OVA<br>
+            principle: long-term trust
+          </div>
+        </div>
+      </div>
+    </section>
 
-const svg = document.getElementById("tokenChart");
-const legend = document.getElementById("legend");
-const detail = document.getElementById("tokenDetail");
-const NS = "http://www.w3.org/2000/svg";
-const cx = 250, cy = 250, outer = 210, inner = 118;
+    <section class="shell reveal" id="vision">
+      <div class="section-head">
+        <div class="eyebrow">Our Vision</div>
+        <h2>Built for years, not moments.</h2>
+        <p>Our goal is to build a trusted and sustainable blockchain ecosystem that prioritizes transparency, security and long-term community value over short-term speculation.</p>
+      </div>
+    </section>
 
-function polar(r, angle){
-  const a=(angle-90)*Math.PI/180;
-  return [cx+r*Math.cos(a),cy+r*Math.sin(a)];
-}
-function donutPath(start,end){
-  const [x1,y1]=polar(outer,start), [x2,y2]=polar(outer,end);
-  const [x3,y3]=polar(inner,end), [x4,y4]=polar(inner,start);
-  const large=end-start>180?1:0;
-  return `M ${x1} ${y1} A ${outer} ${outer} 0 ${large} 1 ${x2} ${y2} L ${x3} ${y3} A ${inner} ${inner} 0 ${large} 0 ${x4} ${y4} Z`;
-}
-function formatAmount(n){return new Intl.NumberFormat("en-US").format(n)+" OVA"}
-function showDetail(item,index){
-  document.querySelectorAll(".slice").forEach((el,i)=>el.classList.toggle("active",i===index));
-  detail.innerHTML=`<div><span class="dot" style="background:${item.color}"></span><span class="eyebrow">Allocation detail</span></div><h3>${item.name}</h3><div class="amount">${formatAmount(item.amount)}</div><div class="percent">${item.percent}%</div><p>${item.description}</p>`;
-}
-let angle=0;
-allocations.forEach((item,index)=>{
-  const end=angle+item.percent*3.6;
-  const path=document.createElementNS(NS,"path");
-  path.setAttribute("d",donutPath(angle,end));
-  path.setAttribute("fill",item.color);
-  path.setAttribute("class","slice");
-  path.setAttribute("tabindex","0");
-  path.addEventListener("mouseenter",()=>showDetail(item,index));
-  path.addEventListener("focus",()=>showDetail(item,index));
-  path.addEventListener("click",()=>showDetail(item,index));
-  svg.appendChild(path);
+    <section class="shell reveal" id="why">
+      <div class="section-head">
+        <div class="eyebrow">Why OvaSHA</div>
+        <h2>A protocol with a long-term mindset.</h2>
+      </div>
+      <div class="grid-3">
+        <article class="card"><div class="num">01 / SECURITY</div><h3>Security first</h3><p>Built around controlled governance, transparent operations and long-term protocol resilience.</p></article>
+        <article class="card"><div class="num">02 / ECONOMY</div><h3>Sustainable design</h3><p>Balanced tokenomics designed to support ecosystem development without relying on unlimited inflation.</p></article>
+        <article class="card"><div class="num">03 / COMMUNITY</div><h3>Community centered</h3><p>Growth through consistency, accountability, clear communication and long-term participation.</p></article>
+      </div>
+    </section>
 
-  const button=document.createElement("button");
-  button.type="button";
-  button.innerHTML=`<i style="background:${item.color}"></i><span>${item.name} — ${item.percent}%</span>`;
-  button.addEventListener("mouseenter",()=>showDetail(item,index));
-  button.addEventListener("focus",()=>showDetail(item,index));
-  button.addEventListener("click",()=>showDetail(item,index));
-  legend.appendChild(button);
-  angle=end;
-});
-showDetail(allocations[0],0);
-</script>
+    <section class="shell reveal" id="tokenomics">
+      <div class="section-head">
+        <div class="eyebrow">Tokenomics</div>
+        <h2>45 million OVA. Fixed from the beginning.</h2>
+        <p>Hover over or tap a segment to inspect its allocation. The complete allocation totals exactly 45,000,000 OVA.</p>
+      </div>
+      <div class="tokenomics-wrap">
+        <div>
+          <div class="chart-area">
+            <svg id="tokenChart" viewBox="0 0 500 500" role="img" aria-label="OvaSHA token allocation chart"></svg>
+            <div class="chart-center"><strong>45M</strong><span>TOTAL OVA</span></div>
+          </div>
+          <div class="legend" id="legend"></div>
+        </div>
+        <aside class="token-detail" id="tokenDetail"></aside>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="roadmap">
+      <div class="section-head">
+        <div class="eyebrow">Roadmap</div>
+        <h2>Building step by step.</h2>
+        <p>Dates and milestones will be published transparently as development progresses.</p>
+      </div>
+      <div class="roadmap">
+        <article class="phase"><span>PHASE 01</span><h3>Foundation</h3><ul><li>Brand identity</li><li>Website</li><li>Social channels</li><li>Technical preparation</li></ul></article>
+        <article class="phase"><span>PHASE 02</span><h3>Community</h3><ul><li>Whitepaper</li><li>Audit preparation</li><li>Community growth</li><li>Presale preparation</li></ul></article>
+        <article class="phase"><span>PHASE 03</span><h3>Launch</h3><ul><li>Presale</li><li>DEX launch</li><li>Liquidity lock</li><li>Staking access</li></ul></article>
+        <article class="phase"><span>PHASE 04</span><h3>Expansion</h3><ul><li>CEX listings</li><li>Partnerships</li><li>Governance</li><li>Future chain research</li></ul></article>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="security">
+      <div class="section-head">
+        <div class="eyebrow">Security</div>
+        <h2>Trust requires structure.</h2>
+        <p>Security documentation, test results and audit information will be published before major launch milestones.</p>
+      </div>
+      <div class="security-list">
+        <div class="security-item">✓ Multisig governance preparation</div>
+        <div class="security-item">✓ Timelocked critical operations</div>
+        <div class="security-item">✓ Liquidity lock architecture</div>
+        <div class="security-item">✓ Transparent reserve accounting</div>
+        <div class="security-item">✓ Fixed supply design</div>
+        <div class="security-item">✓ Public source verification planned</div>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="faq">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>Questions, answered clearly.</h2>
+      </div>
+      <div class="faq-grid">
+        <details><summary>What is OvaSHA?</summary><p>OvaSHA is a sustainable blockchain protocol focused on security, transparency, community and long-term value.</p></details>
+        <details><summary>Why was OvaSHA created?</summary><p>To build a blockchain ecosystem that prioritizes sustainability, accountability and long-term trust instead of short-term hype.</p></details>
+        <details><summary>Which network will OVA launch on?</summary><p>The initial deployment is planned for BNB Smart Chain, subject to final testing and deployment verification.</p></details>
+        <details><summary>What is the total supply?</summary><p>The total supply is fixed at 45,000,000 OVA.</p></details>
+        <details><summary>Can additional OVA be minted?</summary><p>No additional minting is planned. OVA is designed around a fixed-supply structure.</p></details>
+        <details><summary>How is the supply allocated?</summary><ul><li>DEX Liquidity — 47%</li><li>CEX Strategic Reserve — 25%</li><li>Mining Rewards — 6%</li><li>Presale — 5%</li><li>Emergency Reserve — 5%</li><li>Marketing — 3%</li><li>Burns — 5%</li><li>Founder — 2%</li><li>Airdrop — 2%</li></ul></details>
+        <details><summary>Why are there scheduled burns?</summary><p>The scheduled burns are designed to reduce total supply transparently over time, with planned burns in 2028 and 2030.</p></details>
+        <details><summary>Will liquidity be locked?</summary><p>Yes. Liquidity locking details will be disclosed before launch, together with verifiable on-chain information.</p></details>
+        <details><summary>Will OvaSHA be audited?</summary><p>Independent audit and public testing are planned before major launch milestones. No audit claim will be made before completion.</p></details>
+        <details><summary>Will the source code be public?</summary><p>The verified source code and relevant technical documentation are planned to be published through the official GitHub organization.</p></details>
+        <details><summary>How are critical operations protected?</summary><p>Critical protocol actions are designed around timelocks, multisig governance preparation and transparent reserve controls.</p></details>
+        <details><summary>When is the presale?</summary><p>The presale date has not yet been announced. Any official date will be shared only through verified OvaSHA channels.</p></details>
+        <details><summary>Where are official announcements published?</summary><p>Only through ovasha.com, the official X account, Telegram announcements and the official GitHub organization.</p></details>
+        <details><summary>How can I contact the team?</summary><p>You can contact the project through contact@ovasha.com.</p></details>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="contact">
+      <div class="contact-box">
+        <div>
+          <div class="eyebrow">Contact</div>
+          <h2 style="font-size:40px;margin-bottom:8px;">Stay close to the journey.</h2>
+          <p style="color:var(--muted);margin:0;">Official announcements and documentation are coming soon.</p>
+        </div>
+        <div class="actions" style="margin-top:0;">
+          <a class="btn primary" href="mailto:contact@ovasha.com">Email</a>
+          <a class="btn secondary" href="https://t.me/OvaSHAAnnouncements" target="_blank" rel="noreferrer">Telegram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <div>© 2026 OvaSHA. All rights reserved.</div>
+    <div class="socials">
+      <a href="https://x.com/OvaSHA_Protocol" target="_blank" rel="noreferrer">X</a>
+      <a href="https://t.me/OvaSHAAnnouncements" target="_blank" rel="noreferrer">Telegram</a>
+      <a href="https://github.com/OvaSHAProtocol" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="mailto:contact@ovasha.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    const allocations = [
+      {name:"DEX Liquidity",amount:21150000,percent:47,color:"#86C994",description:"Primary decentralized exchange liquidity allocation."},
+      {name:"CEX Strategic Reserve",amount:11250000,percent:25,color:"#A9C7E8",description:"Reserve for centralized exchange listings and strategic liquidity needs."},
+      {name:"Mining Rewards",amount:2700000,percent:6,color:"#D8B7E8",description:"Fixed reward reserve allocated to the mining and staking system."},
+      {name:"Presale",amount:2250000,percent:5,color:"#F1C98F",description:"Allocation reserved for the public presale process."},
+      {name:"Emergency Reserve",amount:2250000,percent:5,color:"#E9AAAA",description:"Protected reserve intended for exceptional protocol needs."},
+      {name:"Marketing",amount:1350000,percent:3,color:"#F0B8D2",description:"Allocation for transparent ecosystem growth and marketing activities."},
+      {name:"Burn — 10 Jan 2028",amount:1125000,percent:2.5,color:"#B7D9C0",description:"Scheduled permanent supply reduction on 10 January 2028."},
+      {name:"Burn — 1 Jan 2030",amount:1125000,percent:2.5,color:"#C7B9E8",description:"Scheduled permanent supply reduction on 1 January 2030."},
+      {name:"Founder",amount:900000,percent:2,color:"#C1D9A7",description:"Founder allocation designed to be released only through the approved vesting structure."},
+      {name:"Airdrop",amount:900000,percent:2,color:"#F0D8AA",description:"Allocation reserved for community distribution and future airdrop campaigns."}
+    ];
+
+    const svg=document.getElementById("tokenChart");
+    const legend=document.getElementById("legend");
+    const detail=document.getElementById("tokenDetail");
+    const NS="http://www.w3.org/2000/svg";
+    const cx=250,cy=250,outer=210,inner=118;
+
+    function polar(r,angle){
+      const a=(angle-90)*Math.PI/180;
+      return [cx+r*Math.cos(a),cy+r*Math.sin(a)];
+    }
+    function donutPath(start,end){
+      const [x1,y1]=polar(outer,start),[x2,y2]=polar(outer,end);
+      const [x3,y3]=polar(inner,end),[x4,y4]=polar(inner,start);
+      const large=end-start>180?1:0;
+      return `M ${x1} ${y1} A ${outer} ${outer} 0 ${large} 1 ${x2} ${y2} L ${x3} ${y3} A ${inner} ${inner} 0 ${large} 0 ${x4} ${y4} Z`;
+    }
+    function formatAmount(n){return new Intl.NumberFormat("en-US").format(n)+" OVA"}
+    function showDetail(item,index){
+      document.querySelectorAll(".slice").forEach((el,i)=>el.classList.toggle("active",i===index));
+      detail.innerHTML=`<div><span class="dot" style="background:${item.color}"></span><span class="eyebrow">Allocation detail</span></div><h3>${item.name}</h3><div class="amount">${formatAmount(item.amount)}</div><div class="percent">${item.percent}%</div><p>${item.description}</p>`;
+    }
+
+    let angle=0;
+    allocations.forEach((item,index)=>{
+      const end=angle+item.percent*3.6;
+      const path=document.createElementNS(NS,"path");
+      path.setAttribute("d",donutPath(angle,end));
+      path.setAttribute("fill",item.color);
+      path.setAttribute("class","slice");
+      path.setAttribute("tabindex","0");
+      path.addEventListener("mouseenter",()=>showDetail(item,index));
+      path.addEventListener("focus",()=>showDetail(item,index));
+      path.addEventListener("click",()=>showDetail(item,index));
+      svg.appendChild(path);
+
+      const button=document.createElement("button");
+      button.type="button";
+      button.innerHTML=`<i style="background:${item.color}"></i><span>${item.name} — ${item.percent}%</span>`;
+      button.addEventListener("mouseenter",()=>showDetail(item,index));
+      button.addEventListener("focus",()=>showDetail(item,index));
+      button.addEventListener("click",()=>showDetail(item,index));
+      legend.appendChild(button);
+
+      angle=end;
+    });
+    showDetail(allocations[0],0);
+
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    },{threshold:.14});
+    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+    const codeLines=document.querySelectorAll(".code-line");
+    window.addEventListener("scroll",()=>{
+      const y=window.scrollY;
+      codeLines.forEach(line=>{
+        const speed=parseFloat(line.dataset.speed||".08");
+        line.style.transform=`translateY(${y*speed}px)`;
+      });
+    },{passive:true});
+  </script>
 </body>
 </html>
