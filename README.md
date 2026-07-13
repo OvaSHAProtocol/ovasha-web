@@ -1,8 +1,11 @@
-# OvaSHA Logo V6 Correct
+# OvaSHA Website — Logo Asset Fix
 
-Bu sürüm:
-- SVG kullanmaz.
-- RAR içindeki orijinal PNG fontunu birebir korur.
-- Logo 4 kat yüksek çözünürlüğe çıkarılmıştır.
-- Header ve hero ölçülerine/CSS'e dokunulmamıştır.
-- Yalnızca iki logo dosya yolu değiştirilmiştir.
+Bu pakette yalnızca:
+- assets/ovasha-wordmark.png
+- assets/ovasha-wordmark-light.png
+
+değiştirildi.
+
+Logo dosyalarının içindeki gereksiz şeffaf boşluklar kırpıldı.
+Tam alt sembol korunarak kesik görünüm giderildi.
+index.html, CSS, JavaScript ve diğer site dosyaları değiştirilmedi.
