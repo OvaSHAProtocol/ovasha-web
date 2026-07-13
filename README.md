@@ -1,11 +1,11 @@
-# OvaSHA Website — Logo Asset Fix
+# OvaSHA Website — Logo Cache Fix
 
-Bu pakette yalnızca:
-- assets/ovasha-wordmark.png
-- assets/ovasha-wordmark-light.png
+Yalnızca iki logo kaynağı değiştirildi:
 
-değiştirildi.
+- Header: /assets/ovasha-wordmark-full-v3.png
+- Hero: /assets/ovasha-wordmark-light-full-v3.png
 
-Logo dosyalarının içindeki gereksiz şeffaf boşluklar kırpıldı.
-Tam alt sembol korunarak kesik görünüm giderildi.
-index.html, CSS, JavaScript ve diğer site dosyaları değiştirilmedi.
+Neden yeni dosya adı?
+Vercel ve tarayıcı önbelleğinin eski PNG'yi göstermesini kesin olarak önlemek için.
+
+Diğer HTML, CSS, JavaScript, içerik ve tasarım değiştirilmedi.
