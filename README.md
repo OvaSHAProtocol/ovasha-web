@@ -1,3 +1,7 @@
-# OvaSHA Official Website — Final Brand Edition
+# OvaSHA Website — Full Logo Fix
 
-Includes official lower logo variant, corporate palette, founder profile, Phase 02 roadmap status, interactive tokenomics callouts, presale and staking placeholders, document drawers, manifesto and technical motion effects.
+Bu sürümde:
+- Ana yazılı logo, kullanıcının gönderdiği tam şeffaf PNG ile değiştirildi.
+- Header ve hero alanında logonun alt sembolünün kesilmesi engellendi.
+- object-fit: cover kaldırıldı; contain kullanıldı.
+- Yazısız ikon/dekoratif logo kullanımları değiştirilmedi.

@@ -1,93 +1,1422 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="OvaSHA is a sustainable blockchain protocol focused on transparent execution, fixed supply and long-term community value.">
-<meta name="theme-color" content="#336859">
-<meta property="og:title" content="OvaSHA Protocol">
-<meta property="og:description" content="Trust, built to last.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ovasha.com">
-<meta property="og:image" content="https://ovasha.com/assets/og-banner.jpg">
-<link rel="icon" href="/assets/favicon.png">
-<title>OvaSHA Protocol — Trust, built to last.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{
- --forest:#336859;--forest-2:#285548;--mint:#acd09d;--mint-2:#cfe5c6;--paper:#f4f8f1;
- --ink:#173c31;--muted:#63786f;--line:rgba(31,82,67,.16);--amber:#e3b85b;
- --cyan:#78d8ce;--violet:#c7a7e8;--rose:#e7a8b9;--shadow:0 26px 90px rgba(30,75,62,.12)
-}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,#f5faf2,#eaf4e6 45%,#f5faf2);overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-5;background-image:linear-gradient(rgba(51,104,89,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(51,104,89,.03) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(black,transparent 90%)}
-a{color:inherit}.shell{width:min(1200px,calc(100% - 40px));margin:auto}.mono{font-family:"Space Mono",monospace}.scrollbar{position:fixed;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,var(--mint),var(--cyan),var(--violet),var(--amber));box-shadow:0 0 14px rgba(102,203,151,.8);z-index:100}
-header{position:sticky;top:0;z-index:50;background:rgba(244,248,241,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between}.brand img{height:48px;max-width:225px;object-fit:contain}.navlinks{display:flex;gap:20px;align-items:center}.navlinks a{text-decoration:none;font-size:12px;color:var(--muted)}.navlinks a:hover{color:var(--forest)}.menu-btn{display:none;border:1px solid var(--line);background:rgba(255,255,255,.6);border-radius:12px;padding:9px 12px;color:var(--forest)}
-.quickdock{position:fixed;left:18px;top:50%;transform:translateY(-50%);z-index:45;display:flex;flex-direction:column;gap:8px}.dockbtn{width:46px;height:46px;border-radius:14px;border:1px solid rgba(172,208,157,.28);background:rgba(41,85,72,.92);color:#d9f0d0;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 32px rgba(29,69,58,.18);font:700 11px "Space Mono"}.dockbtn:hover{background:#3a7965;box-shadow:0 0 20px rgba(121,220,159,.28)}
-.hero{min-height:88vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:54px;padding:105px 0}.eyebrow{font:400 11px "Space Mono";letter-spacing:.18em;text-transform:uppercase;color:var(--forest)}h1{font-size:clamp(58px,8vw,108px);letter-spacing:-.072em;line-height:.92;margin:22px 0}.lead{max-width:700px;color:var(--muted);font-size:clamp(17px,2vw,22px);line-height:1.75}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:0 20px;border-radius:999px;text-decoration:none;border:1px solid var(--forest);font-weight:700;font-size:13px;transition:.25s}.btn.primary{background:var(--forest);color:white}.btn.secondary{background:rgba(255,255,255,.45)}.btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(35,89,72,.14)}
-.hero-banner{position:relative;min-height:540px;border-radius:36px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,var(--forest),#183d33);box-shadow:var(--shadow)}.hero-banner:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 25%,rgba(172,208,157,.24),transparent 34%),repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 5px)}.hero-banner:after{content:"";position:absolute;inset:-50%;background:conic-gradient(from 0deg,transparent,rgba(120,216,206,.12),transparent 30%);animation:spin 16s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.banner-inner{position:relative;z-index:2;height:100%;min-height:540px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:46px;text-align:center}.banner-inner img{width:min(88%,560px);filter:drop-shadow(0 20px 38px rgba(0,0,0,.22))}.banner-code{margin-top:24px;color:rgba(225,244,216,.65);font:400 11px/1.8 "Space Mono"}.neon-ring{position:absolute;width:360px;height:360px;border:1px solid rgba(173,236,192,.22);border-radius:50%;box-shadow:0 0 60px rgba(95,210,143,.12),inset 0 0 60px rgba(95,210,143,.05);animation:pulse 4.5s ease-in-out infinite}@keyframes pulse{50%{transform:scale(1.06);opacity:.65}}
-section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bottom:40px}h2{font-size:clamp(36px,5.2vw,64px);line-height:1.04;letter-spacing:-.055em;margin:14px 0}.section-head p{color:var(--muted);line-height:1.8}.reveal{opacity:1;transform:none;transition:.8s}.js .reveal{opacity:0;transform:translateY(30px)}.js .reveal.show{opacity:1;transform:none}
-.signal{min-height:76vh;display:grid;place-items:center}.signal-box{width:100%;min-height:520px;border-radius:34px;border:1px solid var(--line);display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle,rgba(255,255,255,.75),rgba(255,255,255,.22) 50%,transparent 78%)}.signal-box:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(50,110,90,.03) 0 1px,transparent 1px 4px)}.signal-word{position:relative;font-size:clamp(42px,8vw,112px);font-weight:700;letter-spacing:-.065em;text-align:center}.signal-word.glitch{text-shadow:3px 0 rgba(120,216,206,.55),-3px 0 rgba(199,167,232,.5);animation:glitch .28s steps(2)}@keyframes glitch{30%{transform:translate(-3px,1px)}60%{transform:translate(3px,-1px)}100%{transform:none}}.caret{display:inline-block;width:.07em;height:.8em;background:currentColor;margin-left:.08em;animation:blink .8s steps(1) infinite}@keyframes blink{50%{opacity:0}}
-.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{position:relative;padding:30px;border:1px solid var(--line);border-radius:25px;background:rgba(255,255,255,.48);backdrop-filter:blur(14px);transition:.25s;overflow:hidden}.card:before{content:"";position:absolute;inset:-1px;background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(116,216,157,.18),transparent 45%);opacity:0;transition:.25s;pointer-events:none}.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}.card:hover:before{opacity:1}.card h3{font-size:22px;margin:32px 0 10px}.card p{color:var(--muted);line-height:1.75;font-size:14px}.num{font:400 10px "Space Mono";letter-spacing:.14em;color:var(--forest)}
-.arch{border-radius:32px;background:linear-gradient(145deg,#173c31,#0c251e);color:#e8f6e3;overflow:hidden;border:1px solid rgba(172,208,157,.2);box-shadow:var(--shadow)}.arch-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:38px;padding:48px}.arch p{color:rgba(232,246,227,.65);line-height:1.8}.chips{display:flex;gap:9px;flex-wrap:wrap}.chips span{border:1px solid rgba(172,208,157,.18);border-radius:999px;padding:8px 10px;font:400 9px "Space Mono"}.codewin{border:1px solid rgba(172,208,157,.17);border-radius:20px;background:rgba(0,0,0,.22);overflow:hidden;min-height:350px;position:relative}.codehead{height:45px;border-bottom:1px solid rgba(172,208,157,.12);padding:14px 18px;font:400 10px "Space Mono";color:rgba(232,246,227,.45)}.codetrack{padding:18px 22px;animation:floatcode 13s ease-in-out infinite alternate}@keyframes floatcode{to{transform:translateY(-55px)}}.coderow{font:400 11px/1.7 "Space Mono";color:rgba(232,246,227,.72);white-space:pre-wrap}.kw{color:#9fe1ac}.com{color:rgba(194,225,199,.34)}.code-scan{position:absolute;left:0;right:0;height:22%;top:-30%;background:linear-gradient(transparent,rgba(120,216,206,.07),transparent);animation:scan 5.5s linear infinite}@keyframes scan{to{transform:translateY(650%)}}
-.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:13px;position:relative}.flow:before{content:"";position:absolute;left:5%;right:5%;top:50%;height:3px;background:linear-gradient(90deg,var(--mint),var(--forest));transform-origin:left;transform:scaleX(var(--flow,0));transition:.2s}.node{position:relative;z-index:2;padding:18px;border:1px solid var(--line);border-radius:18px;background:#f9fcf7;min-height:120px;display:flex;flex-direction:column;justify-content:space-between}.node i{width:13px;height:13px;border-radius:50%;background:#d8e8d2;border:1px solid var(--forest)}.node.active{transform:translateY(-7px);box-shadow:0 0 26px rgba(85,197,131,.18)}.node.active i{background:#72cc8d;box-shadow:0 0 16px rgba(85,197,131,.65)}.node span{font:400 9px "Space Mono";color:var(--muted)}
-.token-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}.chartbox{position:relative;min-height:620px;display:grid;place-items:center}.chartbox svg{width:min(100%,590px);overflow:visible}.slice{cursor:pointer;stroke:#f1f8ed;stroke-width:2;transition:.25s;outline:none}.slice.active,.slice:hover{stroke:white;stroke-width:6;filter:saturate(1.3) brightness(1.08) drop-shadow(0 0 10px rgba(69,157,104,.45))}.chartcenter{position:absolute;text-align:center;pointer-events:none}.chartcenter strong{display:block;font-size:44px;letter-spacing:-.06em}.chartcenter span{font:400 10px "Space Mono";letter-spacing:.14em;color:var(--muted)}.callouts{position:absolute;inset:0;pointer-events:none}.callout-label{position:absolute;min-width:170px;max-width:230px;padding:11px 13px;border-left:3px solid var(--c);background:rgba(255,255,255,.88);border-radius:0 12px 12px 0;box-shadow:0 12px 32px rgba(42,86,72,.10);opacity:0;transform:translateY(5px);transition:.25s}.callout-label.show{opacity:1;transform:none}.callout-label b{display:block;font-size:18px}.callout-label small{display:block;color:var(--muted);font-size:11px;line-height:1.5;margin-top:4px}.detail{padding:32px;border:1px solid var(--line);border-radius:26px;background:rgba(255,255,255,.62);box-shadow:var(--shadow)}.detail .pct{font-size:56px;font-weight:700;letter-spacing:-.065em}.detail p{color:var(--muted);line-height:1.75}.legend{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.legend button{border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.45);padding:11px;text-align:left;font-family:inherit;cursor:pointer}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
-.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch}.phase{position:relative;padding:28px 24px;border:1px solid var(--line);background:rgba(255,255,255,.5);min-height:280px}.phase:first-child{border-radius:24px 0 0 24px}.phase:last-child{border-radius:0 24px 24px 0}.phase:not(:last-child):after{content:"";position:absolute;right:-1px;top:48%;width:34px;height:6px;background:#cbd9c7;z-index:3;transform:translateX(50%);border-radius:999px}.phase.done:not(:last-child):after{background:linear-gradient(90deg,#62bd7c,#3f9660);box-shadow:0 0 12px rgba(78,181,112,.32)}.status{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:7px 10px;font:700 9px "Space Mono";letter-spacing:.08em}.done .status{background:rgba(91,187,122,.13);color:#367b4e}.activephase .status{background:rgba(227,184,91,.18);color:#9a6c12}.future .status{background:rgba(95,116,106,.09);color:#718078}.statusicon{width:22px;height:22px;border-radius:50%;display:grid;place-items:center}.done .statusicon{background:#58b975;color:white}.activephase .statusicon{background:#e3b85b;color:#4c3a16;animation:hourglass 2.2s ease-in-out infinite}@keyframes hourglass{50%{transform:rotate(180deg)}}.phase h3{margin:24px 0 12px}.phase ul{padding-left:18px;color:var(--muted);line-height:1.8;font-size:13px}
-.manifesto{min-height:85vh;display:grid;place-items:center}.manifesto-stage{width:100%;min-height:620px;border:1px solid var(--line);border-radius:34px;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(circle,rgba(255,255,255,.78),rgba(255,255,255,.25) 55%,transparent 82%)}.manifesto-stage:before{content:"";position:absolute;width:500px;height:500px;border:1px solid rgba(51,104,89,.09);border-radius:50%;box-shadow:0 0 0 60px rgba(172,208,157,.04),0 0 0 120px rgba(172,208,157,.02)}.manifesto-line{position:relative;z-index:2;font-size:clamp(40px,6.8vw,92px);font-weight:700;letter-spacing:-.06em;min-height:2.3em;display:flex;align-items:center;justify-content:center;flex-wrap:wrap}.mkey{color:#4b9c61;text-shadow:0 0 28px rgba(85,197,131,.16)}.msign{font:400 11px "Space Mono";color:var(--muted);opacity:0;transition:.6s}.msign.show{opacity:1}.mpulse{box-shadow:inset 0 0 90px rgba(104,201,136,.08),0 25px 90px rgba(40,90,72,.10)}
-.team{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}.founder,.principles{border:1px solid rgba(172,208,157,.24);border-radius:28px;background:linear-gradient(145deg,#173c31,#0e2921);color:#eef8ea;padding:32px;box-shadow:0 0 40px rgba(77,190,119,.10)}.founder-top{display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:center}.avatar{width:190px;height:190px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px var(--mint),0 0 34px rgba(92,207,133,.42)}.founder h3{font-size:34px;margin:8px 0}.founder p,.principles p{color:rgba(238,248,234,.68);line-height:1.75}.founderlinks{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.founderlinks a{font-size:11px;text-decoration:none;border:1px solid rgba(172,208,157,.2);padding:9px 11px;border-radius:999px}.principle{padding:18px 0;border-bottom:1px solid rgba(172,208,157,.13)}.principle:last-child{border:0}.principle b{display:block;margin-bottom:5px}.neon{color:#7dd993;text-shadow:0 0 14px rgba(85,207,129,.40)}
-.faq{column-count:2;column-gap:18px}.faq details{break-inside:avoid;display:inline-block;width:100%;margin:0 0 15px;padding:20px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.48)}.faq summary{list-style:none;cursor:pointer;font-weight:700;padding-right:28px;position:relative}.faq summary:after{content:"+";position:absolute;right:0}.faq details[open] summary:after{content:"−"}.faq p,.faq ul{color:var(--muted);line-height:1.75;font-size:14px}
-.portal-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.portal{position:relative;min-height:430px;border-radius:30px;overflow:hidden;border:1px solid rgba(172,208,157,.24);background:linear-gradient(145deg,#153a2f,#0a211a);color:white;padding:34px;box-shadow:var(--shadow)}.portal:before{content:"";position:absolute;inset:0;background-image:url('/assets/ovasha-icon.png');background-size:72px 72px;opacity:.035;transform:rotate(-12deg);animation:engrave 18s linear infinite}@keyframes engrave{to{background-position:250px 160px}}.portal>*{position:relative;z-index:2}.portal h3{font-size:34px;margin:15px 0}.portal p{color:rgba(255,255,255,.63);line-height:1.7}.devbadge{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(227,184,91,.35);color:#f1cf83;border-radius:999px;padding:8px 11px;font:700 9px "Space Mono"}.embedzone{margin-top:24px;border:1px dashed rgba(172,208,157,.25);border-radius:18px;min-height:145px;display:grid;place-items:center;text-align:center;color:rgba(255,255,255,.4);font:400 11px "Space Mono";padding:20px}
-.contact{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:38px;border-radius:28px;border:1px solid var(--line);background:rgba(255,255,255,.62);box-shadow:var(--shadow)}footer{padding:32px 0 40px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.socials{display:flex;gap:16px}.socials a{text-decoration:none}
-.drawer{position:fixed;left:78px;top:50%;transform:translateY(-50%) translateX(-20px);width:min(390px,calc(100vw - 100px));z-index:60;background:rgba(19,55,45,.96);color:white;border:1px solid rgba(172,208,157,.22);border-radius:24px;padding:24px;opacity:0;pointer-events:none;transition:.28s;box-shadow:0 26px 90px rgba(0,0,0,.28)}.drawer.open{opacity:1;pointer-events:auto;transform:translateY(-50%) translateX(0)}.drawer h3{font-size:26px;margin:12px 0}.drawer p{color:rgba(255,255,255,.62);line-height:1.7}.close{position:absolute;right:14px;top:14px;border:0;background:transparent;color:white;font-size:24px;cursor:pointer}
-@media(max-width:1000px){.navlinks{display:none}.menu-btn{display:block}.quickdock{display:none}.hero,.token-wrap,.arch-grid,.team{grid-template-columns:1fr}.cards3{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}.flow:before{display:none}.roadmap{grid-template-columns:1fr 1fr;gap:14px}.phase,.phase:first-child,.phase:last-child{border-radius:22px}.phase:after{display:none}.portal-grid{grid-template-columns:1fr}.founder-top{grid-template-columns:160px 1fr}.avatar{width:160px;height:160px}}
-@media(max-width:680px){.shell{width:min(100% - 24px,1200px)}section{padding:70px 0}.hero{padding-top:70px}.cards3,.roadmap,.flow{grid-template-columns:1fr}.legend{grid-template-columns:1fr}.faq{column-count:1}.founder-top{grid-template-columns:1fr}.avatar{width:150px;height:150px}.contact,footer{flex-direction:column;align-items:flex-start}.hero-banner,.banner-inner{min-height:430px}.chartbox{min-height:500px}.callout-label{min-width:135px;max-width:160px;font-size:11px}.brand img{height:40px;max-width:180px}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="OvaSHA is a sustainable blockchain protocol focused on trust, transparency, security and long-term value.">
+  <meta name="theme-color" content="#eaf4e7">
+  <meta property="og:title" content="OvaSHA Protocol">
+  <meta property="og:description" content="Trust, built to last.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ovasha.com">
+  <meta property="og:image" content="/assets/ovasha-logo.png">
+  <title>OvaSHA Protocol — Trust, built to last.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#edf6ea;
+      --bg-soft:#e3f0df;
+      --surface:rgba(255,255,255,.50);
+      --surface-strong:rgba(255,255,255,.70);
+      --ink:#123925;
+      --muted:#5c7567;
+      --line:rgba(18,57,37,.14);
+      --accent:#6bb777;
+      --accent-dark:#2f6b43;
+      --white:#fbfdf9;
+      --shadow:0 24px 80px rgba(25,70,42,.10);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Sora",system-ui,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 82% 7%,rgba(107,183,119,.18),transparent 28%),
+        radial-gradient(circle at 8% 88%,rgba(107,183,119,.10),transparent 25%),
+        linear-gradient(145deg,var(--bg),var(--bg-soft));
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(18,57,37,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(18,57,37,.035) 1px,transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom,black,transparent 82%);
+      z-index:-4;
+    }
+
+    .orb,.shape{
+      position:fixed;
+      pointer-events:none;
+      z-index:-3;
+      opacity:.45;
+      filter:blur(2px);
+    }
+    .orb.one{width:420px;height:420px;border-radius:50%;right:-140px;top:110px;background:radial-gradient(circle,rgba(107,183,119,.22),transparent 68%)}
+    .orb.two{width:340px;height:340px;border-radius:50%;left:-130px;bottom:80px;background:radial-gradient(circle,rgba(159,201,169,.18),transparent 70%)}
+    .shape.triangle{width:0;height:0;border-left:80px solid transparent;border-right:80px solid transparent;border-bottom:140px solid rgba(107,183,119,.08);right:8%;top:42%;transform:rotate(18deg)}
+    .shape.ring{width:180px;height:180px;border:1px solid rgba(18,57,37,.10);border-radius:50%;left:5%;top:22%}
+
+    .code-rain{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+      overflow:hidden;
+    }
+    .code-line{
+      position:absolute;
+      font-family:"Space Mono",monospace;
+      font-size:12px;
+      color:rgba(18,57,37,.065);
+      white-space:nowrap;
+      transform:translateY(var(--move,0));
+      transition:transform .1s linear;
+    }
+
+    .shell{width:min(1180px,calc(100% - 40px));margin:auto}
+
+    header{
+      position:sticky;top:0;z-index:30;
+      backdrop-filter:blur(18px);
+      background:rgba(237,246,234,.78);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+    .brand img{
+      width:190px;
+      height:58px;
+      object-fit:contain;
+      object-position:left center;
+      display:block;
+      border-radius:0;
+      box-shadow:none;
+    }
+    .brand strong{display:block;font-size:17px}
+    .brand small{display:block;font-size:8px;letter-spacing:.30em;margin-top:3px}
+    nav{display:flex;gap:22px}
+    nav a{font-size:12px;color:var(--muted);text-decoration:none}
+    nav a:hover{color:var(--ink)}
+
+    section{padding:104px 0;position:relative}
+    .hero{padding-top:120px;min-height:88vh;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+    .badge{
+      width:max-content;
+      padding:9px 14px;border:1px solid var(--line);border-radius:999px;
+      background:rgba(255,255,255,.35);
+      font:400 11px "Space Mono",monospace;
+      letter-spacing:.12em;text-transform:uppercase;
+    }
+    h1{
+      margin:28px 0 22px;
+      font-size:clamp(56px,8vw,106px);
+      line-height:.94;letter-spacing:-.068em;font-weight:600;
+    }
+    .lead{max-width:720px;color:var(--muted);font-size:clamp(17px,2vw,22px);line-height:1.75}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+    .btn{
+      min-height:50px;display:inline-flex;align-items:center;justify-content:center;
+      padding:0 22px;border:1px solid var(--ink);border-radius:999px;
+      text-decoration:none;font-weight:600;font-size:13px;transition:.25s ease;
+    }
+    .btn.primary{background:var(--ink);color:var(--white)}
+    .btn.secondary{color:var(--ink);background:rgba(255,255,255,.24)}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(18,57,37,.10)}
+
+    .hero-visual{
+      position:relative;
+      min-height:540px;
+      display:grid;place-items:center;
+    }
+    .hero-visual::before,.hero-visual::after{
+      content:"";
+      position:absolute;border:1px solid rgba(18,57,37,.10);border-radius:50%;
+    }
+    .hero-visual::before{width:460px;height:460px}
+    .hero-visual::after{width:360px;height:360px}
+    .hero-card{
+      width:min(92%,460px);
+      padding:34px;
+      border:1px solid var(--line);
+      border-radius:32px;
+      background:rgba(255,255,255,.42);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+      transform:rotate(-2deg);
+    }
+    .hero-card img{
+      width:100%;
+      max-height:250px;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+      border-radius:0;
+    }
+    .mono{
+      font-family:"Space Mono",monospace;
+      font-size:12px;line-height:1.8;color:rgba(18,57,37,.52)
+    }
+
+    .section-head{max-width:780px;margin-bottom:44px}
+    .eyebrow{font:400 11px "Space Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+    h2{font-size:clamp(36px,5vw,64px);line-height:1.05;letter-spacing:-.055em;margin:16px 0}
+    .section-head p{color:var(--muted);line-height:1.8}
+
+    .reveal{
+      opacity:1;
+      transform:none;
+      transition:opacity .8s ease,transform .8s ease;
+    }
+
+    .js-ready .reveal{
+      opacity:0;
+      transform:translateY(34px);
+    }
+
+    .js-ready .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      padding:30px;border:1px solid var(--line);border-radius:24px;
+      background:var(--surface);backdrop-filter:blur(14px);
+      transition:.25s ease;
+    }
+    .card:hover{transform:translateY(-6px);background:var(--surface-strong);box-shadow:var(--shadow)}
+    .card .num{font:400 11px "Space Mono",monospace;color:var(--muted);letter-spacing:.13em}
+    .card h3{font-size:22px;margin:36px 0 12px;letter-spacing:-.03em}
+    .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.75}
+
+    .tokenomics-wrap{display:grid;grid-template-columns:minmax(340px,1fr) minmax(300px,.86fr);gap:54px;align-items:center}
+    .chart-area{position:relative;display:grid;place-items:center;min-height:540px}
+    #tokenChart{width:min(100%,540px);height:auto;overflow:visible}
+    .slice{
+      cursor:pointer;
+      transform-origin:250px 250px;
+      transition:filter .24s ease,stroke .24s ease,stroke-width .24s ease,opacity .24s ease;
+      stroke:#eef6eb;
+      stroke-width:2;
+      outline:none;
+      paint-order:stroke fill;
+    }
+    .slice:hover,.slice.active{
+      stroke:rgba(255,255,255,.96);
+      stroke-width:6;
+      filter:saturate(1.35) brightness(1.07) drop-shadow(0 0 8px rgba(61,132,79,.45)) drop-shadow(0 0 18px rgba(61,132,79,.18));
+    }
+    .slice:focus{outline:none}
+    #tokenChart:hover .slice:not(:hover):not(.active){opacity:.82}
+    .chart-center{position:absolute;text-align:center;pointer-events:none}
+    .chart-center strong{display:block;font-size:42px;letter-spacing:-.055em}
+    .chart-center span{font:400 11px "Space Mono",monospace;letter-spacing:.16em;color:var(--muted)}
+    .token-detail{min-height:286px;padding:34px;border:1px solid var(--line);border-radius:26px;background:var(--surface-strong);backdrop-filter:blur(18px);box-shadow:var(--shadow)}
+    .token-detail .dot{width:14px;height:14px;border-radius:50%;display:inline-block;margin-right:9px;vertical-align:-2px}
+    .token-detail h3{font-size:30px;margin:18px 0 8px;letter-spacing:-.04em}
+    .token-detail .amount{font-size:18px;font-weight:600}
+    .token-detail .percent{font-size:54px;font-weight:600;letter-spacing:-.06em;margin:14px 0}
+    .token-detail p{color:var(--muted);line-height:1.75}
+    .legend{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+    .legend button{
+      display:flex;align-items:center;gap:9px;padding:12px;border:1px solid var(--line);border-radius:13px;
+      background:rgba(255,255,255,.26);color:var(--ink);font-family:inherit;text-align:left;cursor:pointer
+    }
+    .legend i{width:11px;height:11px;border-radius:50%;flex:none}
+
+    .roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .phase{
+      position:relative;padding:28px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.36)
+    }
+    .phase::after{
+      content:"";position:absolute;top:22px;right:22px;width:10px;height:10px;border:1px solid var(--accent-dark);transform:rotate(45deg)
+    }
+    .phase span{font:400 11px "Space Mono",monospace;color:var(--muted);letter-spacing:.13em}
+    .phase h3{margin:20px 0 14px}
+    .phase ul{padding-left:18px;margin:0;color:var(--muted);font-size:13px;line-height:1.85}
+
+    .security-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .security-item{padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.32)}
+
+    .faq-grid{
+      column-count:2;
+      column-gap:18px;
+    }
+    details{
+      width:100%;
+      display:inline-block;
+      break-inside:avoid;
+      margin:0 0 18px;
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.34);
+      transition:background .25s ease,border-color .25s ease,box-shadow .25s ease;
+      vertical-align:top;
+    }
+    details[open]{
+      background:rgba(255,255,255,.64);
+      border-color:rgba(47,107,67,.25);
+      box-shadow:0 18px 46px rgba(18,57,37,.08);
+    }
+    summary{
+      cursor:pointer;
+      font-weight:600;
+      list-style:none;
+      position:relative;
+      padding-right:34px;
+      line-height:1.5;
+    }
+    summary::-webkit-details-marker{display:none}
+    summary::after{
+      content:"+";
+      position:absolute;
+      right:0;
+      top:-2px;
+      width:26px;
+      height:26px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      font-family:"Space Mono",monospace;
+      font-weight:400;
+      transition:transform .25s ease,background .25s ease;
+    }
+    details[open] summary::after{
+      content:"−";
+      transform:rotate(180deg);
+      background:rgba(107,183,119,.14);
+    }
+    details p,details ul{color:var(--muted);line-height:1.75}
+    details ul{padding-left:18px}
+
+
+    .architecture{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 85% 15%,rgba(107,183,119,.16),transparent 28%),
+        rgba(8,35,21,.96);
+      color:#dff3e3;
+      box-shadow:0 34px 100px rgba(10,45,25,.18);
+    }
+    .architecture::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(180,232,191,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(180,232,191,.045) 1px,transparent 1px);
+      background-size:34px 34px;
+      pointer-events:none;
+    }
+    .architecture::after{
+      content:"";
+      position:absolute;
+      left:0;right:0;top:-30%;
+      height:28%;
+      background:linear-gradient(to bottom,transparent,rgba(119,218,139,.09),transparent);
+      animation:codeScan 6s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes codeScan{
+      from{transform:translateY(0)}
+      to{transform:translateY(620%)}
+    }
+    .architecture-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:.78fr 1.22fr;
+      gap:34px;
+      padding:46px;
+      align-items:center;
+    }
+    .architecture-copy h2{color:#f2fbf3;font-size:clamp(34px,4vw,54px)}
+    .architecture-copy p{color:rgba(223,243,227,.68);line-height:1.8}
+    .architecture-copy .eyebrow{color:rgba(190,231,199,.62)}
+    .architecture-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+    .architecture-chips span{
+      padding:8px 11px;
+      border:1px solid rgba(199,238,207,.16);
+      border-radius:999px;
+      color:rgba(226,245,230,.78);
+      font:400 10px "Space Mono",monospace;
+      letter-spacing:.08em;
+    }
+    .code-window{
+      position:relative;
+      min-height:390px;
+      border:1px solid rgba(200,239,208,.16);
+      border-radius:22px;
+      background:rgba(2,18,10,.55);
+      overflow:hidden;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .code-window-head{
+      height:48px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:0 18px;
+      border-bottom:1px solid rgba(200,239,208,.12);
+    }
+    .code-window-head i{width:9px;height:9px;border-radius:50%;background:rgba(164,218,175,.35)}
+    .code-window-head span{
+      margin-left:8px;
+      color:rgba(218,241,223,.45);
+      font:400 10px "Space Mono",monospace;
+      letter-spacing:.08em;
+    }
+    .code-track{
+      position:absolute;
+      left:0;right:0;top:48px;
+      padding:20px 22px 70px;
+      animation:codeFloat 13s ease-in-out infinite alternate;
+    }
+    @keyframes codeFloat{
+      from{transform:translateY(0)}
+      to{transform:translateY(-68px)}
+    }
+    .code-row{
+      display:grid;
+      grid-template-columns:28px 1fr;
+      gap:14px;
+      margin:0 0 10px;
+      font:400 11px/1.65 "Space Mono",monospace;
+      white-space:pre-wrap;
+    }
+    .line-no{color:rgba(209,239,215,.20);text-align:right}
+    .code-text{color:rgba(224,245,228,.74)}
+    .kw{color:#9fe1ac}.fn{color:#c9d8ff}.numc{color:#f0cfa6}.comment{color:rgba(184,221,192,.34)}
+    .node{
+      position:absolute;
+      border:1px solid rgba(174,229,186,.20);
+      transform:rotate(45deg);
+      animation:nodePulse 4s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .node.n1{width:22px;height:22px;right:6%;top:18%}
+    .node.n2{width:13px;height:13px;left:4%;bottom:12%;animation-delay:1.3s}
+    @keyframes nodePulse{
+      0%,100%{opacity:.25;transform:rotate(45deg) scale(.9)}
+      50%{opacity:.75;transform:rotate(45deg) scale(1.15)}
+    }
+
+    .contact-box{
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+      padding:38px;border:1px solid var(--line);border-radius:28px;background:var(--surface-strong);
+      backdrop-filter:blur(18px);box-shadow:var(--shadow)
+    }
+
+    footer{
+      padding:30px 0 38px;border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;gap:24px;color:var(--muted);font-size:12px
+    }
+    .socials{display:flex;gap:18px;flex-wrap:wrap}
+    .socials a{color:var(--muted);text-decoration:none}
+
+    @media(max-width:980px){
+      nav{display:none}
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .hero-visual{min-height:460px}
+      .grid-3,.roadmap{grid-template-columns:1fr 1fr}
+      .tokenomics-wrap{grid-template-columns:1fr}
+      .architecture-inner{grid-template-columns:1fr}
+    }
+    @media(max-width:700px){
+      .brand img{width:154px;height:48px}
+      section{padding:76px 0}
+      .hero{padding-top:84px}
+      .grid-3,.roadmap,.security-list,.legend{grid-template-columns:1fr}
+      .faq-grid{column-count:1}
+      .contact-box,footer{flex-direction:column;align-items:flex-start}
+      .hero-visual::before{width:330px;height:330px}
+      .hero-visual::after{width:260px;height:260px}
+      .hero-card{padding:20px}
+      .chart-area{min-height:410px}
+      .architecture-inner{padding:28px 20px}
+      .code-window{min-height:340px}
+    }
+  
+    .scroll-progress{
+      position:fixed;
+      left:0;top:0;
+      height:2px;
+      width:0;
+      z-index:100;
+      background:linear-gradient(90deg,#8cd49a,#a8d7e8,#d7b7e8,#f0c989);
+      box-shadow:0 0 12px rgba(107,183,119,.55);
+      transition:width .08s linear;
+    }
+
+    .signal-section{
+      min-height:88vh;
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .signal-section::before{
+      content:"";
+      position:absolute;
+      inset:10% 5%;
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:
+        radial-gradient(circle at 50% 50%,rgba(255,255,255,.48),rgba(255,255,255,.12) 44%,transparent 72%);
+      backdrop-filter:blur(14px);
+    }
+    .signal-section::after{
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      border:1px solid rgba(18,57,37,.09);
+      box-shadow:0 0 0 44px rgba(107,183,119,.03),0 0 0 88px rgba(107,183,119,.02);
+      animation:signalPulse 5.2s ease-in-out infinite;
+    }
+    @keyframes signalPulse{
+      0%,100%{transform:scale(.96);opacity:.45}
+      50%{transform:scale(1.04);opacity:.85}
+    }
+    .signal-core{
+      position:relative;
+      z-index:2;
+      width:min(880px,90%);
+      min-height:400px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+    }
+    .signal-label{
+      position:absolute;
+      top:0;
+      font:400 10px "Space Mono",monospace;
+      letter-spacing:.22em;
+      color:rgba(18,57,37,.46);
+      text-transform:uppercase;
+    }
+    .signal-word{
+      position:relative;
+      font-size:clamp(42px,8vw,112px);
+      line-height:.94;
+      letter-spacing:-.065em;
+      font-weight:600;
+      color:var(--ink);
+      text-shadow:0 0 0 transparent;
+      min-height:1.1em;
+    }
+    .signal-word.glitch{
+      animation:modernGlitch .34s steps(2,end);
+    }
+    @keyframes modernGlitch{
+      0%{transform:translate(0);text-shadow:none;filter:none}
+      20%{transform:translate(-2px,1px);text-shadow:3px 0 rgba(125,210,190,.52),-3px 0 rgba(205,160,220,.46)}
+      40%{transform:translate(2px,-1px);text-shadow:-4px 0 rgba(240,201,137,.48),4px 0 rgba(122,190,240,.40)}
+      60%{transform:translate(-1px,0);filter:saturate(1.4)}
+      100%{transform:none;text-shadow:0 0 22px rgba(107,183,119,.16)}
+    }
+    .signal-caret{
+      display:inline-block;
+      width:.08em;
+      height:.82em;
+      margin-left:.08em;
+      background:currentColor;
+      vertical-align:-.05em;
+      animation:caretBlink .9s steps(1) infinite;
+    }
+    @keyframes caretBlink{50%{opacity:0}}
+    .signal-caption{
+      position:absolute;
+      bottom:0;
+      font:400 11px "Space Mono",monospace;
+      color:rgba(18,57,37,.44);
+      letter-spacing:.12em;
+    }
+    .scanline{
+      position:absolute;
+      left:8%;right:8%;
+      height:18%;
+      top:-20%;
+      background:linear-gradient(to bottom,transparent,rgba(130,207,150,.07),transparent);
+      animation:scanPass 5s linear infinite;
+      pointer-events:none;
+      z-index:1;
+    }
+    @keyframes scanPass{to{transform:translateY(700%)}}
+    .static-bars{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:0;
+      background:
+        repeating-linear-gradient(0deg,rgba(105,190,210,.10) 0 1px,transparent 1px 4px),
+        repeating-linear-gradient(90deg,rgba(210,165,220,.08) 0 2px,transparent 2px 8px);
+    }
+    .static-bars.flash{animation:staticFlash .22s steps(2,end)}
+    @keyframes staticFlash{
+      0%{opacity:0}
+      30%{opacity:.55}
+      60%{opacity:.18}
+      100%{opacity:0}
+    }
+
+    .flow-section{
+      position:relative;
+      overflow:hidden;
+    }
+    .flow-wrap{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:28px;
+      padding:42px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:rgba(255,255,255,.38);
+      backdrop-filter:blur(16px);
+    }
+    .flow-line{
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      align-items:center;
+      gap:14px;
+      padding-top:20px;
+    }
+    .flow-line::before{
+      content:"";
+      position:absolute;
+      left:6%;
+      right:6%;
+      top:50%;
+      height:1px;
+      background:linear-gradient(90deg,rgba(107,183,119,.12),rgba(107,183,119,.58),rgba(107,183,119,.12));
+      transform:scaleX(var(--flow-progress,0));
+      transform-origin:left;
+      transition:transform .15s linear;
+    }
+    .flow-node{
+      position:relative;
+      z-index:2;
+      min-height:130px;
+      padding:18px 14px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(249,253,247,.86);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:.3s ease;
+    }
+    .flow-node.active{
+      transform:translateY(-7px);
+      border-color:rgba(47,107,67,.32);
+      box-shadow:0 18px 42px rgba(18,57,37,.10);
+    }
+    .flow-node .dot{
+      width:13px;height:13px;border-radius:50%;
+      background:rgba(107,183,119,.25);
+      border:1px solid rgba(47,107,67,.32);
+      transition:.3s ease;
+    }
+    .flow-node.active .dot{
+      background:#88cf97;
+      box-shadow:0 0 18px rgba(107,183,119,.58);
+    }
+    .flow-node strong{font-size:13px}
+    .flow-node span{
+      font:400 9px "Space Mono",monospace;
+      color:var(--muted);
+      letter-spacing:.08em;
+    }
+
+    .final-statement{
+      min-height:84vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+    }
+    .final-statement h2{
+      font-size:clamp(54px,9vw,128px);
+      max-width:1050px;
+      margin:0;
+      line-height:.92;
+      letter-spacing:-.07em;
+    }
+    .final-statement p{
+      margin-top:28px;
+      color:var(--muted);
+      font:400 12px "Space Mono",monospace;
+      letter-spacing:.12em;
+    }
+
+    .glow-card{
+      position:relative;
+      overflow:hidden;
+    }
+    .glow-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:inherit;
+      background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(128,208,145,.20),transparent 44%);
+      opacity:0;
+      transition:opacity .25s ease;
+      pointer-events:none;
+    }
+    .glow-card:hover::before{opacity:1}
+
+    @media(max-width:900px){
+      .flow-line{grid-template-columns:1fr 1fr}
+      .flow-line::before{display:none}
+    }
+    @media(max-width:700px){
+      .brand img{width:154px;height:48px}
+      .signal-section{min-height:72vh}
+      .manifesto{min-height:100vh}
+      .manifesto-stage{top:12vh}
+      .flow-line{grid-template-columns:1fr}
+      .flow-wrap{padding:24px 18px}
+    }
+
+
+    .manifesto-final{
+      min-height:96vh;
+      display:grid;
+      place-items:center;
+      position:relative;
+    }
+    .manifesto-final-stage{
+      position:relative;
+      width:100%;
+      min-height:72vh;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:
+        radial-gradient(circle at center,rgba(255,255,255,.72),rgba(255,255,255,.26) 52%,transparent 82%);
+      backdrop-filter:blur(16px);
+      transition:box-shadow .45s ease,border-color .45s ease,transform .45s ease;
+    }
+    .manifesto-final-stage::before,
+    .manifesto-final-stage::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      border:1px solid rgba(18,57,37,.08);
+      pointer-events:none;
+    }
+    .manifesto-final-stage::before{width:520px;height:520px}
+    .manifesto-final-stage::after{width:370px;height:370px}
+    .manifesto-final-grid{
+      position:absolute;
+      inset:0;
+      opacity:.32;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(18,57,37,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(18,57,37,.035) 1px,transparent 1px);
+      background-size:42px 42px;
+      mask-image:radial-gradient(circle at center,black,transparent 77%);
+    }
+    .manifesto-final-glow{
+      position:absolute;
+      width:460px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(118,205,136,.18),transparent 68%);
+      filter:blur(16px);
+      opacity:0;
+      transform:scale(.82);
+      transition:opacity .45s ease,transform .45s ease;
+      pointer-events:none;
+    }
+    .manifesto-glow-active{opacity:.78;transform:scale(1)}
+    .manifesto-glow-final{opacity:.54;transform:scale(1.14)}
+    .manifesto-final-copy{
+      position:relative;
+      z-index:3;
+      width:min(970px,90%);
+      text-align:center;
+    }
+    .manifesto-final-kicker{
+      margin-bottom:28px;
+      color:var(--muted);
+      font:400 11px "Space Mono",monospace;
+      letter-spacing:.20em;
+      text-transform:uppercase;
+    }
+    .manifesto-final-line{
+      min-height:2.25em;
+      margin:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      font-size:clamp(40px,6.6vw,92px);
+      line-height:1.03;
+      letter-spacing:-.058em;
+      font-weight:600;
+      transition:opacity .35s ease,transform .35s ease,filter .35s ease,color .35s ease;
+    }
+    .manifesto-key{
+      color:#4f9e61;
+      text-shadow:0 0 10px rgba(103,190,121,.18),0 0 28px rgba(103,190,121,.10);
+      animation:manifestoKeyGlow 1.6s ease-in-out infinite alternate;
+    }
+    @keyframes manifestoKeyGlow{
+      from{
+        color:#4f9e61;
+        text-shadow:0 0 7px rgba(103,190,121,.14),0 0 18px rgba(103,190,121,.08);
+      }
+      to{
+        color:#6fbd7e;
+        text-shadow:0 0 13px rgba(103,190,121,.26),0 0 34px rgba(103,190,121,.14);
+      }
+    }
+    .manifesto-caret{
+      width:.065em;
+      height:.82em;
+      margin-left:.10em;
+      background:currentColor;
+      vertical-align:-.08em;
+      animation:manifestoCaretBlink .82s steps(1) infinite;
+    }
+    @keyframes manifestoCaretBlink{50%{opacity:0}}
+    .manifesto-final-sign{
+      margin-top:24px;
+      opacity:0;
+      transform:translateY(12px);
+      color:var(--muted);
+      font:400 11px "Space Mono",monospace;
+      letter-spacing:.13em;
+      transition:opacity .7s ease,transform .7s ease;
+    }
+    .manifesto-sign-visible{opacity:1;transform:none}
+    .manifesto-pulse{
+      border-color:rgba(83,153,99,.28);
+      box-shadow:0 24px 90px rgba(25,70,42,.10),inset 0 0 80px rgba(107,183,119,.06);
+      transform:scale(1.003);
+    }
+    .manifesto-final-complete{
+      border-color:rgba(83,153,99,.24);
+      box-shadow:0 28px 110px rgba(25,70,42,.12),inset 0 0 95px rgba(107,183,119,.08);
+    }
+    @media(max-width:700px){
+      .brand img{width:154px;height:48px}
+      .manifesto-final{min-height:78vh}
+      .manifesto-final-stage{min-height:64vh;border-radius:26px}
+      .manifesto-final-stage::before{width:330px;height:330px}
+      .manifesto-final-stage::after{width:240px;height:240px}
+      .manifesto-final-line{min-height:3.2em;font-size:clamp(34px,11vw,58px)}
+    }
+
 </style>
 </head>
 <body>
-<div class="scrollbar" id="progress"></div>
-<header><div class="shell nav"><a class="brand" href="#home"><img src="/assets/ovasha-wordmark.png" alt="OvaSHA Protocol"></a><nav class="navlinks"><a href="#vision">Vision</a><a href="#architecture">Architecture</a><a href="#tokenomics">Tokenomics</a><a href="#roadmap">Roadmap</a><a href="#team">Team</a><a href="#faq">FAQ</a><a href="#portals">Launch</a></nav><button class="menu-btn" onclick="document.getElementById('mobileNav').toggleAttribute('hidden')">Menu</button></div><div id="mobileNav" hidden class="shell" style="padding:0 0 16px"><div style="display:flex;gap:13px;flex-wrap:wrap;font-size:12px"><a href="#vision">Vision</a><a href="#tokenomics">Tokenomics</a><a href="#roadmap">Roadmap</a><a href="#team">Team</a><a href="#faq">FAQ</a></div></div></header>
-<div class="quickdock"><button class="dockbtn" data-drawer="whitepaper">WP</button><button class="dockbtn" data-drawer="audit">AU</button><button class="dockbtn" data-drawer="presale">PS</button><button class="dockbtn" data-drawer="staking">ST</button></div>
-<div class="drawer" id="drawer"><button class="close" aria-label="Close">×</button><div id="drawerContent"></div></div>
-<main>
-<section class="hero shell reveal" id="home"><div><div class="eyebrow">Sustainable Blockchain Protocol</div><h1>Trust,<br>built to last.</h1><p class="lead">A fixed-supply protocol designed around transparent execution, disciplined reserves and long-term community value.</p><div class="actions"><a class="btn primary" href="https://x.com/OvaSHA_Protocol" target="_blank">Follow on X</a><a class="btn secondary" href="https://t.me/OvaSHAAnnouncements" target="_blank">Telegram</a><button class="btn secondary" data-drawer="whitepaper">Whitepaper</button></div></div><div class="hero-banner"><div class="neon-ring"></div><div class="banner-inner"><img src="/assets/ovasha-wordmark-light.png" alt="OvaSHA Protocol"><div class="banner-code">NETWORK // BNB SMART CHAIN<br>SUPPLY // 45,000,000 OVA<br>STATUS // PHASE 02 — COMMUNITY & PREPARATION</div></div></div></section>
-<section class="signal shell reveal"><div class="signal-box"><div class="signal-word" id="signalWord"></div></div></section>
-<section class="shell reveal" id="vision"><div class="section-head"><div class="eyebrow">Our Vision</div><h2>Built for years, not moments.</h2><p>OvaSHA is designed to place verifiable rules ahead of promises. Its identity draws from balance, stability and sustainable growth—the same principles represented in the official geometric mark.</p></div><div class="cards3"><article class="card"><div class="num">01 / SECURITY</div><h3>Visible protections</h3><p>Timelocked critical operations, multisig preparation and public source verification are part of the launch discipline.</p></article><article class="card"><div class="num">02 / ECONOMY</div><h3>Fixed-supply design</h3><p>45 million OVA are allocated from the beginning, without an unlimited minting model.</p></article><article class="card"><div class="num">03 / COMMUNITY</div><h3>Accountable growth</h3><p>Milestones, reserve use and future contributors are intended to be communicated through official channels.</p></article></div></section>
-<section class="shell reveal" id="architecture"><div class="arch"><div class="arch-grid"><div><div class="eyebrow" style="color:#acd09d">Protocol Architecture</div><h2 style="color:white">Rules before execution.</h2><p>Critical actions pass through validation and delayed execution before becoming final. Final verified source code and test results will be published through the official GitHub organization.</p><div class="chips"><span>FIXED_SUPPLY</span><span>48H_TIMELOCK</span><span>MULTISIG_READY</span><span>LP_LOCK</span><span>RESERVE_INVARIANTS</span></div></div><div class="codewin"><div class="codehead">OvaSHA_Sustainable_Protocol.sol</div><div class="code-scan"></div><div class="codetrack"><div class="coderow"><span class="kw">contract</span> OvaSHA is IERC20, SecureOwnable {</div><div class="coderow">  uint256 constant TOTAL_SUPPLY = 45_000_000 ether;</div><div class="coderow">  uint256 constant TIMELOCK_DELAY = 48 hours;</div><div class="coderow">  uint256 constant DEX_LIQUIDITY = 47%;</div><div class="coderow">  uint256 constant CEX_RESERVE = 25%;</div><div class="coderow com">  // proposals become executable only after delay</div><div class="coderow">  function executeAction(uint256 id) external onlyOwner {</div><div class="coderow">    require(block.timestamp >= proposal[id].executionTime);</div><div class="coderow">    _validateReserveInvariant();</div><div class="coderow">  }</div><div class="coderow com">  // trust is a verifiable process</div><div class="coderow">}</div></div></div></div></div></section>
-<section class="shell reveal"><div class="section-head"><div class="eyebrow">Protocol Flow</div><h2>From proposal to public record.</h2></div><div class="flow" id="flow"><div class="node"><i></i><b>VERIFY</b><span>INPUT_CHECK</span></div><div class="node"><i></i><b>PROPOSE</b><span>ONCHAIN_EVENT</span></div><div class="node"><i></i><b>TIMELOCK</b><span>48_HOURS</span></div><div class="node"><i></i><b>EXECUTE</b><span>VALIDATED_ACTION</span></div><div class="node"><i></i><b>DISCLOSE</b><span>PUBLIC_RECORD</span></div><div class="node"><i></i><b>EVOLVE</b><span>LONG_TERM_VALUE</span></div></div></section>
-<section class="shell reveal" id="tokenomics"><div class="section-head"><div class="eyebrow">Tokenomics</div><h2>45 million OVA. Allocated from day one.</h2><p>Touch or hover over a segment. A leader line identifies the allocation, percentage and intended purpose.</p></div><div class="token-wrap"><div class="chartbox"><svg id="chart" viewBox="0 0 600 600" aria-label="OvaSHA token allocation"></svg><div class="chartcenter"><strong id="centerPct">45M</strong><span id="centerName">TOTAL OVA</span></div><div class="callouts" id="callouts"></div></div><div><aside class="detail" id="detail"></aside><div class="legend" id="legend"></div></div></div></section>
-<section class="shell reveal" id="roadmap"><div class="section-head"><div class="eyebrow">Roadmap</div><h2>Phase two is now in progress.</h2><p>The foundation phase has been completed. OvaSHA is currently preparing documentation, audit readiness, community infrastructure and the presale framework.</p></div><div class="roadmap"><article class="phase done"><div class="status"><span class="statusicon">✓</span>PHASE 01 COMPLETE</div><h3>Foundation</h3><ul><li>Brand identity</li><li>Official domain and email</li><li>Website infrastructure</li><li>Social channels</li></ul></article><article class="phase activephase"><div class="status"><span class="statusicon">⌛</span>WE ARE HERE — IN PROGRESS</div><h3>Community & Preparation</h3><ul><li>Whitepaper publication</li><li>Audit and testing preparation</li><li>Community growth</li><li>PinkSale configuration</li></ul></article><article class="phase future"><div class="status"><span class="statusicon">03</span>PLANNED</div><h3>Launch</h3><ul><li>Presale</li><li>DEX liquidity deployment</li><li>Liquidity lock</li><li>Staking activation</li></ul></article><article class="phase future"><div class="status"><span class="statusicon">04</span>FUTURE</div><h3>Expansion</h3><ul><li>CEX listings</li><li>Verified partnerships</li><li>Governance evolution</li><li>Future chain research</li></ul></article></div></section>
-<section class="manifesto shell reveal" id="manifesto"><div class="manifesto-stage" id="mstage"><div><div class="eyebrow">OvaSHA Manifesto</div><p class="manifesto-line" id="mline"></p><div class="msign" id="msign">— OvaSHA Protocol</div></div></div></section>
-<section class="shell reveal" id="team"><div class="section-head"><div class="eyebrow">Team</div><h2>Built with attributable responsibility.</h2><p>OvaSHA currently operates through a solo-founder structure. The project does not use invented profiles or unverifiable team claims.</p></div><div class="team"><article class="founder"><div class="founder-top"><img class="avatar" src="/assets/founder-yusa.png" alt="Yusa Helvaci"><div><div class="eyebrow" style="color:#acd09d">Founder</div><h3>Yusa Helvaci</h3><div class="neon">Founder & Protocol Architect</div><p>Responsible for OvaSHA’s early protocol direction, public documentation and ecosystem development, with a long-term focus on transparent and sustainable execution.</p></div></div><div class="founderlinks"><a href="mailto:contact@ovasha.com">Contact</a><a href="https://x.com/OvaSHA_Protocol" target="_blank">Official X</a><a href="https://github.com/OvaSHAProtocol" target="_blank">GitHub</a></div></article><article class="principles"><div class="eyebrow" style="color:#acd09d">How We Build</div><h3 style="font-size:30px">Small by structure. Serious by responsibility.</h3><div class="principle"><b class="neon">Transparency First</b><p>No fictional team profiles and no hidden contributor claims.</p></div><div class="principle"><b class="neon">Security & Sustainability</b><p>Timelocks, multisig preparation and long-term token allocation discipline.</p></div><div class="principle"><b class="neon">Community Driven</b><p>Future contributors and moderators will be disclosed only after their roles are confirmed.</p></div><div class="principle"><b class="neon">Governance Evolution</b><p>Operational control is intended to evolve toward multisig and community oversight.</p></div></article></div></section>
-<section class="shell reveal" id="portals"><div class="section-head"><div class="eyebrow">Launch Portals</div><h2>Prepared now. Activated after verification.</h2></div><div class="portal-grid"><article class="portal"><div class="devbadge">⌛ PRESALE — DEVELOPMENT</div><h3>PinkSale Portal</h3><p>This panel is reserved for the verified PinkSale pool. The official embed or launch link will only be added after contract testing, mainnet verification and final sale configuration.</p><div class="embedzone">PINKSALE EMBED PLACEHOLDER<br>Official pool address will appear here.</div></article><article class="portal"><div class="devbadge">⌛ STAKING — DEVELOPMENT</div><h3>OVA Staking</h3><p>The staking interface will open as a dedicated application panel after smart-contract testing and final deployment verification.</p><div class="embedzone">STAKING APPLICATION PLACEHOLDER<br>Wallet connection remains disabled.</div></article></div></section>
-<section class="shell reveal" id="faq"><div class="section-head"><div class="eyebrow">FAQ</div><h2>Clear answers before launch.</h2></div><div class="faq"><details><summary>What is OvaSHA?</summary><p>OvaSHA is a fixed-supply blockchain protocol focused on security, transparent execution, community and long-term value.</p></details><details><summary>Which network is planned?</summary><p>The initial deployment is planned for BNB Smart Chain, subject to final testnet validation and mainnet verification.</p></details><details><summary>What is the total supply?</summary><p>45,000,000 OVA.</p></details><details><summary>Can additional OVA be minted?</summary><p>The current protocol design does not include an unlimited minting mechanism.</p></details><details><summary>How is the supply allocated?</summary><ul><li>DEX — 47%</li><li>CEX strategic reserve — 25%</li><li>Mining rewards — 6%</li><li>Presale — 5%</li><li>Emergency reserve — 5%</li><li>Marketing — 3%</li><li>Scheduled burns — 5%</li><li>Founder — 2%</li><li>Airdrop — 2%</li></ul></details><details><summary>When is the presale?</summary><p>No date has been announced. The verified PinkSale pool will appear only through official channels.</p></details><details><summary>Is OvaSHA audited?</summary><p>Audit publication is part of phase two. No completed-audit claim is made until a final report is publicly available.</p></details><details><summary>Will liquidity be locked?</summary><p>The planned architecture includes liquidity locking. Final on-chain proof will be published at launch.</p></details><details><summary>Where will the whitepaper be published?</summary><p>On ovasha.com and the official GitHub organization. The current status is “publishing soon.”</p></details><details><summary>Where are official announcements?</summary><p>ovasha.com, @OvaSHA_Protocol on X and t.me/OvaSHAAnnouncements.</p></details></div></section>
-<section class="shell reveal"><div class="contact"><div><div class="eyebrow">Contact</div><h2 style="font-size:40px;margin:8px 0">Follow the verified journey.</h2><p style="color:var(--muted)">Official documents and launch addresses will be published only through verified OvaSHA channels.</p></div><div class="actions"><a class="btn primary" href="mailto:contact@ovasha.com">Email</a><a class="btn secondary" href="https://t.me/OvaSHAAnnouncements" target="_blank">Telegram</a></div></div></section>
-</main>
-<footer class="shell"><div>© 2026 OvaSHA. All rights reserved.</div><div class="socials"><a href="https://x.com/OvaSHA_Protocol" target="_blank">X</a><a href="https://t.me/OvaSHAAnnouncements" target="_blank">Telegram</a><a href="https://github.com/OvaSHAProtocol" target="_blank">GitHub</a><a href="mailto:contact@ovasha.com">Email</a></div></footer>
-<script>
-document.documentElement.classList.add('js');
-const allocation=[
-{name:'DEX Liquidity',amount:21150000,pct:47,color:'#77bf86',purpose:'Primary decentralized exchange liquidity.'},
-{name:'CEX Strategic Reserve',amount:11250000,pct:25,color:'#86c7c1',purpose:'Centralized exchange listings and strategic liquidity.'},
-{name:'Mining Rewards',amount:2700000,pct:6,color:'#c3a6df',purpose:'Fixed mining and staking reward reserve.'},
-{name:'Presale',amount:2250000,pct:5,color:'#e3b85b',purpose:'Allocation reserved for the public presale.'},
-{name:'Emergency Reserve',amount:2250000,pct:5,color:'#df9eaa',purpose:'Protected reserve for exceptional protocol needs.'},
-{name:'Marketing',amount:1350000,pct:3,color:'#e9b3c5',purpose:'Transparent ecosystem growth and communication.'},
-{name:'Burn — 10 Jan 2028',amount:1125000,pct:2.5,color:'#9ecbb0',purpose:'Scheduled permanent supply reduction.'},
-{name:'Burn — 1 Jan 2030',amount:1125000,pct:2.5,color:'#b4a7d8',purpose:'Second scheduled permanent supply reduction.'},
-{name:'Founder',amount:900000,pct:2,color:'#bdd49a',purpose:'Founder allocation under the approved release structure.'},
-{name:'Airdrop',amount:900000,pct:2,color:'#e8cf94',purpose:'Community distribution and future airdrops.'}
-];
-const svg=document.getElementById('chart'),NS='http://www.w3.org/2000/svg',cx=300,cy=300,outer=210,inner=125,detail=document.getElementById('detail'),legend=document.getElementById('legend'),callouts=document.getElementById('callouts');
-function polar(r,a){let q=(a-90)*Math.PI/180;return[cx+r*Math.cos(q),cy+r*Math.sin(q)]}function path(s,e){let a=polar(outer,s),b=polar(outer,e),c=polar(inner,e),d=polar(inner,s),l=e-s>180?1:0;return`M ${a[0]} ${a[1]} A ${outer} ${outer} 0 ${l} 1 ${b[0]} ${b[1]} L ${c[0]} ${c[1]} A ${inner} ${inner} 0 ${l} 0 ${d[0]} ${d[1]} Z`}
-let angle=0;allocation.forEach((it,i)=>{let end=angle+it.pct*3.6,mid=(angle+end)/2,p=document.createElementNS(NS,'path');p.setAttribute('d',path(angle,end));p.setAttribute('fill',it.color);p.setAttribute('class','slice');p.tabIndex=0;p.dataset.i=i;svg.appendChild(p);let p1=polar(outer+4,mid),p2=polar(outer+42,mid),right=Math.cos((mid-90)*Math.PI/180)>=0,p3=[p2[0]+(right?58:-58),p2[1]],line=document.createElementNS(NS,'polyline');line.setAttribute('points',`${p1[0]},${p1[1]} ${p2[0]},${p2[1]} ${p3[0]},${p3[1]}`);line.setAttribute('fill','none');line.setAttribute('stroke',it.color);line.setAttribute('stroke-width','2');line.setAttribute('opacity','0');line.dataset.i=i;svg.appendChild(line);let lab=document.createElement('div');lab.className='callout-label';lab.style.setProperty('--c',it.color);lab.style.left=(right?Math.min(77,(p3[0]/600*100)+1):Math.max(0,(p3[0]/600*100)-28))+'%';lab.style.top=Math.max(4,Math.min(84,p3[1]/600*100-5))+'%';lab.innerHTML=`<b>${it.pct}%</b><small>${it.name}<br>${it.purpose}</small>`;lab.dataset.i=i;callouts.appendChild(lab);let btn=document.createElement('button');btn.innerHTML=`<i style="background:${it.color}"></i>${it.name} — ${it.pct}%`;btn.onclick=()=>select(i);legend.appendChild(btn);p.onmouseenter=p.onclick=p.onfocus=()=>select(i);angle=end});
-function select(i){document.querySelectorAll('.slice').forEach((x,j)=>x.classList.toggle('active',j===i));svg.querySelectorAll('polyline').forEach((x,j)=>x.setAttribute('opacity',j===i?'1':'0'));document.querySelectorAll('.callout-label').forEach((x,j)=>x.classList.toggle('show',j===i));let it=allocation[i];document.getElementById('centerPct').textContent=it.pct+'%';document.getElementById('centerName').textContent=it.name.toUpperCase();detail.innerHTML=`<div class="eyebrow">Allocation detail</div><h3 style="font-size:30px">${it.name}</h3><div class="pct">${it.pct}%</div><b>${new Intl.NumberFormat('en-US').format(it.amount)} OVA</b><p>${it.purpose}</p>`}select(0);
-const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));document.querySelectorAll('.card').forEach(c=>c.onpointermove=e=>{let r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')});
-const words=['PROOF OF TRUST','TRANSPARENCY','LONG TERM','SECURITY','COMMUNITY','OVASHA'];let wi=0,timer,visible=false,sw=document.getElementById('signalWord');function typeWord(w){clearTimeout(timer);sw.innerHTML='';let i=0;(function t(){sw.innerHTML=w.slice(0,i++)+'<span class="caret"></span>';if(i<=w.length)timer=setTimeout(t,55);else{sw.classList.add('glitch');setTimeout(()=>sw.classList.remove('glitch'),320);timer=setTimeout(()=>{if(visible){wi=(wi+1)%words.length;typeWord(words[wi])}},1500)}})()}new IntersectionObserver(es=>es.forEach(e=>{visible=e.isIntersecting;if(visible){wi=0;typeWord(words[0])}else{clearTimeout(timer);sw.innerHTML=''}}),{threshold:.45}).observe(sw.parentElement);
-const mmsgs=[['','Trust',' should never depend on promises.'],['It should be ','visible','.'],['','Verifiable','.'],['','Measurable','.'],['','Sustainable','.']],ml=document.getElementById('mline'),ms=document.getElementById('msign'),mst=document.getElementById('mstage');let mr=false,mid=0;const wait=n=>new Promise(r=>setTimeout(r,n));async function runM(){if(mr)return;mr=true;let id=++mid;ms.classList.remove('show');for(let m of mmsgs){let full=m.join(''),ks=m[0].length,ke=ks+m[1].length;for(let i=0;i<=full.length;i++){if(id!==mid)return;let s=full.slice(0,i);ml.innerHTML=`<span>${s.slice(0,Math.min(i,ks))}</span><span class="mkey">${s.slice(ks,Math.min(i,ke))}</span><span>${s.slice(ke)}</span><span class="caret"></span>`;await wait(42)}mst.classList.add('mpulse');await wait(380);mst.classList.remove('mpulse');await wait(1050);for(let i=full.length;i>=0;i--){if(id!==mid)return;let s=full.slice(0,i);ml.innerHTML=s+'<span class="caret"></span>';await wait(15)}}ml.innerHTML='Trust, <span class="mkey">built to last</span>.';ms.classList.add('show');mr=false}new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)runM();else{mid++;mr=false;ml.innerHTML='';ms.classList.remove('show')}}),{threshold:.48}).observe(document.getElementById('manifesto'));
-const flow=document.getElementById('flow'),nodes=[...flow.children];function update(){let max=document.documentElement.scrollHeight-innerHeight,p=max?scrollY/max:0;document.getElementById('progress').style.width=p*100+'%';let r=flow.getBoundingClientRect(),f=Math.min(1,Math.max(0,(innerHeight*.8-r.top)/(r.height+innerHeight*.4)));flow.style.setProperty('--flow',f);nodes.forEach((n,i)=>n.classList.toggle('active',f>(i+1)/nodes.length-.09))}addEventListener('scroll',update,{passive:true});update();
-const drawers={whitepaper:'<div class="eyebrow" style="color:#acd09d">DOCUMENT</div><h3>Whitepaper</h3><p>The complete OvaSHA whitepaper is being prepared during Phase 02. It will include protocol architecture, tokenomics, governance, security controls and risk disclosures.</p><div class="devbadge">PUBLISHING SOON</div>',audit:'<div class="eyebrow" style="color:#acd09d">SECURITY</div><h3>Audit</h3><p>Independent review and public test documentation are planned before major launch milestones. No completed-audit claim is made at this time.</p><div class="devbadge">AUDIT PREPARATION</div>',presale:'<div class="eyebrow" style="color:#acd09d">LAUNCH</div><h3>Presale</h3><p>The verified PinkSale pool will be embedded only after mainnet deployment, source verification and final configuration.</p><div class="devbadge">DEVELOPMENT</div>',staking:'<div class="eyebrow" style="color:#acd09d">APPLICATION</div><h3>Staking</h3><p>The staking application panel is under development. Wallet connection remains disabled until contract testing and verification are complete.</p><div class="devbadge">DEVELOPMENT</div>'};let drawer=document.getElementById('drawer');document.querySelectorAll('[data-drawer]').forEach(b=>b.onclick=()=>{document.getElementById('drawerContent').innerHTML=drawers[b.dataset.drawer];drawer.classList.add('open')});drawer.querySelector('.close').onclick=()=>drawer.classList.remove('open');
-document.querySelectorAll('.faq details').forEach(d=>d.ontoggle=()=>{if(d.open)document.querySelectorAll('.faq details').forEach(o=>o!==d&&o.removeAttribute('open'))});
-</script>
-</body></html>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="shape triangle"></div>
+  <div class="shape ring"></div>
+
+  <div class="code-rain" aria-hidden="true">
+    <div class="code-line" data-speed=".06" style="left:4%;top:18%;">function secureFuture() { return trust + transparency; }</div>
+    <div class="code-line" data-speed=".10" style="right:3%;top:34%;">uint256 constant TOTAL_SUPPLY = 45_000_000 OVA;</div>
+    <div class="code-line" data-speed=".08" style="left:14%;top:62%;">timelock.delay = 48 hours;</div>
+    <div class="code-line" data-speed=".05" style="right:10%;top:78%;">community.first = true;</div>
+    <div class="code-line" data-speed=".12" style="left:34%;top:90%;">while (supply > 0) { buildLongTermValue(); }</div>
+  </div>
+
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="#home" aria-label="OvaSHA Protocol home">
+        <img src="/assets/ovasha-logo.png" alt="OvaSHA Protocol">
+      </a>
+      <nav>
+        <a href="#vision">Vision</a>
+        <a href="#why">Why OvaSHA</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#security">Security</a><a href="#manifesto">Manifesto</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell" id="home">
+      <div class="reveal">
+        <div class="badge">Website under development</div>
+        <h1>Trust, built to last.</h1>
+        <p class="lead">OvaSHA is building a sustainable blockchain protocol centered on security, transparency, community and long-term value.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://x.com/OvaSHA_Protocol" target="_blank" rel="noreferrer">Follow on X</a>
+          <a class="btn secondary" href="https://t.me/OvaSHAAnnouncements" target="_blank" rel="noreferrer">Telegram</a>
+          <a class="btn secondary" href="#vision">Explore OvaSHA</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="hero-card">
+          <img src="/assets/ovasha-logo.png" alt="OvaSHA Protocol logo">
+          <div class="mono" style="margin-top:18px;">
+            status: building<br>
+            network: BNB Smart Chain<br>
+            supply: 45,000,000 OVA<br>
+            principle: long-term trust
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="signal-section shell reveal" id="signal">
+      <div class="scanline"></div>
+      <div class="static-bars" id="staticBars"></div>
+      <div class="signal-core">
+        <div class="signal-label">OvaSHA / Protocol Signal</div>
+        <div class="signal-word" id="signalWord"></div>
+        <div class="signal-caption">AUTHENTICATING LONG-TERM TRUST</div>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="vision">
+      <div class="section-head">
+        <div class="eyebrow">Our Vision</div>
+        <h2>Built for years, not moments.</h2>
+        <p>Our goal is to build a trusted and sustainable blockchain ecosystem that prioritizes transparency, security and long-term community value over short-term speculation.</p>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="why">
+      <div class="section-head">
+        <div class="eyebrow">Why OvaSHA</div>
+        <h2>A protocol with a long-term mindset.</h2>
+      </div>
+      <div class="grid-3">
+        <article class="card glow-card"><div class="num">01 / SECURITY</div><h3>Security first</h3><p>Built around controlled governance, transparent operations and long-term protocol resilience.</p></article>
+        <article class="card glow-card"><div class="num">02 / ECONOMY</div><h3>Sustainable design</h3><p>Balanced tokenomics designed to support ecosystem development without relying on unlimited inflation.</p></article>
+        <article class="card glow-card"><div class="num">03 / COMMUNITY</div><h3>Community centered</h3><p>Growth through consistency, accountability, clear communication and long-term participation.</p></article>
+      </div>
+    </section>
+
+
+    <section class="shell reveal" id="architecture">
+      <div class="architecture">
+        <div class="node n1"></div>
+        <div class="node n2"></div>
+        <div class="architecture-inner">
+          <div class="architecture-copy">
+            <div class="eyebrow">Protocol Architecture</div>
+            <h2>Designed with visible rules.</h2>
+            <p>
+              OvaSHA is being structured around fixed supply, delayed critical actions,
+              protected liquidity and transparent reserve accounting. The final verified
+              source and test results will be published through official channels.
+            </p>
+            <div class="architecture-chips">
+              <span>FIXED_SUPPLY</span>
+              <span>48H_TIMELOCK</span>
+              <span>MULTISIG_READY</span>
+              <span>LP_LOCK</span>
+              <span>NO_UNLIMITED_MINT</span>
+            </div>
+          </div>
+          <div class="code-window" aria-label="Animated protocol code preview">
+            <div class="code-window-head">
+              <i></i><i></i><i></i>
+              <span>OvaSHA_Sustainable_Protocol.sol</span>
+            </div>
+            <div class="code-track">
+              <div class="code-row"><span class="line-no">01</span><span class="code-text"><span class="kw">contract</span> OvaSHA <span class="kw">is</span> IERC20, SecureOwnable, Pausable {</span></div>
+              <div class="code-row"><span class="line-no">02</span><span class="code-text">  <span class="kw">uint256 public constant</span> TOTAL_SUPPLY = <span class="numc">45_000_000 ether</span>;</span></div>
+              <div class="code-row"><span class="line-no">03</span><span class="code-text">  <span class="kw">uint256 public constant</span> TIMELOCK_DELAY = <span class="numc">48 hours</span>;</span></div>
+              <div class="code-row"><span class="line-no">04</span><span class="code-text">  <span class="kw">uint256 public constant</span> DEX_LIQUIDITY = <span class="numc">47%</span>;</span></div>
+              <div class="code-row"><span class="line-no">05</span><span class="code-text">  <span class="kw">uint256 public constant</span> CEX_RESERVE = <span class="numc">25%</span>;</span></div>
+              <div class="code-row"><span class="line-no">06</span><span class="code-text">  <span class="comment">// critical actions require delayed execution</span></span></div>
+              <div class="code-row"><span class="line-no">07</span><span class="code-text">  <span class="kw">function</span> <span class="fn">executeAction</span>(uint256 id) external onlyOwner {</span></div>
+              <div class="code-row"><span class="line-no">08</span><span class="code-text">    <span class="kw">require</span>(block.timestamp &gt;= proposal[id].executionTime);</span></div>
+              <div class="code-row"><span class="line-no">09</span><span class="code-text">    _validateReserveInvariant();</span></div>
+              <div class="code-row"><span class="line-no">10</span><span class="code-text">  }</span></div>
+              <div class="code-row"><span class="line-no">11</span><span class="code-text">  <span class="comment">// trust is not a promise; it is a verifiable process</span></span></div>
+              <div class="code-row"><span class="line-no">12</span><span class="code-text">}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="shell reveal flow-section" id="flow">
+      <div class="section-head">
+        <div class="eyebrow">Protocol Flow</div>
+        <h2>From rule to execution.</h2>
+        <p>Critical actions move through a visible sequence designed to reduce arbitrary control and improve accountability.</p>
+      </div>
+      <div class="flow-wrap" id="flowWrap">
+        <div class="flow-line">
+          <div class="flow-node"><div class="dot"></div><strong>VERIFY</strong><span>INPUT_CHECK</span></div>
+          <div class="flow-node"><div class="dot"></div><strong>PROPOSE</strong><span>ONCHAIN_EVENT</span></div>
+          <div class="flow-node"><div class="dot"></div><strong>TIMELOCK</strong><span>48_HOURS</span></div>
+          <div class="flow-node"><div class="dot"></div><strong>EXECUTE</strong><span>VALIDATED_ACTION</span></div>
+          <div class="flow-node"><div class="dot"></div><strong>DISCLOSE</strong><span>PUBLIC_RECORD</span></div>
+          <div class="flow-node"><div class="dot"></div><strong>EVOLVE</strong><span>LONG_TERM_VALUE</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="tokenomics">
+      <div class="section-head">
+        <div class="eyebrow">Tokenomics</div>
+        <h2>45 million OVA. Fixed from the beginning.</h2>
+        <p>Hover over or tap a segment to inspect its allocation. The complete allocation totals exactly 45,000,000 OVA.</p>
+      </div>
+      <div class="tokenomics-wrap">
+        <div>
+          <div class="chart-area">
+            <svg id="tokenChart" viewBox="0 0 500 500" role="img" aria-label="OvaSHA token allocation chart"></svg>
+            <div class="chart-center"><strong>45M</strong><span>TOTAL OVA</span></div>
+          </div>
+          <div class="legend" id="legend"></div>
+        </div>
+        <aside class="token-detail" id="tokenDetail"></aside>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="roadmap">
+      <div class="section-head">
+        <div class="eyebrow">Roadmap</div>
+        <h2>Building step by step.</h2>
+        <p>Dates and milestones will be published transparently as development progresses.</p>
+      </div>
+      <div class="roadmap">
+        <article class="phase glow-card"><span>PHASE 01</span><h3>Foundation</h3><ul><li>Brand identity</li><li>Website</li><li>Social channels</li><li>Technical preparation</li></ul></article>
+        <article class="phase glow-card"><span>PHASE 02</span><h3>Community</h3><ul><li>Whitepaper</li><li>Audit preparation</li><li>Community growth</li><li>Presale preparation</li></ul></article>
+        <article class="phase glow-card"><span>PHASE 03</span><h3>Launch</h3><ul><li>Presale</li><li>DEX launch</li><li>Liquidity lock</li><li>Staking access</li></ul></article>
+        <article class="phase glow-card"><span>PHASE 04</span><h3>Expansion</h3><ul><li>CEX listings</li><li>Partnerships</li><li>Governance</li><li>Future chain research</li></ul></article>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="security">
+      <div class="section-head">
+        <div class="eyebrow">Security</div>
+        <h2>Trust requires structure.</h2>
+        <p>Security documentation, test results and audit information will be published before major launch milestones.</p>
+      </div>
+      <div class="security-list">
+        <div class="security-item">✓ Multisig governance preparation</div>
+        <div class="security-item">✓ Timelocked critical operations</div>
+        <div class="security-item">✓ Liquidity lock architecture</div>
+        <div class="security-item">✓ Transparent reserve accounting</div>
+        <div class="security-item">✓ Fixed supply design</div>
+        <div class="security-item">✓ Public source verification planned</div>
+      </div>
+    </section>
+
+
+    <section class="shell manifesto-final reveal" id="manifesto">
+      <div class="manifesto-final-stage" id="manifestoStage">
+        <div class="manifesto-final-grid" aria-hidden="true"></div>
+        <div class="manifesto-final-glow" id="manifestoGlow"></div>
+        <div class="manifesto-final-copy">
+          <div class="manifesto-final-kicker">OvaSHA Manifesto</div>
+          <p class="manifesto-final-line" id="manifestoLine" aria-live="polite"></p>
+          <div class="manifesto-final-sign" id="manifestoSign">— OvaSHA Protocol</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="faq">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>Questions, answered clearly.</h2>
+      </div>
+      <div class="faq-grid">
+        <details><summary>What is OvaSHA?</summary><p>OvaSHA is a sustainable blockchain protocol focused on security, transparency, community and long-term value.</p></details>
+        <details><summary>Why was OvaSHA created?</summary><p>To build a blockchain ecosystem that prioritizes sustainability, accountability and long-term trust instead of short-term hype.</p></details>
+        <details><summary>Which network will OVA launch on?</summary><p>The initial deployment is planned for BNB Smart Chain, subject to final testing and deployment verification.</p></details>
+        <details><summary>What is the total supply?</summary><p>The total supply is fixed at 45,000,000 OVA.</p></details>
+        <details><summary>Can additional OVA be minted?</summary><p>No additional minting is planned. OVA is designed around a fixed-supply structure.</p></details>
+        <details><summary>How is the supply allocated?</summary><ul><li>DEX Liquidity — 47%</li><li>CEX Strategic Reserve — 25%</li><li>Mining Rewards — 6%</li><li>Presale — 5%</li><li>Emergency Reserve — 5%</li><li>Marketing — 3%</li><li>Burns — 5%</li><li>Founder — 2%</li><li>Airdrop — 2%</li></ul></details>
+        <details><summary>Why are there scheduled burns?</summary><p>The scheduled burns are designed to reduce total supply transparently over time, with planned burns in 2028 and 2030.</p></details>
+        <details><summary>Will liquidity be locked?</summary><p>Yes. Liquidity locking details will be disclosed before launch, together with verifiable on-chain information.</p></details>
+        <details><summary>Will OvaSHA be audited?</summary><p>Independent audit and public testing are planned before major launch milestones. No audit claim will be made before completion.</p></details>
+        <details><summary>Will the source code be public?</summary><p>The verified source code and relevant technical documentation are planned to be published through the official GitHub organization.</p></details>
+        <details><summary>How are critical operations protected?</summary><p>Critical protocol actions are designed around timelocks, multisig governance preparation and transparent reserve controls.</p></details>
+        <details><summary>When is the presale?</summary><p>The presale date has not yet been announced. Any official date will be shared only through verified OvaSHA channels.</p></details>
+        <details><summary>Where are official announcements published?</summary><p>Only through ovasha.com, the official X account, Telegram announcements and the official GitHub organization.</p></details>
+        <details><summary>How can I contact the team?</summary><p>You can contact the project through contact@ovasha.com.</p></details>
+      </div>
+    </section>
+
+
+    <section class="shell final-statement reveal">
+      <div>
+        <h2>Not built for today.<br>Built for years.</h2>
+        <p>THE PROTOCOL OF SUSTAINABLE TRUST</p>
+      </div>
+    </section>
+
+    <section class="shell reveal" id="contact">
+      <div class="contact-box">
+        <div>
+          <div class="eyebrow">Contact</div>
+          <h2 style="font-size:40px;margin-bottom:8px;">Stay close to the journey.</h2>
+          <p style="color:var(--muted);margin:0;">Official announcements and documentation are coming soon.</p>
+        </div>
+        <div class="actions" style="margin-top:0;">
+          <a class="btn primary" href="mailto:contact@ovasha.com">Email</a>
+          <a class="btn secondary" href="https://t.me/OvaSHAAnnouncements" target="_blank" rel="noreferrer">Telegram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <div>© 2026 OvaSHA. All rights reserved.</div>
+    <div class="socials">
+      <a href="https://x.com/OvaSHA_Protocol" target="_blank" rel="noreferrer">X</a>
+      <a href="https://t.me/OvaSHAAnnouncements" target="_blank" rel="noreferrer">Telegram</a>
+      <a href="https://github.com/OvaSHAProtocol" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="mailto:contact@ovasha.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add("js-ready");
+    const allocations = [
+      {name:"DEX Liquidity",amount:21150000,percent:47,color:"#86C994",description:"Primary decentralized exchange liquidity allocation."},
+      {name:"CEX Strategic Reserve",amount:11250000,percent:25,color:"#A9C7E8",description:"Reserve for centralized exchange listings and strategic liquidity needs."},
+      {name:"Mining Rewards",amount:2700000,percent:6,color:"#D8B7E8",description:"Fixed reward reserve allocated to the mining and staking system."},
+      {name:"Presale",amount:2250000,percent:5,color:"#F1C98F",description:"Allocation reserved for the public presale process."},
+      {name:"Emergency Reserve",amount:2250000,percent:5,color:"#E9AAAA",description:"Protected reserve intended for exceptional protocol needs."},
+      {name:"Marketing",amount:1350000,percent:3,color:"#F0B8D2",description:"Allocation for transparent ecosystem growth and marketing activities."},
+      {name:"Burn — 10 Jan 2028",amount:1125000,percent:2.5,color:"#B7D9C0",description:"Scheduled permanent supply reduction on 10 January 2028."},
+      {name:"Burn — 1 Jan 2030",amount:1125000,percent:2.5,color:"#C7B9E8",description:"Scheduled permanent supply reduction on 1 January 2030."},
+      {name:"Founder",amount:900000,percent:2,color:"#C1D9A7",description:"Founder allocation designed to be released only through the approved vesting structure."},
+      {name:"Airdrop",amount:900000,percent:2,color:"#F0D8AA",description:"Allocation reserved for community distribution and future airdrop campaigns."}
+    ];
+
+    const svg=document.getElementById("tokenChart");
+    const legend=document.getElementById("legend");
+    const detail=document.getElementById("tokenDetail");
+    const NS="http://www.w3.org/2000/svg";
+    const cx=250,cy=250,outer=210,inner=118;
+
+    function polar(r,angle){
+      const a=(angle-90)*Math.PI/180;
+      return [cx+r*Math.cos(a),cy+r*Math.sin(a)];
+    }
+    function donutPath(start,end){
+      const [x1,y1]=polar(outer,start),[x2,y2]=polar(outer,end);
+      const [x3,y3]=polar(inner,end),[x4,y4]=polar(inner,start);
+      const large=end-start>180?1:0;
+      return `M ${x1} ${y1} A ${outer} ${outer} 0 ${large} 1 ${x2} ${y2} L ${x3} ${y3} A ${inner} ${inner} 0 ${large} 0 ${x4} ${y4} Z`;
+    }
+    function formatAmount(n){return new Intl.NumberFormat("en-US").format(n)+" OVA"}
+    function showDetail(item,index){
+      document.querySelectorAll(".slice").forEach((el,i)=>el.classList.toggle("active",i===index));
+      detail.innerHTML=`<div><span class="dot" style="background:${item.color}"></span><span class="eyebrow">Allocation detail</span></div><h3>${item.name}</h3><div class="amount">${formatAmount(item.amount)}</div><div class="percent">${item.percent}%</div><p>${item.description}</p>`;
+    }
+
+    let angle=0;
+    allocations.forEach((item,index)=>{
+      const end=angle+item.percent*3.6;
+      const path=document.createElementNS(NS,"path");
+      path.setAttribute("d",donutPath(angle,end));
+      path.setAttribute("fill",item.color);
+      path.setAttribute("class","slice");
+      path.setAttribute("tabindex","0");
+      path.addEventListener("mouseenter",()=>showDetail(item,index));
+      path.addEventListener("focus",()=>showDetail(item,index));
+      path.addEventListener("click",()=>showDetail(item,index));
+      svg.appendChild(path);
+
+      const button=document.createElement("button");
+      button.type="button";
+      button.innerHTML=`<i style="background:${item.color}"></i><span>${item.name} — ${item.percent}%</span>`;
+      button.addEventListener("mouseenter",()=>showDetail(item,index));
+      button.addEventListener("focus",()=>showDetail(item,index));
+      button.addEventListener("click",()=>showDetail(item,index));
+      legend.appendChild(button);
+
+      angle=end;
+    });
+    showDetail(allocations[0],0);
+
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    },{threshold:.14});
+    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+
+    const faqItems=document.querySelectorAll("#faq details");
+    faqItems.forEach(item=>{
+      item.addEventListener("toggle",()=>{
+        if(!item.open) return;
+        faqItems.forEach(other=>{
+          if(other!==item) other.removeAttribute("open");
+        });
+      });
+    });
+
+    const codeLines=document.querySelectorAll(".code-line");
+    window.addEventListener("scroll",()=>{
+      const y=window.scrollY;
+      codeLines.forEach(line=>{
+        const speed=parseFloat(line.dataset.speed||".08");
+        line.style.transform=`translateY(${y*speed}px)`;
+      });
+    },{passive:true});
+  
+    const progressBar=document.getElementById("scrollProgress");
+    const signalWord=document.getElementById("signalWord");
+    const staticBars=document.getElementById("staticBars");
+    const signalWords=["PROOF OF TRUST","TRANSPARENCY","LONG TERM","SECURITY","COMMUNITY","OVASHA"];
+    let wordIndex=0;
+    let signalTimer=null;
+    let signalVisible=false;
+
+    function typeSignal(text){
+      clearTimeout(signalTimer);
+      signalWord.classList.remove("glitch");
+      staticBars.classList.remove("flash");
+      signalWord.innerHTML="";
+      let i=0;
+      function type(){
+        signalWord.innerHTML=text.slice(0,i)+'<span class="signal-caret"></span>';
+        i++;
+        if(i<=text.length){
+          signalTimer=setTimeout(type,55+Math.random()*28);
+        }else{
+          signalWord.classList.add("glitch");
+          staticBars.classList.add("flash");
+          setTimeout(()=>{
+            signalWord.classList.remove("glitch");
+            staticBars.classList.remove("flash");
+          },350);
+          signalTimer=setTimeout(()=>{
+            if(signalVisible){
+              wordIndex=(wordIndex+1)%signalWords.length;
+              typeSignal(signalWords[wordIndex]);
+            }
+          },1700);
+        }
+      }
+      type();
+    }
+
+    const signalObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        signalVisible=entry.isIntersecting;
+        if(signalVisible){
+          wordIndex=0;
+          typeSignal(signalWords[wordIndex]);
+        }else{
+          clearTimeout(signalTimer);
+          signalWord.innerHTML="";
+        }
+      });
+    },{threshold:.45});
+    signalObserver.observe(document.getElementById("signal"));
+
+    const flowWrap=document.getElementById("flowWrap");
+    const flowNodes=[...document.querySelectorAll(".flow-node")];
+
+    function updateFlow(){
+      if(!flowWrap) return;
+      const rect=flowWrap.getBoundingClientRect();
+      const p=Math.min(
+        1,
+        Math.max(
+          0,
+          (window.innerHeight*.82-rect.top)/
+          (rect.height+window.innerHeight*.45)
+        )
+      );
+
+      flowWrap.style.setProperty("--flow-progress",p);
+
+      flowNodes.forEach((node,i)=>{
+        node.classList.toggle(
+          "active",
+          p>=(i+1)/flowNodes.length-.08
+        );
+      });
+    }
+
+    document.querySelectorAll(".glow-card").forEach(card=>{
+      card.addEventListener("pointermove",e=>{
+        const rect=card.getBoundingClientRect();
+        card.style.setProperty("--mx",`${e.clientX-rect.left}px`);
+        card.style.setProperty("--my",`${e.clientY-rect.top}px`);
+      });
+    });
+
+    function updatePageEffects(){
+      const max=document.documentElement.scrollHeight-window.innerHeight;
+      const progress=max>0?window.scrollY/max:0;
+
+      if(progressBar){
+        progressBar.style.width=`${progress*100}%`;
+      }
+
+      updateFlow();
+    }
+
+    window.addEventListener(
+      "scroll",
+      updatePageEffects,
+      {passive:true}
+    );
+
+    window.addEventListener("resize",updatePageEffects);
+    updatePageEffects();
+
+  
+    (() => {
+      const messages = [
+        { before: "", key: "Trust", after: " should never depend on promises." },
+        { before: "It should be ", key: "visible", after: "." },
+        { before: "", key: "Verifiable", after: "." },
+        { before: "", key: "Measurable", after: "." },
+        { before: "", key: "Sustainable", after: "." }
+      ];
+      const finalMessage = { before: "Trust, ", key: "built to last", after: "." };
+
+      const section = document.getElementById("manifesto");
+      const stage = document.getElementById("manifestoStage");
+      const line = document.getElementById("manifestoLine");
+      const sign = document.getElementById("manifestoSign");
+      const glow = document.getElementById("manifestoGlow");
+
+      let running = false;
+      let visible = false;
+      let cycleId = 0;
+      const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+      function setLine(before, key, after, showCaret = true) {
+        line.innerHTML =
+          `<span>${before}</span>` +
+          `<span class="manifesto-key">${key}</span>` +
+          `<span>${after}</span>` +
+          (showCaret ? `<span class="manifesto-caret" aria-hidden="true"></span>` : "");
+      }
+
+      async function typeMessage(message, localCycleId) {
+        const plain = message.before + message.key + message.after;
+        const keyStart = message.before.length;
+        const keyEnd = keyStart + message.key.length;
+
+        for (let i = 0; i <= plain.length; i++) {
+          if (!visible || localCycleId !== cycleId) return false;
+          const typed = plain.slice(0, i);
+          setLine(
+            typed.slice(0, Math.min(i, keyStart)),
+            typed.slice(keyStart, Math.min(i, keyEnd)),
+            typed.slice(keyEnd),
+            true
+          );
+          await wait(38 + Math.random() * 24);
+        }
+
+        stage.classList.add("manifesto-pulse");
+        glow.classList.add("manifesto-glow-active");
+        await wait(420);
+        stage.classList.remove("manifesto-pulse");
+        glow.classList.remove("manifesto-glow-active");
+
+        await wait(1350);
+
+        for (let i = plain.length; i >= 0; i--) {
+          if (!visible || localCycleId !== cycleId) return false;
+          const typed = plain.slice(0, i);
+          setLine(
+            typed.slice(0, Math.min(i, keyStart)),
+            typed.slice(keyStart, Math.min(i, keyEnd)),
+            typed.slice(keyEnd),
+            true
+          );
+          await wait(18);
+        }
+
+        await wait(220);
+        return true;
+      }
+
+      async function showFinal(localCycleId) {
+        if (!visible || localCycleId !== cycleId) return;
+        setLine(finalMessage.before, finalMessage.key, finalMessage.after, false);
+        stage.classList.add("manifesto-final-complete");
+        sign.classList.add("manifesto-sign-visible");
+        glow.classList.add("manifesto-glow-final");
+        running = false;
+      }
+
+      async function runManifesto() {
+        if (running) return;
+        running = true;
+        const localCycleId = ++cycleId;
+
+        sign.classList.remove("manifesto-sign-visible");
+        stage.classList.remove("manifesto-final-complete");
+        glow.classList.remove("manifesto-glow-final");
+
+        for (const message of messages) {
+          const completed = await typeMessage(message, localCycleId);
+          if (!completed) {
+            running = false;
+            return;
+          }
+        }
+        await showFinal(localCycleId);
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          visible = entry.isIntersecting;
+          if (visible) {
+            runManifesto();
+          } else {
+            cycleId++;
+            running = false;
+            line.innerHTML = "";
+            sign.classList.remove("manifesto-sign-visible");
+            stage.classList.remove("manifesto-final-complete", "manifesto-pulse");
+            glow.classList.remove("manifesto-glow-active", "manifesto-glow-final");
+          }
+        });
+      }, { threshold: 0.48 });
+
+      observer.observe(section);
+    })();
+
+  </script>
+</body>
+</html>
