@@ -81,7 +81,7 @@
       position:absolute;
       font-family:"Space Mono",monospace;
       font-size:12px;
-      color:rgba(18,57,37,.08);
+      color:rgba(18,57,37,.065);
       white-space:nowrap;
       transform:translateY(var(--move,0));
       transition:transform .1s linear;
@@ -178,8 +178,22 @@
     .tokenomics-wrap{display:grid;grid-template-columns:minmax(340px,1fr) minmax(300px,.86fr);gap:54px;align-items:center}
     .chart-area{position:relative;display:grid;place-items:center;min-height:540px}
     #tokenChart{width:min(100%,540px);height:auto;overflow:visible}
-    .slice{cursor:pointer;transform-origin:250px 250px;transition:transform .24s ease,filter .24s ease;stroke:#eef6eb;stroke-width:2}
-    .slice:hover,.slice.active{transform:scale(1.045);filter:drop-shadow(0 14px 14px rgba(18,57,37,.16))}
+    .slice{
+      cursor:pointer;
+      transform-origin:250px 250px;
+      transition:filter .24s ease,stroke .24s ease,stroke-width .24s ease,opacity .24s ease;
+      stroke:#eef6eb;
+      stroke-width:2;
+      outline:none;
+      paint-order:stroke fill;
+    }
+    .slice:hover,.slice.active{
+      stroke:rgba(255,255,255,.96);
+      stroke-width:6;
+      filter:saturate(1.35) brightness(1.07) drop-shadow(0 0 8px rgba(61,132,79,.45)) drop-shadow(0 0 18px rgba(61,132,79,.18));
+    }
+    .slice:focus{outline:none}
+    #tokenChart:hover .slice:not(:hover):not(.active){opacity:.82}
     .chart-center{position:absolute;text-align:center;pointer-events:none}
     .chart-center strong{display:block;font-size:42px;letter-spacing:-.055em}
     .chart-center span{font:400 11px "Space Mono",monospace;letter-spacing:.16em;color:var(--muted)}
@@ -210,11 +224,173 @@
     .security-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
     .security-item{padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.32)}
 
-    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    details{padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.34)}
-    summary{cursor:pointer;font-weight:600}
+    .faq-grid{
+      column-count:2;
+      column-gap:18px;
+    }
+    details{
+      width:100%;
+      display:inline-block;
+      break-inside:avoid;
+      margin:0 0 18px;
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.34);
+      transition:background .25s ease,border-color .25s ease,box-shadow .25s ease;
+      vertical-align:top;
+    }
+    details[open]{
+      background:rgba(255,255,255,.64);
+      border-color:rgba(47,107,67,.25);
+      box-shadow:0 18px 46px rgba(18,57,37,.08);
+    }
+    summary{
+      cursor:pointer;
+      font-weight:600;
+      list-style:none;
+      position:relative;
+      padding-right:34px;
+      line-height:1.5;
+    }
+    summary::-webkit-details-marker{display:none}
+    summary::after{
+      content:"+";
+      position:absolute;
+      right:0;
+      top:-2px;
+      width:26px;
+      height:26px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      font-family:"Space Mono",monospace;
+      font-weight:400;
+      transition:transform .25s ease,background .25s ease;
+    }
+    details[open] summary::after{
+      content:"−";
+      transform:rotate(180deg);
+      background:rgba(107,183,119,.14);
+    }
     details p,details ul{color:var(--muted);line-height:1.75}
     details ul{padding-left:18px}
+
+
+    .architecture{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 85% 15%,rgba(107,183,119,.16),transparent 28%),
+        rgba(8,35,21,.96);
+      color:#dff3e3;
+      box-shadow:0 34px 100px rgba(10,45,25,.18);
+    }
+    .architecture::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(180,232,191,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(180,232,191,.045) 1px,transparent 1px);
+      background-size:34px 34px;
+      pointer-events:none;
+    }
+    .architecture::after{
+      content:"";
+      position:absolute;
+      left:0;right:0;top:-30%;
+      height:28%;
+      background:linear-gradient(to bottom,transparent,rgba(119,218,139,.09),transparent);
+      animation:codeScan 6s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes codeScan{
+      from{transform:translateY(0)}
+      to{transform:translateY(620%)}
+    }
+    .architecture-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:.78fr 1.22fr;
+      gap:34px;
+      padding:46px;
+      align-items:center;
+    }
+    .architecture-copy h2{color:#f2fbf3;font-size:clamp(34px,4vw,54px)}
+    .architecture-copy p{color:rgba(223,243,227,.68);line-height:1.8}
+    .architecture-copy .eyebrow{color:rgba(190,231,199,.62)}
+    .architecture-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+    .architecture-chips span{
+      padding:8px 11px;
+      border:1px solid rgba(199,238,207,.16);
+      border-radius:999px;
+      color:rgba(226,245,230,.78);
+      font:400 10px "Space Mono",monospace;
+      letter-spacing:.08em;
+    }
+    .code-window{
+      position:relative;
+      min-height:390px;
+      border:1px solid rgba(200,239,208,.16);
+      border-radius:22px;
+      background:rgba(2,18,10,.55);
+      overflow:hidden;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .code-window-head{
+      height:48px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:0 18px;
+      border-bottom:1px solid rgba(200,239,208,.12);
+    }
+    .code-window-head i{width:9px;height:9px;border-radius:50%;background:rgba(164,218,175,.35)}
+    .code-window-head span{
+      margin-left:8px;
+      color:rgba(218,241,223,.45);
+      font:400 10px "Space Mono",monospace;
+      letter-spacing:.08em;
+    }
+    .code-track{
+      position:absolute;
+      left:0;right:0;top:48px;
+      padding:20px 22px 70px;
+      animation:codeFloat 13s ease-in-out infinite alternate;
+    }
+    @keyframes codeFloat{
+      from{transform:translateY(0)}
+      to{transform:translateY(-68px)}
+    }
+    .code-row{
+      display:grid;
+      grid-template-columns:28px 1fr;
+      gap:14px;
+      margin:0 0 10px;
+      font:400 11px/1.65 "Space Mono",monospace;
+      white-space:pre-wrap;
+    }
+    .line-no{color:rgba(209,239,215,.20);text-align:right}
+    .code-text{color:rgba(224,245,228,.74)}
+    .kw{color:#9fe1ac}.fn{color:#c9d8ff}.numc{color:#f0cfa6}.comment{color:rgba(184,221,192,.34)}
+    .node{
+      position:absolute;
+      border:1px solid rgba(174,229,186,.20);
+      transform:rotate(45deg);
+      animation:nodePulse 4s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .node.n1{width:22px;height:22px;right:6%;top:18%}
+    .node.n2{width:13px;height:13px;left:4%;bottom:12%;animation-delay:1.3s}
+    @keyframes nodePulse{
+      0%,100%{opacity:.25;transform:rotate(45deg) scale(.9)}
+      50%{opacity:.75;transform:rotate(45deg) scale(1.15)}
+    }
 
     .contact-box{
       display:flex;align-items:center;justify-content:space-between;gap:24px;
@@ -235,16 +411,20 @@
       .hero-visual{min-height:460px}
       .grid-3,.roadmap{grid-template-columns:1fr 1fr}
       .tokenomics-wrap{grid-template-columns:1fr}
+      .architecture-inner{grid-template-columns:1fr}
     }
     @media(max-width:700px){
       section{padding:76px 0}
       .hero{padding-top:84px}
-      .grid-3,.roadmap,.security-list,.faq-grid,.legend{grid-template-columns:1fr}
+      .grid-3,.roadmap,.security-list,.legend{grid-template-columns:1fr}
+      .faq-grid{column-count:1}
       .contact-box,footer{flex-direction:column;align-items:flex-start}
       .hero-visual::before{width:330px;height:330px}
       .hero-visual::after{width:260px;height:260px}
       .hero-card{padding:20px}
       .chart-area{min-height:410px}
+      .architecture-inner{padding:28px 20px}
+      .code-window{min-height:340px}
     }
   </style>
 </head>
@@ -271,6 +451,7 @@
       <nav>
         <a href="#vision">Vision</a>
         <a href="#why">Why OvaSHA</a>
+        <a href="#architecture">Architecture</a>
         <a href="#tokenomics">Tokenomics</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#security">Security</a>
@@ -322,6 +503,52 @@
         <article class="card"><div class="num">01 / SECURITY</div><h3>Security first</h3><p>Built around controlled governance, transparent operations and long-term protocol resilience.</p></article>
         <article class="card"><div class="num">02 / ECONOMY</div><h3>Sustainable design</h3><p>Balanced tokenomics designed to support ecosystem development without relying on unlimited inflation.</p></article>
         <article class="card"><div class="num">03 / COMMUNITY</div><h3>Community centered</h3><p>Growth through consistency, accountability, clear communication and long-term participation.</p></article>
+      </div>
+    </section>
+
+
+    <section class="shell reveal" id="architecture">
+      <div class="architecture">
+        <div class="node n1"></div>
+        <div class="node n2"></div>
+        <div class="architecture-inner">
+          <div class="architecture-copy">
+            <div class="eyebrow">Protocol Architecture</div>
+            <h2>Designed with visible rules.</h2>
+            <p>
+              OvaSHA is being structured around fixed supply, delayed critical actions,
+              protected liquidity and transparent reserve accounting. The final verified
+              source and test results will be published through official channels.
+            </p>
+            <div class="architecture-chips">
+              <span>FIXED_SUPPLY</span>
+              <span>48H_TIMELOCK</span>
+              <span>MULTISIG_READY</span>
+              <span>LP_LOCK</span>
+              <span>NO_UNLIMITED_MINT</span>
+            </div>
+          </div>
+          <div class="code-window" aria-label="Animated protocol code preview">
+            <div class="code-window-head">
+              <i></i><i></i><i></i>
+              <span>OvaSHA_Sustainable_Protocol.sol</span>
+            </div>
+            <div class="code-track">
+              <div class="code-row"><span class="line-no">01</span><span class="code-text"><span class="kw">contract</span> OvaSHA <span class="kw">is</span> IERC20, SecureOwnable, Pausable {</span></div>
+              <div class="code-row"><span class="line-no">02</span><span class="code-text">  <span class="kw">uint256 public constant</span> TOTAL_SUPPLY = <span class="numc">45_000_000 ether</span>;</span></div>
+              <div class="code-row"><span class="line-no">03</span><span class="code-text">  <span class="kw">uint256 public constant</span> TIMELOCK_DELAY = <span class="numc">48 hours</span>;</span></div>
+              <div class="code-row"><span class="line-no">04</span><span class="code-text">  <span class="kw">uint256 public constant</span> DEX_LIQUIDITY = <span class="numc">47%</span>;</span></div>
+              <div class="code-row"><span class="line-no">05</span><span class="code-text">  <span class="kw">uint256 public constant</span> CEX_RESERVE = <span class="numc">25%</span>;</span></div>
+              <div class="code-row"><span class="line-no">06</span><span class="code-text">  <span class="comment">// critical actions require delayed execution</span></span></div>
+              <div class="code-row"><span class="line-no">07</span><span class="code-text">  <span class="kw">function</span> <span class="fn">executeAction</span>(uint256 id) external onlyOwner {</span></div>
+              <div class="code-row"><span class="line-no">08</span><span class="code-text">    <span class="kw">require</span>(block.timestamp &gt;= proposal[id].executionTime);</span></div>
+              <div class="code-row"><span class="line-no">09</span><span class="code-text">    _validateReserveInvariant();</span></div>
+              <div class="code-row"><span class="line-no">10</span><span class="code-text">  }</span></div>
+              <div class="code-row"><span class="line-no">11</span><span class="code-text">  <span class="comment">// trust is not a promise; it is a verifiable process</span></span></div>
+              <div class="code-row"><span class="line-no">12</span><span class="code-text">}</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -488,6 +715,17 @@
       });
     },{threshold:.14});
     document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+
+    const faqItems=document.querySelectorAll("#faq details");
+    faqItems.forEach(item=>{
+      item.addEventListener("toggle",()=>{
+        if(!item.open) return;
+        faqItems.forEach(other=>{
+          if(other!==item) other.removeAttribute("open");
+        });
+      });
+    });
 
     const codeLines=document.querySelectorAll(".code-line");
     window.addEventListener("scroll",()=>{

@@ -1,6 +1,6 @@
-# OvaSHA Website
+# OvaSHA Website V1.1
 
-Corporate temporary website with interactive tokenomics, animations and FAQ.
+Professional temporary website featuring interactive tokenomics, independent FAQ accordions, animated protocol architecture code, geometric motion and official links.
 
 - Website: https://ovasha.com
 - X: https://x.com/OvaSHA_Protocol
