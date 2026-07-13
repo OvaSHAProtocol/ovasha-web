@@ -291,9 +291,345 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
       .theme-toggle,.theme-toggle-thumb{transition:none}
     }
 
+
+    /* ===== Light mode refinement ===== */
+    html:not([data-theme="dark"]) .ovasha-coin {
+      opacity:calc(var(--opacity) + .045);
+      border-color:rgba(54,126,78,.36);
+      background:
+        radial-gradient(circle at 32% 25%,rgba(255,255,255,.62),rgba(171,218,180,.14) 48%,transparent 76%);
+      box-shadow:
+        inset 0 0 24px rgba(255,255,255,.22),
+        0 0 17px rgba(74,151,92,.24);
+      filter:saturate(1.12) contrast(1.02);
+    }
+
+    html:not([data-theme="dark"]) .ovasha-coin::before {
+      filter:
+        saturate(1.2)
+        contrast(1.06)
+        drop-shadow(0 0 8px rgba(74,151,92,.28));
+    }
+
+    .ambient-shape {
+      position:absolute;
+      pointer-events:none;
+      z-index:0;
+      opacity:.34;
+    }
+
+    .ambient-shape.ring {
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      border:1px solid rgba(61,130,81,.13);
+      box-shadow:0 0 40px rgba(101,177,115,.06);
+    }
+
+    .ambient-shape.diamond {
+      width:72px;
+      height:72px;
+      border:1px solid rgba(61,130,81,.12);
+      transform:rotate(45deg);
+    }
+
+    .ambient-shape.line {
+      width:180px;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(61,130,81,.18),transparent);
+    }
+
+    html[data-theme="dark"] .ambient-shape {
+      opacity:.20;
+      filter:brightness(1.15);
+    }
+
+    /* ===== Burn simulation ===== */
+    .burn-sim-section {
+      position:relative;
+      z-index:1;
+    }
+
+    .burn-sim-shell {
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:
+        radial-gradient(circle at 82% 15%,rgba(102,190,119,.15),transparent 30%),
+        linear-gradient(145deg,rgba(255,255,255,.70),rgba(231,244,230,.62));
+      box-shadow:0 26px 80px rgba(20,63,36,.10);
+      min-height:420px;
+    }
+
+    html[data-theme="dark"] .burn-sim-shell {
+      background:
+        radial-gradient(circle at 82% 15%,rgba(114,210,130,.12),transparent 30%),
+        linear-gradient(145deg,rgba(8,24,17,.95),rgba(13,36,25,.92));
+      box-shadow:0 28px 90px rgba(0,0,0,.28);
+    }
+
+    .burn-sim-head {
+      position:relative;
+      z-index:3;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:24px;
+      padding:28px 30px 18px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .burn-sim-head .eyebrow {
+      margin-bottom:8px;
+    }
+
+    .burn-sim-title {
+      margin:0;
+      font-size:clamp(28px,4vw,44px);
+      letter-spacing:-.045em;
+    }
+
+    .burn-sim-subtitle {
+      max-width:580px;
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:13px;
+    }
+
+    .burn-supply-card {
+      flex:none;
+      min-width:150px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.45);
+      text-align:right;
+      backdrop-filter:blur(12px);
+    }
+
+    html[data-theme="dark"] .burn-supply-card {
+      background:rgba(255,255,255,.04);
+    }
+
+    .burn-supply-card span {
+      display:block;
+      color:var(--muted);
+      font:400 9px "Space Mono",monospace;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .burn-supply-card strong {
+      display:block;
+      margin-top:4px;
+      font-size:32px;
+      letter-spacing:-.05em;
+    }
+
+    .burn-field {
+      position:relative;
+      height:290px;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .burn-field::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(33,90,53,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(33,90,53,.035) 1px,transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent);
+      pointer-events:none;
+    }
+
+    .burn-zone {
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:108px;
+      height:108px;
+      border-radius:50%;
+      transform:translate(-50%,-50%);
+      border:1px solid rgba(197,119,50,.24);
+      background:
+        radial-gradient(circle,rgba(244,166,76,.16),rgba(183,80,31,.07) 48%,transparent 72%);
+      box-shadow:
+        0 0 34px rgba(221,126,46,.16),
+        inset 0 0 28px rgba(237,151,67,.08);
+      pointer-events:none;
+      animation:burnZonePulse 2.6s ease-in-out infinite;
+    }
+
+    .burn-zone::before {
+      content:"BURN";
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      color:rgba(159,79,31,.70);
+      font:700 11px "Space Mono",monospace;
+      letter-spacing:.16em;
+    }
+
+    html[data-theme="dark"] .burn-zone::before {
+      color:rgba(245,175,103,.78);
+    }
+
+    @keyframes burnZonePulse {
+      0%,100%{transform:translate(-50%,-50%) scale(.96);opacity:.72}
+      50%{transform:translate(-50%,-50%) scale(1.04);opacity:1}
+    }
+
+    .burn-coin {
+      position:absolute;
+      width:var(--coin-size);
+      height:var(--coin-size);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      cursor:crosshair;
+      border:1px solid rgba(67,140,86,.35);
+      background:
+        radial-gradient(circle at 34% 26%,rgba(255,255,255,.66),rgba(137,199,149,.14) 48%,rgba(79,142,93,.08) 72%);
+      box-shadow:
+        inset 0 0 20px rgba(255,255,255,.24),
+        0 0 18px rgba(74,151,92,.24);
+      animation:
+        burnCoinDrift var(--drift-time) ease-in-out infinite alternate,
+        burnCoinSpin var(--spin-time) linear infinite;
+      transition:
+        filter .22s ease,
+        box-shadow .22s ease,
+        transform .22s ease,
+        opacity .35s ease;
+      z-index:2;
+      user-select:none;
+    }
+
+    .burn-coin::before {
+      content:"";
+      width:64%;
+      height:64%;
+      background:url('/assets/ovasha-burn-coin-v1.png') center/contain no-repeat;
+      filter:drop-shadow(0 0 7px rgba(67,140,86,.24));
+      pointer-events:none;
+    }
+
+    .burn-coin:hover {
+      filter:saturate(1.25) brightness(1.08);
+      box-shadow:
+        inset 0 0 22px rgba(255,255,255,.32),
+        0 0 25px rgba(88,178,107,.38);
+      transform:scale(1.08);
+    }
+
+    .burn-coin.burning {
+      animation:none;
+      pointer-events:none;
+      filter:
+        saturate(1.45)
+        brightness(1.22)
+        drop-shadow(0 0 16px rgba(243,132,47,.65));
+      box-shadow:
+        0 0 30px rgba(245,139,54,.55),
+        inset 0 0 20px rgba(255,201,118,.36);
+      opacity:0;
+      transform:scale(.20) rotate(150deg);
+    }
+
+    .burn-spark {
+      position:absolute;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#f0a254;
+      box-shadow:0 0 10px rgba(242,139,56,.72);
+      pointer-events:none;
+      z-index:4;
+      animation:burnSpark .65s ease-out forwards;
+    }
+
+    @keyframes burnSpark {
+      from{opacity:1;transform:translate(0,0) scale(1)}
+      to{opacity:0;transform:translate(var(--sx),var(--sy)) scale(.2)}
+    }
+
+    @keyframes burnCoinDrift {
+      from{translate:-8px -6px}
+      to{translate:10px 8px}
+    }
+
+    @keyframes burnCoinSpin {
+      from{rotate:0deg}
+      to{rotate:360deg}
+    }
+
+    .burn-sim-foot {
+      position:relative;
+      z-index:3;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 30px 20px;
+      color:var(--muted);
+      font-size:11px;
+    }
+
+    .burn-reset {
+      min-height:36px;
+      padding:0 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.42);
+      color:var(--ink);
+      font:600 11px "Sora",sans-serif;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+    html[data-theme="dark"] .burn-reset {
+      background:rgba(255,255,255,.045);
+    }
+
+    .burn-reset:hover {
+      transform:translateY(-2px);
+      border-color:rgba(72,146,90,.35);
+    }
+
+    @media(max-width:700px) {
+      .burn-sim-head {
+        flex-direction:column;
+        padding:24px 20px 16px;
+      }
+      .burn-supply-card {
+        min-width:130px;
+        text-align:left;
+      }
+      .burn-field {
+        height:330px;
+      }
+      .burn-sim-foot {
+        padding:14px 20px 20px;
+        align-items:flex-start;
+        flex-direction:column;
+      }
+    }
+
 </style>
 </head>
 <body>
+
+  <div class="ambient-shape ring" aria-hidden="true" style="left:6%;top:145vh;"></div>
+  <div class="ambient-shape diamond" aria-hidden="true" style="right:8%;top:225vh;"></div>
+  <div class="ambient-shape line" aria-hidden="true" style="left:14%;top:310vh;"></div>
+  <div class="ambient-shape ring" aria-hidden="true" style="right:5%;top:410vh;width:110px;height:110px;"></div>
+
 
   <div class="ovasha-coins" aria-hidden="true">
     <span class="ovasha-coin" style="left:3%;top:10%;--size:88px;--opacity:.10;--rot:-12deg;--dur:8s"></span>
@@ -334,6 +670,35 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
 <section class="shell reveal" id="portals"><div class="section-head"><div class="eyebrow">Launch Portals</div><h2>Prepared now. Activated after verification.</h2></div><div class="portal-grid"><article class="portal"><div class="devbadge">⌛ PRESALE — DEVELOPMENT</div><h3>PinkSale Portal</h3><p>This panel is reserved for the verified PinkSale pool. The official embed or launch link will only be added after contract testing, mainnet verification and final sale configuration.</p><div class="embedzone">PINKSALE EMBED PLACEHOLDER<br>Official pool address will appear here.</div></article><article class="portal"><div class="devbadge">⌛ STAKING — DEVELOPMENT</div><h3>OVA Staking</h3><p>The staking interface will open as a dedicated application panel after smart-contract testing and final deployment verification.</p><div class="embedzone">STAKING APPLICATION PLACEHOLDER<br>Wallet connection remains disabled.</div></article></div></section>
 <section class="shell reveal" id="faq"><div class="section-head"><div class="eyebrow">FAQ</div><h2>Clear answers before launch.</h2></div><div class="faq"><details><summary>What is OvaSHA?</summary><p>OvaSHA is a fixed-supply blockchain protocol focused on security, transparent execution, community and long-term value.</p></details><details><summary>Which network is planned?</summary><p>The initial deployment is planned for BNB Smart Chain, subject to final testnet validation and mainnet verification.</p></details><details><summary>What is the total supply?</summary><p>45,000,000 OVA.</p></details><details><summary>Can additional OVA be minted?</summary><p>The current protocol design does not include an unlimited minting mechanism.</p></details><details><summary>How is the supply allocated?</summary><ul><li>DEX — 47%</li><li>CEX strategic reserve — 25%</li><li>Mining rewards — 6%</li><li>Presale — 5%</li><li>Emergency reserve — 5%</li><li>Marketing — 3%</li><li>Scheduled burns — 5%</li><li>Founder — 2%</li><li>Airdrop — 2%</li></ul></details><details><summary>When is the presale?</summary><p>No date has been announced. The verified PinkSale pool will appear only through official channels.</p></details><details><summary>Is OvaSHA audited?</summary><p>Audit publication is part of phase two. No completed-audit claim is made until a final report is publicly available.</p></details><details><summary>Will liquidity be locked?</summary><p>The planned architecture includes liquidity locking. Final on-chain proof will be published at launch.</p></details><details><summary>Where will the whitepaper be published?</summary><p>On ovasha.com and the official GitHub organization. The current status is “publishing soon.”</p></details><details><summary>Where are official announcements?</summary><p>ovasha.com, @OvaSHA_Protocol on X and t.me/OvaSHAAnnouncements.</p></details></div></section>
 <section class="shell reveal"><div class="contact"><div><div class="eyebrow">Contact</div><h2 style="font-size:40px;margin:8px 0">Follow the verified journey.</h2><p style="color:var(--muted)">Official documents and launch addresses will be published only through verified OvaSHA channels.</p></div><div class="actions"><a class="btn primary" href="mailto:contact@ovasha.com">Email</a><a class="btn secondary" href="https://t.me/OvaSHAAnnouncements" target="_blank">Telegram</a></div></div></section>
+
+    <section class="shell reveal burn-sim-section" id="burn-simulation">
+      <div class="burn-sim-shell">
+        <div class="burn-sim-head">
+          <div>
+            <div class="eyebrow">Interactive Supply Demo</div>
+            <h2 class="burn-sim-title">Burn Simulation</h2>
+            <p class="burn-sim-subtitle">
+              Hover over the floating OVA coins to simulate a token burn.
+              This is a visual demonstration only and does not execute an on-chain transaction.
+            </p>
+          </div>
+          <div class="burn-supply-card">
+            <span>Demo supply</span>
+            <strong id="burnSupply">10</strong>
+          </div>
+        </div>
+
+        <div class="burn-field" id="burnField">
+          <div class="burn-zone"></div>
+        </div>
+
+        <div class="burn-sim-foot">
+          <span>Move your pointer across a coin to burn it.</span>
+          <button class="burn-reset" id="burnReset" type="button">Reset simulation</button>
+        </div>
+      </div>
+    </section>
+
 </main>
 <footer class="shell"><div>© 2026 OvaSHA. All rights reserved.</div><div class="socials"><a href="https://x.com/OvaSHA_Protocol" target="_blank">X</a><a href="https://t.me/OvaSHAAnnouncements" target="_blank">Telegram</a><a href="https://github.com/OvaSHAProtocol" target="_blank">GitHub</a><a href="mailto:contact@ovasha.com">Email</a></div></footer>
 <script>
@@ -388,6 +753,82 @@ document.querySelectorAll('.faq details').forEach(d=>d.ontoggle=()=>{if(d.open)d
       }
       window.addEventListener("scroll",updateFloatingCoins,{passive:true});
       updateFloatingCoins();
+    })();
+</script>
+<script>
+    (() => {
+      const field=document.getElementById("burnField");
+      const counter=document.getElementById("burnSupply");
+      const reset=document.getElementById("burnReset");
+      if(!field || !counter || !reset) return;
+
+      const layouts=[
+        {x:8,y:16,s:58,d:7.4,r:11},
+        {x:24,y:58,s:72,d:9.3,r:14},
+        {x:40,y:20,s:54,d:8.1,r:9},
+        {x:58,y:62,s:80,d:10.2,r:16},
+        {x:75,y:16,s:64,d:7.8,r:12},
+        {x:84,y:55,s:54,d:9.8,r:10},
+        {x:13,y:72,s:48,d:8.7,r:15},
+        {x:34,y:76,s:60,d:10.6,r:13},
+        {x:68,y:77,s:50,d:9.1,r:11},
+        {x:49,y:43,s:68,d:11.2,r:17}
+      ];
+
+      let supply=10;
+
+      function createSparks(x,y){
+        for(let i=0;i<8;i++){
+          const spark=document.createElement("span");
+          spark.className="burn-spark";
+          spark.style.left=`${x}px`;
+          spark.style.top=`${y}px`;
+          const angle=(Math.PI*2*i)/8;
+          const distance=22+Math.random()*24;
+          spark.style.setProperty("--sx",`${Math.cos(angle)*distance}px`);
+          spark.style.setProperty("--sy",`${Math.sin(angle)*distance}px`);
+          field.appendChild(spark);
+          setTimeout(()=>spark.remove(),700);
+        }
+      }
+
+      function burnCoin(coin){
+        if(coin.classList.contains("burning")) return;
+        coin.classList.add("burning");
+        const cr=coin.getBoundingClientRect();
+        const fr=field.getBoundingClientRect();
+        createSparks(
+          cr.left-fr.left+cr.width/2,
+          cr.top-fr.top+cr.height/2
+        );
+        supply=Math.max(0,supply-1);
+        counter.textContent=String(supply);
+        setTimeout(()=>coin.remove(),380);
+      }
+
+      function populate(){
+        field.querySelectorAll(".burn-coin,.burn-spark").forEach(el=>el.remove());
+        supply=10;
+        counter.textContent="10";
+
+        layouts.forEach((item,index)=>{
+          const coin=document.createElement("button");
+          coin.type="button";
+          coin.className="burn-coin";
+          coin.setAttribute("aria-label",`Burn demo coin ${index+1}`);
+          coin.style.left=`${item.x}%`;
+          coin.style.top=`${item.y}%`;
+          coin.style.setProperty("--coin-size",`${item.s}px`);
+          coin.style.setProperty("--drift-time",`${item.d}s`);
+          coin.style.setProperty("--spin-time",`${item.r}s`);
+          coin.addEventListener("pointerenter",()=>burnCoin(coin),{once:true});
+          coin.addEventListener("focus",()=>burnCoin(coin),{once:true});
+          field.appendChild(coin);
+        });
+      }
+
+      reset.addEventListener("click",populate);
+      populate();
     })();
 </script>
 </body></html>

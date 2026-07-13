@@ -1,10 +1,11 @@
-# OvaSHA Website — Dark Mode & Floating Coins V2
+# OvaSHA Website — Floating Coins & Burn Simulation
 
 Bu sürümde:
-- açık tema görsel olarak değiştirilmedi
-- yalnızca floating coin arka planı eklendi
-- sağ üstte görünür light/dark mode anahtarı eklendi
-- tema tercihi localStorage ile saklanır
-- koyu temada Our Vision ve Flow kutuları koyu tonlara geçirildi
-- beyaz kutu / açık yazı çakışmaları düzeltildi
-- mevcut site içerikleri ve yerleşimi korunmuştur
+- açık temadaki floating coinler daha belirgin hale getirildi
+- boş alanlara hafif geometrik dekorlar eklendi
+- etkileşimli Burn Simulation bölümü eklendi
+- demo arz 10'dan başlar
+- fareyle coin üzerine gelince coin görsel olarak yakılır
+- reset butonu eklenmiştir
+- hiçbir gerçek blockchain/token işlemi yapılmaz
+- koyu tema ve mevcut site düzeni korunmuştur
