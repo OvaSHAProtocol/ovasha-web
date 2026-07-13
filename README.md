@@ -1,12 +1,11 @@
-# OvaSHA Website — Final Burn Target & Dark Readability Fix
+# OvaSHA — Exact Dark Box Fix
 
-Düzeltmeler:
-- Burn oyunu 15 coin / 9 hedef olarak güncellendi.
-- Sağ üstte kırmızı Burn Target göstergesi: 0/9 → 9/9.
-- Her yakımda hedef sayacı artar.
-- Coins Remaining 15'ten azalır.
-- 9. yakımda Burn Complete ve Replay Challenge görünür.
-- Koyu mod Contact kutusu okunaklı koyu tona geçirildi.
-- Koyu mod Tokenomics detay kutusu ve legend butonları düzeltildi.
-- Koyu mod Protocol Flow içindeki 6 kutu koyu ve okunaklı hale getirildi.
-- Diğer site alanlarına dokunulmadı.
+Bu sürüm son yüklenen çalışan ZIP temel alınarak hazırlandı.
+
+Yalnızca gerçek sınıflar düzeltildi:
+- Tokenomics hover bilgi paneli: .detail / #detail
+- Tokenomics seçim butonları: .legend button
+- Protocol Flow kartları: .flow#flow .node
+
+Yanma simülasyonu ve diğer site alanları değiştirilmedi.
+JavaScript sözdizimi doğrulandı.
