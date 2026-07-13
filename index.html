@@ -1,56 +1,303 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="OvaSHA is a sustainable blockchain protocol focused on trust, transparency and long-term value.">
-<meta name="theme-color" content="#e7f2e3">
-<title>OvaSHA Protocol — Coming Soon</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#e7f2e3;--bg2:#d8e9d2;--ink:#173d2b;--muted:#5a7466;--line:rgba(23,61,43,.16);--card:rgba(255,255,255,.42)}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--ink);font-family:Sora,system-ui,sans-serif;background:radial-gradient(circle at 85% 12%,rgba(95,175,99,.18),transparent 30%),radial-gradient(circle at 10% 90%,rgba(95,175,99,.13),transparent 28%),linear-gradient(145deg,var(--bg),var(--bg2))}
-.shell{width:min(1120px,calc(100% - 40px));margin:auto}header{display:flex;align-items:center;justify-content:space-between;padding:28px 0;border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}.mark{width:38px;height:38px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px}.brand strong{display:block}.brand small{display:block;letter-spacing:.3em;font-size:8px;margin-top:3px}
-nav{display:flex;gap:24px}nav a,.socials a{color:var(--muted);text-decoration:none;font-size:13px}main{padding:96px 0 64px}.badge{width:max-content;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:rgba(255,255,255,.28)}
-h1{max-width:900px;margin:28px 0 24px;font-size:clamp(48px,8vw,104px);line-height:.96;letter-spacing:-.065em;font-weight:600}.lead{max-width:680px;font-size:clamp(17px,2.2vw,22px);line-height:1.7;color:var(--muted)}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}.btn{min-height:48px;display:inline-flex;align-items:center;padding:0 20px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:600;border:1px solid var(--ink)}.primary{color:#fff;background:var(--ink)}.secondary{color:var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:100px}.card{min-height:188px;padding:26px;border:1px solid var(--line);border-radius:22px;background:var(--card)}.card .n{font-size:11px;letter-spacing:.18em;color:var(--muted)}.card h2{font-size:20px;margin:36px 0 10px}.card p{margin:0;color:var(--muted);line-height:1.65;font-size:13px}
-footer{display:flex;justify-content:space-between;gap:24px;padding:26px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.socials{display:flex;gap:18px}
-@media(max-width:760px){nav{display:none}main{padding-top:68px}.grid{grid-template-columns:1fr;margin-top:70px}footer{flex-direction:column}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="OvaSHA is a sustainable blockchain protocol focused on trust, transparency, security and long-term value.">
+  <meta name="theme-color" content="#e7f2e3">
+  <meta property="og:title" content="OvaSHA Protocol">
+  <meta property="og:description" content="Building sustainable blockchain infrastructure.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ovasha.com">
+  <title>OvaSHA Protocol — Building for the Long Term</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#e8f3e4;
+      --bg2:#d8e9d2;
+      --ink:#173d2b;
+      --muted:#5d7467;
+      --line:rgba(23,61,43,.15);
+      --card:rgba(255,255,255,.45);
+      --accent:#5faf63;
+      --white:#f9fcf7;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:"Sora",system-ui,sans-serif;
+      background:
+        radial-gradient(circle at 88% 5%,rgba(95,175,99,.18),transparent 28%),
+        radial-gradient(circle at 8% 88%,rgba(95,175,99,.12),transparent 24%),
+        linear-gradient(145deg,var(--bg),var(--bg2));
+    }
+    .shell{width:min(1160px,calc(100% - 40px));margin:auto}
+    header{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(16px);
+      background:rgba(232,243,228,.8);
+      border-bottom:1px solid var(--line)
+    }
+    .nav{
+      min-height:74px;display:flex;align-items:center;justify-content:space-between
+    }
+    .brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+    .mark{
+      width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;
+      display:grid;place-items:center;font-weight:700;font-size:12px
+    }
+    .brand strong{display:block;font-size:17px}
+    .brand small{display:block;font-size:8px;letter-spacing:.32em;margin-top:3px}
+    nav{display:flex;gap:24px}
+    nav a{color:var(--muted);text-decoration:none;font-size:13px}
+    nav a:hover{color:var(--ink)}
+    section{padding:96px 0}
+    .hero{padding-top:120px}
+    .badge{
+      width:max-content;border:1px solid var(--line);border-radius:999px;
+      padding:9px 13px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+      background:rgba(255,255,255,.3)
+    }
+    h1{
+      max-width:920px;margin:28px 0 24px;
+      font-size:clamp(52px,8vw,106px);line-height:.95;letter-spacing:-.065em;font-weight:600
+    }
+    .lead{max-width:720px;color:var(--muted);font-size:clamp(17px,2vw,22px);line-height:1.7}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+    .btn{
+      min-height:48px;display:inline-flex;align-items:center;justify-content:center;
+      padding:0 20px;border-radius:999px;border:1px solid var(--ink);
+      text-decoration:none;font-size:13px;font-weight:600
+    }
+    .primary{background:var(--ink);color:var(--white)}
+    .secondary{color:var(--ink)}
+    .btn:hover{transform:translateY(-2px)}
+    .section-head{max-width:760px;margin-bottom:38px}
+    .eyebrow{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
+    h2{font-size:clamp(34px,5vw,60px);line-height:1.05;letter-spacing:-.05em;margin:14px 0}
+    .section-head p{color:var(--muted);line-height:1.75}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .card{
+      padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--card);
+      backdrop-filter:blur(10px)
+    }
+    .card .num{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+    .card h3{font-size:21px;margin:34px 0 10px;letter-spacing:-.03em}
+    .card p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}
+    .roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .phase{position:relative;padding:26px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.36)}
+    .phase span{font-size:11px;letter-spacing:.15em;color:var(--muted)}
+    .phase h3{margin:18px 0 14px}
+    .phase ul{padding-left:18px;margin:0;color:var(--muted);line-height:1.8;font-size:13px}
+    .security-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .security-item{padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.32)}
+    details{border-bottom:1px solid var(--line);padding:20px 0}
+    summary{cursor:pointer;font-weight:600}
+    details p{color:var(--muted);line-height:1.7}
+    .contact-box{
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+      padding:34px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.42)
+    }
+    footer{
+      padding:30px 0 38px;border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;gap:24px;color:var(--muted);font-size:12px
+    }
+    .socials{display:flex;gap:18px;flex-wrap:wrap}
+    .socials a{color:var(--muted);text-decoration:none}
+    @media(max-width:900px){
+      nav{display:none}.grid-3,.roadmap{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:680px){
+      section{padding:72px 0}.hero{padding-top:84px}
+      .grid-3,.grid-2,.roadmap,.security-list{grid-template-columns:1fr}
+      .contact-box,footer{flex-direction:column;align-items:flex-start}
+    }
+  </style>
 </head>
 <body>
-<div class="shell">
 <header>
-<a class="brand" href="/">
-<span class="mark">OVA</span>
-<span><strong>OvaSHA</strong><small>PROTOCOL</small></span>
-</a>
-<nav><a href="#vision">Vision</a><a href="#principles">Principles</a><a href="mailto:contact@ovasha.com">Contact</a></nav>
+  <div class="shell nav">
+    <a class="brand" href="#home">
+      <span class="mark">OVA</span>
+      <span><strong>OvaSHA</strong><small>PROTOCOL</small></span>
+    </a>
+    <nav>
+      <a href="#vision">Vision</a>
+      <a href="#why">Why OvaSHA</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#security">Security</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
+
 <main>
-<section id="vision">
-<div class="badge">Website under development</div>
-<h1>Trust, built to last.</h1>
-<p class="lead">OvaSHA is building a sustainable blockchain protocol centered on security, transparency, community and long-term value.</p>
-<div class="actions">
-<a class="btn primary" href="https://x.com/OvaSHA_Protocol" target="_blank" rel="noreferrer">Follow on X</a>
-<a class="btn secondary" href="mailto:contact@ovasha.com">contact@ovasha.com</a>
-</div>
-</section>
-<section class="grid" id="principles">
-<article class="card"><div class="n">01 / SECURITY</div><h2>Security first</h2><p>Built around controlled governance, transparent operations and long-term protocol resilience.</p></article>
-<article class="card"><div class="n">02 / COMMUNITY</div><h2>Community centered</h2><p>A protocol designed to grow through consistency, accountability and open communication.</p></article>
-<article class="card"><div class="n">03 / SUSTAINABILITY</div><h2>Designed for longevity</h2><p>Focused on sustainable growth rather than temporary hype or short-lived promises.</p></article>
-</section>
+  <section class="hero shell" id="home">
+    <div class="badge">Website under development</div>
+    <h1>Trust, built to last.</h1>
+    <p class="lead">
+      OvaSHA is building a sustainable blockchain protocol centered on security,
+      transparency, community and long-term value.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="https://x.com/OvaSHA_Protocol" target="_blank" rel="noreferrer">Follow on X</a>
+      <a class="btn secondary" href="#vision">Explore OvaSHA</a>
+    </div>
+  </section>
+
+  <section class="shell" id="vision">
+    <div class="section-head">
+      <div class="eyebrow">Our Vision</div>
+      <h2>Built for years, not moments.</h2>
+      <p>
+        Our goal is to build a trusted and sustainable blockchain ecosystem that
+        prioritizes transparency, security and long-term community value over short-term speculation.
+      </p>
+    </div>
+  </section>
+
+  <section class="shell" id="why">
+    <div class="section-head">
+      <div class="eyebrow">Why OvaSHA</div>
+      <h2>A protocol with a long-term mindset.</h2>
+    </div>
+    <div class="grid-3">
+      <article class="card">
+        <div class="num">01 / SECURITY</div>
+        <h3>Security first</h3>
+        <p>Built around controlled governance, transparent operations and long-term protocol resilience.</p>
+      </article>
+      <article class="card">
+        <div class="num">02 / ECONOMY</div>
+        <h3>Sustainable design</h3>
+        <p>Balanced tokenomics designed to support ecosystem development without relying on unlimited inflation.</p>
+      </article>
+      <article class="card">
+        <div class="num">03 / COMMUNITY</div>
+        <h3>Community centered</h3>
+        <p>Growth through consistency, accountability, clear communication and long-term participation.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="shell" id="roadmap">
+    <div class="section-head">
+      <div class="eyebrow">Roadmap</div>
+      <h2>Building step by step.</h2>
+      <p>Dates and milestones will be published transparently as development progresses.</p>
+    </div>
+    <div class="roadmap">
+      <article class="phase">
+        <span>PHASE 01</span>
+        <h3>Foundation</h3>
+        <ul>
+          <li>Brand identity</li>
+          <li>Website</li>
+          <li>Social channels</li>
+          <li>Technical preparation</li>
+        </ul>
+      </article>
+      <article class="phase">
+        <span>PHASE 02</span>
+        <h3>Community</h3>
+        <ul>
+          <li>Whitepaper</li>
+          <li>Audit preparation</li>
+          <li>Community growth</li>
+          <li>Presale preparation</li>
+        </ul>
+      </article>
+      <article class="phase">
+        <span>PHASE 03</span>
+        <h3>Launch</h3>
+        <ul>
+          <li>Presale</li>
+          <li>DEX launch</li>
+          <li>Liquidity lock</li>
+          <li>Staking access</li>
+        </ul>
+      </article>
+      <article class="phase">
+        <span>PHASE 04</span>
+        <h3>Expansion</h3>
+        <ul>
+          <li>CEX listings</li>
+          <li>Partnerships</li>
+          <li>Governance</li>
+          <li>Future chain research</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="shell" id="security">
+    <div class="section-head">
+      <div class="eyebrow">Security</div>
+      <h2>Trust requires structure.</h2>
+      <p>Security documentation, test results and audit information will be published before major launch milestones.</p>
+    </div>
+    <div class="security-list">
+      <div class="security-item">✓ Multisig governance preparation</div>
+      <div class="security-item">✓ Timelocked critical operations</div>
+      <div class="security-item">✓ Liquidity lock architecture</div>
+      <div class="security-item">✓ Transparent reserve accounting</div>
+      <div class="security-item">✓ Fixed supply design</div>
+      <div class="security-item">✓ Public source verification planned</div>
+    </div>
+  </section>
+
+  <section class="shell" id="faq">
+    <div class="section-head">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions, answered clearly.</h2>
+    </div>
+    <details>
+      <summary>What is OvaSHA?</summary>
+      <p>OvaSHA is a sustainable blockchain protocol focused on security, transparency, community and long-term value.</p>
+    </details>
+    <details>
+      <summary>Which network will OVA launch on?</summary>
+      <p>The initial deployment is planned for BNB Smart Chain, subject to final testing and deployment verification.</p>
+    </details>
+    <details>
+      <summary>When is the presale?</summary>
+      <p>The presale date has not been announced yet. Official information will only be shared through OvaSHA's verified channels.</p>
+    </details>
+    <details>
+      <summary>Is OvaSHA audited?</summary>
+      <p>Independent audit and public testing are planned before major launch milestones. No audit claim will be made before completion.</p>
+    </details>
+  </section>
+
+  <section class="shell" id="contact">
+    <div class="contact-box">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2 style="font-size:38px;margin-bottom:8px">Stay close to the journey.</h2>
+        <p style="color:var(--muted);margin:0">Official announcements and documentation are coming soon.</p>
+      </div>
+      <div class="actions" style="margin-top:0">
+        <a class="btn primary" href="mailto:contact@ovasha.com">contact@ovasha.com</a>
+      </div>
+    </div>
+  </section>
 </main>
-<footer>
-<div>© 2026 OvaSHA. All rights reserved.</div>
-<div class="socials"><a href="https://x.com/OvaSHA_Protocol" target="_blank">X</a><a href="https://github.com/OvaSHAProtocol" target="_blank">GitHub</a><a href="mailto:contact@ovasha.com">Email</a></div>
+
+<footer class="shell">
+  <div>© 2026 OvaSHA. All rights reserved.</div>
+  <div class="socials">
+    <a href="https://x.com/OvaSHA_Protocol" target="_blank" rel="noreferrer">X</a>
+    <a href="https://github.com/OvaSHAProtocol" target="_blank" rel="noreferrer">GitHub</a>
+    <a href="mailto:contact@ovasha.com">Email</a>
+  </div>
 </footer>
-</div>
 </body>
 </html>
