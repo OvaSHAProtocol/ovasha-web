@@ -1,9 +1,14 @@
-# OvaSHA Website V1.1
+# OvaSHA Website Final Preview
 
-Professional temporary website featuring interactive tokenomics, independent FAQ accordions, animated protocol architecture code, geometric motion and official links.
+Professional OvaSHA landing experience with:
 
-- Website: https://ovasha.com
-- X: https://x.com/OvaSHA_Protocol
-- Telegram: https://t.me/OvaSHAAnnouncements
-- GitHub: https://github.com/OvaSHAProtocol
-- Email: contact@ovasha.com
+- interactive tokenomics
+- signal/CRT-inspired typography sequence
+- scroll-driven manifesto
+- protocol flow visualization
+- animated architecture code
+- refined FAQ behavior
+- geometric background motion
+- official social links
+
+Official website: https://ovasha.com
