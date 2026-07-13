@@ -622,6 +622,62 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
     }
 
 
+    /* ===== Burn target and dark-mode readability fixes ===== */
+
+    .burn-metrics{
+      display:flex;
+      align-items:stretch;
+      gap:10px;
+      flex:none;
+    }
+
+    .burn-target-card{
+      min-width:142px;
+      padding:14px 16px;
+      border:1px solid rgba(193,69,65,.30);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(255,244,242,.90),rgba(255,229,225,.68));
+      text-align:right;
+      backdrop-filter:blur(12px);
+      box-shadow:0 10px 28px rgba(177,57,52,.08);
+    }
+
+    .burn-target-card span{
+      display:block;
+      color:#9f3b37;
+      font:700 9px "Space Mono",monospace;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .burn-target-card strong{
+      display:block;
+      margin-top:4px;
+      color:#b33e39;
+      font-size:32px;
+      letter-spacing:-.05em;
+    }
+
+    .burn-target-card strong b{
+      font:inherit;
+      color:#d14c45;
+    }
+
+    html[data-theme="dark"] .burn-target-card{
+      background:linear-gradient(145deg,#431918,#2a1111);
+      border-color:rgba(238,101,91,.36);
+      box-shadow:0 12px 30px rgba(0,0,0,.24),0 0 22px rgba(219,77,68,.08);
+    }
+
+    html[data-theme="dark"] .burn-target-card span{
+      color:#f0a39d;
+    }
+
+    html[data-theme="dark"] .burn-target-card strong,
+    html[data-theme="dark"] .burn-target-card strong b{
+      color:#ff746b;
+    }
+
     .burn-complete{
       position:absolute;
       left:50%;
@@ -631,26 +687,21 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
       padding:28px 26px;
       border:1px solid rgba(89,164,105,.28);
       border-radius:24px;
-      background:rgba(245,252,245,.90);
+      background:rgba(245,252,245,.92);
       backdrop-filter:blur(18px);
-      box-shadow:
-        0 28px 70px rgba(23,74,39,.16),
-        0 0 34px rgba(101,190,118,.12);
+      box-shadow:0 28px 70px rgba(23,74,39,.16),0 0 34px rgba(101,190,118,.12);
       text-align:center;
       opacity:0;
       pointer-events:none;
       transform:translate(-50%,-46%) scale(.92);
-      transition:
-        opacity .35s ease,
-        transform .35s cubic-bezier(.2,.8,.2,1);
+      transition:opacity .35s ease,transform .35s cubic-bezier(.2,.8,.2,1);
     }
 
     html[data-theme="dark"] .burn-complete{
-      background:rgba(9,28,19,.92);
+      background:rgba(9,28,19,.95);
       border-color:rgba(143,211,154,.30);
-      box-shadow:
-        0 30px 80px rgba(0,0,0,.34),
-        0 0 36px rgba(143,211,154,.12);
+      color:#f1faf2;
+      box-shadow:0 30px 80px rgba(0,0,0,.34),0 0 36px rgba(143,211,154,.12);
     }
 
     .burn-complete.visible{
@@ -709,6 +760,112 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
       pointer-events:none;
       filter:saturate(.78) brightness(.96);
       opacity:.55;
+    }
+
+    /* Contact: remove white-on-white clash */
+    html[data-theme="dark"] #contact .contact-box,
+    html[data-theme="dark"] .contact-box{
+      background:linear-gradient(145deg,#10271d,#081a12) !important;
+      border-color:rgba(145,207,157,.22) !important;
+      color:#f3faf4 !important;
+      box-shadow:0 24px 70px rgba(0,0,0,.28) !important;
+    }
+
+    html[data-theme="dark"] #contact h2,
+    html[data-theme="dark"] #contact strong,
+    html[data-theme="dark"] .contact-box h2{
+      color:#f3faf4 !important;
+    }
+
+    html[data-theme="dark"] #contact p,
+    html[data-theme="dark"] #contact .eyebrow,
+    html[data-theme="dark"] .contact-box p{
+      color:#abc1b0 !important;
+    }
+
+    /* Tokenomics detail and legend */
+    html[data-theme="dark"] #tokenomics .token-detail,
+    html[data-theme="dark"] .token-detail{
+      background:linear-gradient(145deg,#10271d,#07180f) !important;
+      border-color:rgba(145,207,157,.22) !important;
+      color:#f4fbf4 !important;
+      box-shadow:0 24px 72px rgba(0,0,0,.30),0 0 24px rgba(112,190,127,.06) !important;
+    }
+
+    html[data-theme="dark"] #tokenomics .token-detail h3,
+    html[data-theme="dark"] #tokenomics .token-detail .amount,
+    html[data-theme="dark"] #tokenomics .token-detail .percent,
+    html[data-theme="dark"] .token-detail h3,
+    html[data-theme="dark"] .token-detail .amount,
+    html[data-theme="dark"] .token-detail .percent{
+      color:#f4fbf4 !important;
+    }
+
+    html[data-theme="dark"] #tokenomics .token-detail p,
+    html[data-theme="dark"] #tokenomics .token-detail .eyebrow,
+    html[data-theme="dark"] .token-detail p{
+      color:#abc1b0 !important;
+    }
+
+    html[data-theme="dark"] #tokenomics .legend button,
+    html[data-theme="dark"] .legend button{
+      background:linear-gradient(145deg,#163728,#0b2519) !important;
+      border-color:rgba(145,207,157,.20) !important;
+      color:#edf8ef !important;
+    }
+
+    html[data-theme="dark"] #tokenomics .legend button:hover,
+    html[data-theme="dark"] .legend button:hover{
+      background:linear-gradient(145deg,#1d4934,#103021) !important;
+      border-color:rgba(145,207,157,.34) !important;
+    }
+
+    /* Protocol Flow six boxes */
+    html[data-theme="dark"] #flow .flow-wrap,
+    html[data-theme="dark"] .flow-wrap{
+      background:linear-gradient(145deg,#0a2116,#06170e) !important;
+      border-color:rgba(145,207,157,.20) !important;
+      box-shadow:0 28px 84px rgba(0,0,0,.32) !important;
+    }
+
+    html[data-theme="dark"] #flow .flow-node,
+    html[data-theme="dark"] .flow-node{
+      background:linear-gradient(145deg,#173b29,#0c281b) !important;
+      border-color:rgba(145,207,157,.24) !important;
+      color:#f2faf3 !important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 12px 32px rgba(0,0,0,.17) !important;
+    }
+
+    html[data-theme="dark"] #flow .flow-node strong,
+    html[data-theme="dark"] .flow-node strong{
+      color:#f3faf4 !important;
+    }
+
+    html[data-theme="dark"] #flow .flow-node span,
+    html[data-theme="dark"] #flow .flow-node p,
+    html[data-theme="dark"] .flow-node span,
+    html[data-theme="dark"] .flow-node p{
+      color:#a9c0af !important;
+    }
+
+    html[data-theme="dark"] #flow .flow-node.active,
+    html[data-theme="dark"] .flow-node.active{
+      background:linear-gradient(145deg,#1e4933,#113522) !important;
+      border-color:rgba(143,211,154,.45) !important;
+      box-shadow:0 18px 42px rgba(0,0,0,.25),0 0 26px rgba(143,211,154,.10) !important;
+    }
+
+    @media(max-width:700px){
+      .burn-metrics{
+        width:100%;
+      }
+
+      .burn-target-card,
+      .burn-supply-card{
+        flex:1;
+        min-width:0;
+        text-align:left;
+      }
     }
 
 </style>
@@ -772,9 +929,15 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
               This is a visual demonstration only and does not execute an on-chain transaction.
             </p>
           </div>
-          <div class="burn-supply-card">
-            <span>Coins remaining</span>
-            <strong id="burnSupply">15</strong>
+          <div class="burn-metrics">
+            <div class="burn-target-card">
+              <span>Burn target</span>
+              <strong><b id="burnProgress">0</b>/9</strong>
+            </div>
+            <div class="burn-supply-card">
+              <span>Coins remaining</span>
+              <strong id="burnSupply">15</strong>
+            </div>
           </div>
         </div>
 
@@ -855,11 +1018,12 @@ document.querySelectorAll('.faq details').forEach(d=>d.ontoggle=()=>{if(d.open)d
     (() => {
       const field=document.getElementById("burnField");
       const counter=document.getElementById("burnSupply");
+      const progress=document.getElementById("burnProgress");
       const reset=document.getElementById("burnReset");
       const complete=document.getElementById("burnComplete");
       const replay=document.getElementById("burnReplay");
 
-      if(!field || !counter || !reset || !complete || !replay) return;
+      if(!field || !counter || !progress || !reset || !complete || !replay) return;
 
       const layouts=[
         {x:6,y:14,s:54,d:7.2,r:11},
@@ -922,6 +1086,7 @@ document.querySelectorAll('.faq details').forEach(d=>d.ontoggle=()=>{if(d.open)d
         burned++;
         remaining=Math.max(0,totalCoins-burned);
         counter.textContent=String(remaining);
+        progress.textContent=String(Math.min(burned,targetBurns));
 
         setTimeout(()=>coin.remove(),380);
 
@@ -938,6 +1103,7 @@ document.querySelectorAll('.faq details').forEach(d=>d.ontoggle=()=>{if(d.open)d
         completed=false;
 
         counter.textContent=String(totalCoins);
+        progress.textContent="0";
         complete.classList.remove("visible");
         field.classList.remove("challenge-complete");
 
@@ -952,25 +1118,14 @@ document.querySelectorAll('.faq details').forEach(d=>d.ontoggle=()=>{if(d.open)d
           coin.style.setProperty("--drift-time",`${item.d}s`);
           coin.style.setProperty("--spin-time",`${item.r}s`);
 
-          coin.addEventListener(
-            "pointerenter",
-            ()=>burnCoin(coin),
-            {once:true}
-          );
-
-          coin.addEventListener(
-            "focus",
-            ()=>burnCoin(coin),
-            {once:true}
-          );
-
+          coin.addEventListener("pointerenter",()=>burnCoin(coin),{once:true});
+          coin.addEventListener("focus",()=>burnCoin(coin),{once:true});
           field.appendChild(coin);
         });
       }
 
       reset.addEventListener("click",populate);
       replay.addEventListener("click",populate);
-
       populate();
     })();
 </script>
