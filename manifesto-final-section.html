@@ -1,0 +1,153 @@
+<!-- Replace your current manifesto section with this block -->
+<section class="shell manifesto-final reveal" id="manifesto">
+  <div class="manifesto-final-stage" id="manifestoStage">
+    <div class="manifesto-final-grid" aria-hidden="true"></div>
+    <div class="manifesto-final-glow" id="manifestoGlow"></div>
+
+    <div class="manifesto-final-copy">
+      <div class="manifesto-final-kicker">OvaSHA Manifesto</div>
+
+      <p class="manifesto-final-line" id="manifestoLine" aria-live="polite"></p>
+
+      <div class="manifesto-final-sign" id="manifestoSign">
+        — OvaSHA Protocol
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(() => {
+  const messages = [
+    { before: "", key: "Trust", after: " should never depend on promises." },
+    { before: "It should be ", key: "visible", after: "." },
+    { before: "", key: "Verifiable", after: "." },
+    { before: "", key: "Measurable", after: "." },
+    { before: "", key: "Sustainable", after: "." }
+  ];
+
+  const finalMessage = {
+    before: "Trust, ",
+    key: "built to last",
+    after: "."
+  };
+
+  const section = document.getElementById("manifesto");
+  const stage = document.getElementById("manifestoStage");
+  const line = document.getElementById("manifestoLine");
+  const sign = document.getElementById("manifestoSign");
+  const glow = document.getElementById("manifestoGlow");
+
+  let running = false;
+  let visible = false;
+  let cycleId = 0;
+
+  const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+  function setLine(before, key, after, showCaret = true) {
+    line.innerHTML =
+      `<span>${before}</span>` +
+      `<span class="manifesto-key">${key}</span>` +
+      `<span>${after}</span>` +
+      (showCaret ? `<span class="manifesto-caret" aria-hidden="true"></span>` : "");
+  }
+
+  async function typeMessage(message, localCycleId) {
+    line.classList.remove("manifesto-fade");
+
+    const plain = message.before + message.key + message.after;
+    const keyStart = message.before.length;
+    const keyEnd = keyStart + message.key.length;
+
+    for (let i = 0; i <= plain.length; i++) {
+      if (!visible || localCycleId !== cycleId) return false;
+
+      const typed = plain.slice(0, i);
+      const beforeTyped = typed.slice(0, Math.min(i, keyStart));
+      const keyTyped = typed.slice(keyStart, Math.min(i, keyEnd));
+      const afterTyped = typed.slice(keyEnd);
+
+      setLine(beforeTyped, keyTyped, afterTyped, true);
+      await wait(38 + Math.random() * 24);
+    }
+
+    stage.classList.add("manifesto-pulse");
+    glow.classList.add("manifesto-glow-active");
+    await wait(420);
+    stage.classList.remove("manifesto-pulse");
+    glow.classList.remove("manifesto-glow-active");
+
+    await wait(1450);
+
+    for (let i = plain.length; i >= 0; i--) {
+      if (!visible || localCycleId !== cycleId) return false;
+
+      const typed = plain.slice(0, i);
+      const beforeTyped = typed.slice(0, Math.min(i, keyStart));
+      const keyTyped = typed.slice(keyStart, Math.min(i, keyEnd));
+      const afterTyped = typed.slice(keyEnd);
+
+      setLine(beforeTyped, keyTyped, afterTyped, true);
+      await wait(18);
+    }
+
+    await wait(240);
+    return true;
+  }
+
+  async function showFinal(localCycleId) {
+    if (!visible || localCycleId !== cycleId) return;
+
+    line.classList.add("manifesto-final-lock");
+    setLine(finalMessage.before, finalMessage.key, finalMessage.after, false);
+
+    stage.classList.add("manifesto-final-complete");
+    sign.classList.add("manifesto-sign-visible");
+    glow.classList.add("manifesto-glow-final");
+
+    running = false;
+  }
+
+  async function runManifesto() {
+    if (running) return;
+
+    running = true;
+    const localCycleId = ++cycleId;
+
+    line.className = "manifesto-final-line";
+    sign.classList.remove("manifesto-sign-visible");
+    stage.classList.remove("manifesto-final-complete");
+    glow.classList.remove("manifesto-glow-final");
+
+    for (const message of messages) {
+      const completed = await typeMessage(message, localCycleId);
+      if (!completed) {
+        running = false;
+        return;
+      }
+    }
+
+    await showFinal(localCycleId);
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      visible = entry.isIntersecting;
+
+      if (visible) {
+        runManifesto();
+      } else {
+        cycleId++;
+        running = false;
+        line.innerHTML = "";
+        line.className = "manifesto-final-line";
+        sign.classList.remove("manifesto-sign-visible");
+        stage.classList.remove("manifesto-final-complete", "manifesto-pulse");
+        glow.classList.remove("manifesto-glow-active", "manifesto-glow-final");
+      }
+    });
+  }, { threshold: 0.48 });
+
+  observer.observe(section);
+})();
+</script>
