@@ -964,6 +964,72 @@ section{padding:96px 0;position:relative}.section-head{max-width:780px;margin-bo
       box-shadow: 0 0 18px rgba(143,211,154,.52) !important;
     }
 
+
+    /* ===== FINAL EXACT DARK MODE FIXES ===== */
+
+    /* Real Contact box class used by the page */
+    html[data-theme="dark"] .contact {
+      background:
+        radial-gradient(circle at 88% 18%, rgba(94,184,113,.10), transparent 34%),
+        linear-gradient(145deg, #122b20, #07170f) !important;
+      border-color: rgba(151,214,164,.22) !important;
+      color: #f3faf4 !important;
+      box-shadow:
+        0 28px 78px rgba(0,0,0,.34),
+        inset 0 1px 0 rgba(255,255,255,.025),
+        0 0 26px rgba(112,190,127,.055) !important;
+    }
+
+    html[data-theme="dark"] .contact h2,
+    html[data-theme="dark"] .contact h3,
+    html[data-theme="dark"] .contact strong {
+      color: #f4fbf5 !important;
+    }
+
+    html[data-theme="dark"] .contact p {
+      color: #adc2b1 !important;
+    }
+
+    html[data-theme="dark"] .contact .eyebrow {
+      color: #8fb39a !important;
+    }
+
+    html[data-theme="dark"] .contact .btn.secondary {
+      background: #163728 !important;
+      border-color: rgba(151,214,164,.26) !important;
+      color: #eef8ef !important;
+    }
+
+    html[data-theme="dark"] .contact .btn.secondary:hover {
+      background: #1d4934 !important;
+      border-color: rgba(151,214,164,.38) !important;
+      color: #ffffff !important;
+    }
+
+    /* Real Tokenomics hover callout class used around the chart */
+    html[data-theme="dark"] #tokenomics .callout-label,
+    html[data-theme="dark"] .chartbox .callout-label {
+      background:
+        radial-gradient(circle at 90% 10%, rgba(93,186,113,.10), transparent 42%),
+        linear-gradient(145deg, #132e22, #081911) !important;
+      border-left-color: var(--c) !important;
+      color: #f3faf4 !important;
+      box-shadow:
+        0 16px 38px rgba(0,0,0,.34),
+        inset 0 1px 0 rgba(255,255,255,.025),
+        0 0 18px rgba(112,190,127,.055) !important;
+    }
+
+    html[data-theme="dark"] #tokenomics .callout-label b,
+    html[data-theme="dark"] .chartbox .callout-label b {
+      color: #f4fbf5 !important;
+    }
+
+    html[data-theme="dark"] #tokenomics .callout-label small,
+    html[data-theme="dark"] .chartbox .callout-label small {
+      color: #adc2b1 !important;
+    }
+
 </style>
 </head>
 <body>

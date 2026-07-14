@@ -1,11 +1,11 @@
-# OvaSHA — Exact Dark Box Fix
+# OvaSHA — Final Exact Contact & Tokenomics Callout Fix
 
-Bu sürüm son yüklenen çalışan ZIP temel alınarak hazırlandı.
+Son çalışan ZIP temel alınmıştır.
 
 Yalnızca gerçek sınıflar düzeltildi:
-- Tokenomics hover bilgi paneli: .detail / #detail
-- Tokenomics seçim butonları: .legend button
-- Protocol Flow kartları: .flow#flow .node
+- Contact kutusu: .contact
+- Tokenomics hover kutusu: .callout-label
 
-Yanma simülasyonu ve diğer site alanları değiştirilmedi.
-JavaScript sözdizimi doğrulandı.
+Dark mode'da iki kutu da koyu yeşil/siyah tona geçirildi.
+Yazılar okunaklı açık tonlara dönüştürüldü.
+Yanma simülasyonu ve diğer bölümler değiştirilmedi.
