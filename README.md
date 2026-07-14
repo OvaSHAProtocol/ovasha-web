@@ -1,11 +1,10 @@
-# OvaSHA — Final Exact Contact & Tokenomics Callout Fix
+# OvaSHA — Protocol Architecture Code Position Fix
 
-Son çalışan ZIP temel alınmıştır.
+Yalnızca Protocol Architecture bölümündeki .codetrack alanı düzenlendi:
 
-Yalnızca gerçek sınıflar düzeltildi:
-- Contact kutusu: .contact
-- Tokenomics hover kutusu: .callout-label
-
-Dark mode'da iki kutu da koyu yeşil/siyah tona geçirildi.
-Yazılar okunaklı açık tonlara dönüştürüldü.
-Yanma simülasyonu ve diğer bölümler değiştirilmedi.
+- Kod satırları biraz aşağı alındı.
+- Üst padding 18px → 38px yapıldı.
+- Animasyonun yukarı hareketi -55px → -30px azaltıldı.
+- Mobil görünüm için ayrı üst boşluk eklendi.
+- Açık ve koyu modda aynı şekilde çalışır.
+- Başka hiçbir bölüm değiştirilmedi.
