@@ -1,11 +1,10 @@
-# OvaSHA — Exact Dark Box Fix
+# OvaSHA — Protocol Architecture Code Position Fix
 
-Bu sürüm son yüklenen çalışan ZIP temel alınarak hazırlandı.
+Yalnızca Protocol Architecture bölümündeki .codetrack alanı düzenlendi:
 
-Yalnızca gerçek sınıflar düzeltildi:
-- Tokenomics hover bilgi paneli: .detail / #detail
-- Tokenomics seçim butonları: .legend button
-- Protocol Flow kartları: .flow#flow .node
-
-Yanma simülasyonu ve diğer site alanları değiştirilmedi.
-JavaScript sözdizimi doğrulandı.
+- Kod satırları biraz aşağı alındı.
+- Üst padding 18px → 38px yapıldı.
+- Animasyonun yukarı hareketi -55px → -30px azaltıldı.
+- Mobil görünüm için ayrı üst boşluk eklendi.
+- Açık ve koyu modda aynı şekilde çalışır.
+- Başka hiçbir bölüm değiştirilmedi.
